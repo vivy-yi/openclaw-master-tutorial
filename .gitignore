@@ -42,5 +42,5 @@ config.json
 !examples/openclaw.example.json
 
 # 排除 chapters 和 tools 目录
-chapters/
-tools/
+# chapters/
+# tools/
