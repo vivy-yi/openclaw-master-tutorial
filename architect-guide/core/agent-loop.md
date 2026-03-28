@@ -611,14 +611,99 @@ OPENCLAW_LOG_LEVEL=debug openclaw gateway
 # [stream:chunk]  - 流式分片信息
 ```
 
+### ⚠️ v2026.3.24 已知 Bug 对 Agent Loop 的影响
+
+#### Bug #56044 — /stop 中断失效
+
+**问题**：发送 `/stop` 或 `/queue interrupt` 后，Agent 继续运行，消息被静默排队。
+
+**根因**：v2026.3.24 将 `messages.queue.mode` 默认值改为 `collect`，该模式会批量收集消息，吞掉中断信号。
+
+**影响范围**：Critical Lane 的中断信号被 Collect 模式的队列吞没。
+
+**Workaround**：
+
+```bash
+# 在 openclaw.json 中显式配置
+openclaw config set messages.queue.mode steer
+openclaw gateway restart
+```
+
+```json
+// openclaw.json
+{
+  "messages": {
+    "queue": {
+      "mode": "steer"
+    }
+  }
+}
+```
+
+**验证**：
+
+```bash
+openclaw config get messages.queue.mode
+# 应输出: steer
+```
+
+#### Bug #56049 — Heartbeat 风暴
+
+**问题**：主 session 有未读 heartbeat prompt 时，Subagent 自动公告插入消息队列，每次插入重新触发 heartbeat handler，导致心跳以约 18s 间隔持续狂触发。
+
+**影响**：HEARTBEAT_OK 日志大量重复，Token 消耗异常增加。
+
+**临时应对**：
+
+```bash
+# 发现大量 HEARTBEAT_OK 时重启 Gateway
+openclaw gateway restart
+```
+
+**监控命令**：
+
+```bash
+# 过滤 Heartbeat 相关日志
+openclaw gateway logs | grep HEARTBEAT_OK | wc -l
+
+# 实时监控
+openclaw gateway logs -f | grep heartbeat
+```
+
+#### Bug #55380 — timeoutSeconds 未生效
+
+**问题**：`agents.defaults.timeoutSeconds` 配置未生效，失控 Agent 无限持有 session 锁。
+
+**影响**：Session 被卡住的 Agent 独占，无法响应新消息。
+
+**临时应对**：
+
+```bash
+# 查看所有活跃 session
+/sessions list
+
+# 查看卡住的 session
+/sessions history <session-key>
+
+# 强制终止（需 Gateway SSH 访问）
+# 找到对应进程 PID 后 kill
+ps aux | grep openclaw
+kill <PID>
+```
+
+---
+
 ### 常见问题诊断
 
 | 症状 | 可能原因 | 诊断命令 |
 |-----|---------|---------|
+| `/stop` 无法中断任务 | messages.queue.mode 为 collect | `openclaw config get messages.queue.mode` |
 | 响应慢 | Token 超限触发压缩 | `openclaw doctor --check-tokens` |
 | 工具不执行 | 权限配置错误 | `openclaw config get tools` |
 | 流式中断 | 客户端心跳超时 | 检查 WebSocket ping/pong |
-| 内存泄漏 | 事件监听未清理 | `openclaw debug --heap-snapshot` |
+| Heartbeat 大量重复 | #56049 Heartbeat 风暴 | `logs \| grep HEARTBEAT_OK` |
+| Session 被卡住 | #55380 timeout 未生效 | `/sessions list` 查看锁状态 |
+| Subagent 无法访问记忆 | #55385 memory_search 被禁用 | 检查 Subagent 工具列表 |
 
 ---
 

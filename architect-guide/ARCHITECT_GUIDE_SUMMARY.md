@@ -96,6 +96,8 @@ graph TB
 - **上下文管理**：分层管理、滑动窗口、摘要策略
 - **心跳机制**：`heartbeat-runner.ts` 源码分析
 
+> ⚠️ **v2026.3.24 重要更新**：本章新增「已知 Bug 对 Agent Loop 的影响」一节，涵盖 #56044（/stop 中断失效）、#56049（Heartbeat 风暴）、#55380（timeout 未生效）的根因分析与 Workaround。
+
 **Mermaid 状态机**：
 ```mermaid
 stateDiagram-v2
@@ -542,6 +544,6 @@ memory:
 
 ---
 
-*最后更新：2024年1月*
-*版本：v1.1*
+*最后更新：2026年3月28日（新增 v2026.3.24 Bug 章节）*
+*版本：v1.2*
 *维护者：OpenClaw 文档团队*

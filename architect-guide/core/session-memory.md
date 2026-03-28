@@ -739,6 +739,59 @@ const dailySessionKey = `user:${userId}:${new Date().toISOString().split('T')[0]
 const topicSessionKey = `user:${userId}:topic:${topicId}`;
 ```
 
+---
+
+## ⚠️ v2026.3.24 已知 Bug 对记忆系统的影响
+
+### Bug #55385 — memory_search / memory_get 在 Subagent 中被禁用
+
+**问题**：`memory_search` 和 `memory_get` 被硬编码进 `SUBAGENT_TOOL_DENY_ALWAYS` 黑名单，Subagent 无法调用这两个工具。
+
+**影响范围**：
+
+| 场景 | 是否受影响 |
+|------|-----------|
+| 主 session（main） | ❌ 不受影响 |
+| Subagent isolated session | ✅ 被禁用 |
+| Cron isolated session | ✅ 被禁用 |
+| ACP 编码 session | ❌ 不受影响 |
+
+**架构影响**：Subagent 无法自主检索长期记忆（MEMORY.md、daily memory），只能依赖主 Agent 注入。
+
+**临时解决方案 — 主 Agent 中转**：
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│              Subagent 记忆访问架构（workaround）                   │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│  主 Agent                                                        │
+│  1. 先调用 memory_search 检索所需记忆                            │
+│  2. 将记忆内容拼接到 task 消息中                                  │
+│  3. 通过 sessions_spawn 传给 Subagent                            │
+│                                                                  │
+│  sessions_spawn 传入：                                           │
+│  {                                                              │
+│    "task": "基于以下记忆回答：\n[MEMORY_CONTENT]\n\n问题：...",  │
+│    "runtime": "subagent",                                        │
+│    "mode": "run"                                                 │
+│  }                                                              │
+│                                                                  │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**官方修复跟踪**：[Issue #55385](https://github.com/openclaw/openclaw/issues/55385)
+
+### Session Target 选择指南
+
+| Target | 记忆访问 | 上下文共享 | 适用场景 |
+|--------|---------|-----------|---------|
+| `main` | ✅ 完整访问 | ✅ 与主 Agent 共享 | 需要上下文连续性 |
+| `isolated` | ❌ memory_search 被禁用 | ❌ 全新上下文 | Cron 后台任务、独立 Subagent |
+| `current` | ✅ 完整访问 | ✅ 当前 session | 与当前对话协作 |
+
+> ⚠️ 如果 Subagent 需要访问记忆，必须使用 `main` session target，或通过主 Agent 中转记忆内容。
+
 ### 配置推荐
 
 ```json
