@@ -48,3 +48,7 @@
 ## 补充资源
 
 - [Tools 官方文档](https://docs.openclaw.ai/tools)
+
+---
+
+**最后更新**：2026-03-28（由 Tutorial Master Skill 自动更新）

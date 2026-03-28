@@ -37,3 +37,7 @@
 
 - [官方故障排查文档](https://docs.openclaw.ai/troubleshooting)
 - [社区问题汇总](https://github.com/openclaw/openclaw/discussions)
+
+---
+
+**最后更新**：2026-03-28（由 Tutorial Master Skill 自动更新）

@@ -39,3 +39,7 @@ Persona = Agent 个性化配置
 
 - [OpenClaw Context 文档](https://docs.openclaw.ai/context)
 - [Memory 系统设计](https://docs.openclaw.ai/memory)
+
+---
+
+**最后更新**：2026-03-28（由 Tutorial Master Skill 自动更新）

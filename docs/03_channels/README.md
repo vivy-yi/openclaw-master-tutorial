@@ -53,3 +53,7 @@ Channel = 平台协议适配
 - [通道文档](https://docs.openclaw.ai/channels)
 - [飞书开发文档](https://open.feishu.cn/)
 - [Telegram Bot API](https://core.telegram.org/bots/api)
+
+---
+
+**最后更新**：2026-03-28（由 Tutorial Master Skill 自动更新）

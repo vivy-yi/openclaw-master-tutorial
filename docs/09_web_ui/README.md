@@ -37,3 +37,7 @@ Web UI = 状态看板 + 任务管理 + 监控仪表盘 + 实时协作
 ## 补充资源
 
 - [Awesome OpenClaw - Web UI 分类](https://github.com/vivy-yi/awesome-openclaw)
+
+---
+
+**最后更新**：2026-03-28（由 Tutorial Master Skill 自动更新）

@@ -53,3 +53,7 @@ Session = ~/.openclaw/agents/<agentId>/sessions/
 ## 补充资源
 
 - [官方 Agent Loop 文档](https://docs.openclaw.ai/concepts/agent-loop)
+
+---
+
+**最后更新**：2026-03-28（由 Tutorial Master Skill 自动更新）

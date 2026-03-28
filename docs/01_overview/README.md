@@ -40,3 +40,7 @@ OpenClaw = 自我驱动型智能体
 - [OpenClaw 官方文档](https://docs.openclaw.ai)
 - [OpenClaw GitHub](https://github.com/openclaw/openclaw)
 - [Awesome OpenClaw Tutorial](../awesome-openclaw-tutorial)
+
+---
+
+**最后更新**：2026-03-28（由 Tutorial Master Skill 自动更新）

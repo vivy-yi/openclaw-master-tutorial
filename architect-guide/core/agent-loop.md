@@ -712,3 +712,7 @@ kill <PID>
 - [会话与记忆系统](session-memory.md) - 状态持久化
 - [Gateway 协议](../protocol/gateway-architecture.md) - 通信层
 - [性能调优](../operation/performance.md) - 生产优化
+
+---
+
+**最后更新**：2026-03-28（新增 v2026.3.24 Bug 章节）

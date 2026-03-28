@@ -46,3 +46,7 @@
 
 - [官方安装文档](https://docs.openclaw.ai/start/install)
 - [Docker Hub 镜像](https://hub.docker.com/r/openclaw/openclaw)
+
+---
+
+**最后更新**：2026-03-28（由 Tutorial Master Skill 自动更新）

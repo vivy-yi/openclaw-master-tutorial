@@ -812,3 +812,7 @@ const topicSessionKey = `user:${userId}:topic:${topicId}`;
   }
 }
 ```
+
+---
+
+**最后更新**：2026-03-28（新增 v2026.3.24 Bug 章节）
