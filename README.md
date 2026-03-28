@@ -1,105 +1,105 @@
 # 🦞 OpenClaw Master Tutorial
 
-> From beginner to expert - Build your own AI assistant
-
-**[中文](README.zh-CN.md)** | English
+> From beginner to expert — Build your own AI assistant
 
 ---
 
-## Overview
+## 👉 What are you looking for?
 
-A comprehensive, contextual, and interactive learning guide for OpenClaw - an open-source AI agent platform.
+| Your situation | Go to |
+|---------------|-------|
+| 🆕 Just heard about OpenClaw, want to know what it is | [👉 User Guide](#-user-guide) |
+| 💬 Want to connect Telegram / Feishu / DingTalk | [👉 Channels](#-channels) |
+| ⏰ Want to set up scheduled tasks and automations | [👉 Automation](#-automation) |
+| 👨‍💻 Want to develop plugins or integrate OpenClaw into a product | [👉 Developer](#-developer) |
+| 🏗️ Need to design a system architecture based on OpenClaw | [👉 Architect](#-architect) |
+| 💰 Evaluating OpenClaw's value and business scenarios | [👉 Decision Maker](#-decision-maker) |
+| 🔧 Having a problem | [👉 Troubleshooting](#-troubleshooting) |
 
----
-
-## Documentation Structure
-
-### Getting Started
-
-| Section | Topic | Description |
-|---------|-------|-------------|
-| [01 Overview](docs/01_overview/) | Introduction | History, architecture, comparisons |
-| [02 Setup](docs/02_setup/) | Installation | Requirements, installation, Docker, cloud deployment |
-
-### Core Features
-
-| Section | Topic | Description |
-|---------|-------|-------------|
-| [03 Minimal Loop](docs/05_minimal_loop/) | Agent Loop | Core execution engine, commands, workspace |
-| [04 Config Models](docs/02_config_models/) | Model Configuration | DeepSeek, OpenAI, Claude, Ollama |
-| [05 Tools & Skills](docs/07_tools_skills/) | Capabilities | Tool system, Skill marketplace, custom skills |
-| [06 Context & Memory](docs/06_context_memory/) | Memory | Context management, long-term memory, persona |
-
-### Multi-Agent & Channels
-
-| Section | Topic | Description |
-|---------|-------|-------------|
-| [07 Multi-Agent](docs/05_multi_agent/) | Collaboration | Agent teams, collaboration patterns, workflows |
-| [08 Channels](docs/03_channels/) | Integrations | Telegram, Discord, Slack, webhooks |
-| [09 China Channels](docs/03_channels/) | China Platforms | Feishu, DingTalk, WeCom, QQ |
-| [10 Automation](docs/04_automation/) | Automation | Scheduled tasks, webhooks, workflows |
-| [11 Web UI](docs/09_web_ui/) | Web Interface | Dashboard, task management, monitoring |
-
-### Operations & Security
-
-| Section | Topic | Description |
-|---------|-------|-------------|
-| [12 Gateway](docs/03_gateway/) | API Gateway | API config, authentication, rate limiting |
-| [13 Security](docs/11_security/) | Security | Permissions, data security, audit logging |
-| [14 Extension](docs/08_extension/) | Development | Plugin SDK, custom tools |
-
-### Advanced & Practice
-
-| Section | Topic | Description |
-|---------|-------|-------------|
-| [15 Advanced](docs/13_advanced/) | Advanced Features | Pi voice, TTS, Nodes |
-| [16 Use Cases](docs/14_cases/) | Case Studies | Customer service, knowledge base, dev assistant |
-| [17 Troubleshooting](docs/15_troubleshooting/) | Problem Solving | Startup, channels, tools, models |
-| [18 System Layer](docs/16_system_layer/) | System Tools | File, CLI, browser, API operations |
-
-### Command Reference
-
-| Section | Description |
-|---------|-------------|
-| [OpenClaw Commands](docs/openclaw-commands/) | Complete command reference |
-
-### Appendices
-
-| Appendix | Topic |
-|----------|-------|
-| [Appendix A](docs/appendices/appendix-a/) | Command Quick Reference |
-| [Appendix B](docs/appendices/appendix-b/) | Configuration Templates |
-| [Appendix C](docs/appendices/appendix-c/) | API Provider Comparison |
-| [Appendix D](docs/appendices/appendix-d/) | Troubleshooting Guide |
-| [Appendix E](docs/appendices/appendix-e/) | Security Checklist |
-| [Appendix F](docs/appendices/appendix-f/) | Performance Optimization |
-| [Appendix G](docs/appendices/appendix-g/) | Learning Resources |
-| [Appendix H](docs/appendices/appendix-h/) | Changelog |
+> 💡 **Full navigation**: All reader paths are in [读者导航.md](读者导航.md) (Chinese)
 
 ---
 
-## Architect Guide
+## 🚶 User Guide
 
-For developers, architects, and technical leads - deep technical documentation:
+**Goal**: Get OpenClaw up and running
 
-| Section | Topic | Target |
-|---------|-------|--------|
-| [Core](architect-guide/core/) | Architecture | Architects |
-| [Agent Loop](architect-guide/core/agent-loop.md) | Execution Engine | Backend Dev |
-| [Security Model](architect-guide/core/security-model.md) | Security Analysis | Security Engineer |
-| [Protocol](architect-guide/protocol/) | Protocols | Backend/Client Dev |
-| [Gateway](architect-guide/protocol/gateway-architecture.md) | WebSocket Protocol | Backend Dev |
-| [Extension](architect-guide/extension/) | Extensions | Plugin Dev |
-| [Plugin SDK](architect-guide/extension/plugin-sdk.md) | Plugin Development | Plugin Dev |
-| [Operation](architect-guide/operation/) | Operations | DevOps |
+### Quick Start Path
 
----
+```
+① Learn OpenClaw
+   docs/01_overview/1.1_history.md
 
-## Quick Start
+② Install
+   docs/02_setup/2.2_installation.md
+
+③ Connect a channel
+   docs/03_channels/8.3_telegram_integration.md  (fastest)
+
+④ Issue your first command
+   docs/05_minimal_loop/3.2_first_command.md
+```
+
+### Common Commands
 
 ```bash
-# Quick start guide - see docs/02_setup/
+openclaw status
+openclaw gateway restart
+openclaw gateway logs -f
 ```
+
+---
+
+## 👨‍💻 Developer
+
+| Topic | Document |
+|-------|----------|
+| Architecture overview | [1.2 System Architecture](docs/01_overview/1.2_architecture.md) |
+| Tool system | [5.1 Tools Overview](docs/07_tools_skills/5.1_tools_overview.md) |
+| Custom Skills | [5.5 Custom Skill](docs/07_tools_skills/5.5_custom_skill.md) |
+| Plugin SDK | [12.2 Plugin Development](docs/08_extension/12.2_plugin_dev.md) |
+| **Deep docs** | [architect-guide/](architect-guide/README.md) |
+
+---
+
+## 🏗️ Architect
+
+| Topic | Document |
+|-------|----------|
+| [Architecture Guide Index](architect-guide/README.md) | All deep-dive docs |
+| [System Architecture](architect-guide/core/architecture-overview.md) | Architecture philosophy |
+| [Agent Loop](architect-guide/core/agent-loop.md) | Execution engine |
+| [Security Model](architect-guide/core/security-model.md) | Security architecture |
+| [Cost Optimization](architect-guide/core/cost-optimization.md) | LLM cost model |
+| [High Availability](architect-guide/operation/high-availability.md) | HA architecture |
+
+---
+
+## 🔧 Troubleshooting
+
+> 🔴 **Latest Bugs (Updated 2026-03-28)**
+
+| Bug | Problem | Solution |
+|-----|---------|----------|
+| [#56270](https://github.com/openclaw/openclaw/issues/56270) | WhatsApp reconnect loop (v2026.3.24 regression) | Use Telegram instead |
+| [#56274](https://github.com/openclaw/openclaw/issues/56274) | Discord Gateway crash | Monitor + auto-restart |
+| [#56044](https://github.com/openclaw/openclaw/issues/56044) | `/stop` doesn't interrupt | `messages.queue.mode: steer` ✅ |
+
+| Problem Type | Document |
+|--------------|----------|
+| Startup issues | [15.1 Startup Issues](docs/15_troubleshooting/15.1_startup_issues.md) |
+| Channel issues | [15.2 Channel Issues](docs/15_troubleshooting/15.2_channel_issues.md) |
+| Tool issues | [15.3 Tool Issues](docs/15_troubleshooting/15.3_tool_issues.md) |
+
+---
+
+## 📚 Documentation Structure
+
+| Directory | Purpose | Audience |
+|-----------|---------|----------|
+| [docs/](docs/) | Feature module reference (by tech area) | All readers |
+| [chapters/](chapters/) | Learning path chapters (by sequence) | Learners |
+| [architect-guide/](architect-guide/) | Architect-level deep docs (source-level) | Devs / Architects |
 
 ---
 
@@ -108,15 +108,20 @@ For developers, architects, and technical leads - deep technical documentation:
 | File | Description |
 |------|-------------|
 | [docker-compose.yml](examples/docker-compose.yml) | Docker deployment |
-| [.env.example](examples/.env.example) | Environment configuration |
+| [.env.example](examples/.env.example) | Environment config |
 
 ---
+
+## Quick Links
+
+- [Full Reader Navigation](读者导航.md) — by reader identity
+- [Troubleshooting](docs/15_troubleshooting/)
+- [Architect Guide](architect-guide/README.md)
+- [GitHub Issues](https://github.com/openclaw/openclaw/issues)
 
 ## Contributing
 
-Contributions welcome! Please submit issues and pull requests.
-
----
+Contributions welcome! Submit issues and pull requests.
 
 ## License
 
@@ -124,4 +129,4 @@ Contributions welcome! Please submit issues and pull requests.
 
 ---
 
-**Last Updated**: 2026-03-23
+**Last Updated**: 2026-03-28
