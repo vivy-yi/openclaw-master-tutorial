@@ -6,13 +6,13 @@
 
 | 小节 | 主题 | 核心内容 |
 |-----|------|---------|
-| [12.1](./12.1_extension_overview.md) | 插件开发体系 | Hook 架构、25 种钩子类型、4 种执行模式 |
-| [12.2](./12.2_plugin_dev.md) | 插件开发 | Manifest 配置、白名单机制、加载生命周期 |
-| [12.3](./12.3_custom_tool.md) | 自定义工具 | 工具策略、分层规则、沙箱隔离 |
-| [12.4](./12.4_plugin_install.md) | 插件安装详解 | CLI 安装、Bundle 配置、安全设置 |
-| [12.5](./12.5_plugin_common.md) | 常用插件 | 飞书/Discord/Telegram/记忆/模型插件 |
-| [12.6](./12.6_hook_events.md) | Hook 事件详解 | 26 种 Hook 事件、触发时机、注册示例 |
-| [12.7](./12.7_star_office_ui.md) | Star-Office-UI | 像素风 AI 看板、多 Agent 协作、状态可视化 |
+| [14.1](./14.1_extension_overview.md) | 插件开发体系 | Hook 架构、25 种钩子类型、4 种执行模式 |
+| [14.2](./14.2_plugin_dev.md) | 插件开发 | Manifest 配置、白名单机制、加载生命周期 |
+| [14.3](./14.3_custom_tool.md) | 自定义工具 | 工具策略、分层规则、沙箱隔离 |
+| [14.4](./14.4_plugin_install.md) | 插件安装详解 | CLI 安装、Bundle 配置、安全设置 |
+| [14.5](./14.5_plugin_common.md) | 常用插件 | 飞书/Discord/Telegram/记忆/模型插件 |
+| [14.6](./14.6_hook_events.md) | Hook 事件详解 | 26 种 Hook 事件、触发时机、注册示例 |
+| [14.7](./14.7_star_office_ui.md) | Star-Office-UI | 像素风 AI 看板、多 Agent 协作、状态可视化 |
 
 ## 学习目标
 

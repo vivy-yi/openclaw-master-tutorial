@@ -6,11 +6,11 @@
 
 | 小节 | 主题 | 核心内容 |
 |-----|------|---------|
-| [9.1 Web UI 概述](./9.1_webui_overview.md) | 主流 Web UI 工具 | 功能对比、选择指南 |
-| [9.2 Star-Office-UI](./9.2_star_office_ui.md) | 像素风办公室看板 | 状态可视化、多 Agent |
-| [9.3 webclaw](./9.3_webclaw.md) | 快速 Web 客户端 | 轻量级界面 |
-| [9.4 clawdeck](./9.4_clawdeck.md) | Agent 任务控制 | 任务管理、监控 |
-| [9.5 LobsterBoard](./9.5_lobsterboard.md) | 仪表盘构建器 | 自定义仪表盘 |
+| [9.1 Web UI 概述](./11.1_webui_overview.md) | 主流 Web UI 工具 | 功能对比、选择指南 |
+| [9.2 Star-Office-UI](./11.2_star_office_ui.md) | 像素风办公室看板 | 状态可视化、多 Agent |
+| [11.3 webclaw](./11.3_webclaw.md) | 快速 Web 客户端 | 轻量级界面 |
+| [11.4 clawdeck](./11.4_clawdeck.md) | Agent 任务控制 | 任务管理、监控 |
+| [11.5 LobsterBoard](./11.5_lobsterboard.md) | 仪表盘构建器 | 自定义仪表盘 |
 
 ## 学习目标
 

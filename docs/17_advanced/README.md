@@ -6,9 +6,9 @@
 
 | 小节 | 主题 | 核心内容 |
 |-----|------|---------|
-| [13.1](./13.1_voice_pi.md) | π 运行底座 | 事件驱动、状态机、Tick 机制 |
-| [13.2](./13.2_tts.md) | TTS 语音合成 | ElevenLabs、OpenAI、Edge TTS |
-| [13.3](./13.3_nodes.md) | 移动端节点 | Voice Wake、Talk Mode、语音转文字 |
+| [17.1](./17.1_voice_pi.md) | π 运行底座 | 事件驱动、状态机、Tick 机制 |
+| [17.2](./17.2_tts.md) | TTS 语音合成 | ElevenLabs、OpenAI、Edge TTS |
+| [17.3](./17.3_nodes.md) | 移动端节点 | Voice Wake、Talk Mode、语音转文字 |
 
 ## 学习目标
 

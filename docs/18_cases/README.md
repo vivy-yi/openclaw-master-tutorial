@@ -6,19 +6,19 @@
 
 | 小节 | 主题 | 案例数 | 预计用时 |
 |-----|------|--------|---------|
-| [14.1](./14.1_comprehensive_cases.md) | 综合案例集 | 5 | 60分钟 |
-| [14.2](./14.2_lifestyle_cases.md) | 日常生活类 | 20 | 90分钟 |
-| [14.3](./14.3_content_conversion_cases.md) | 内容转换类 | 7 | 30分钟 |
-| [14.4](./14.4_memory_cases.md) | 记忆管理类 | 8 | 40分钟 |
-| [14.5](./14.5_automation_cases.md) | 夜间自动化类 | 12 | 60分钟 |
-| [14.6](./14.6_data_cases.md) | 数据分析类 | 11 | 50分钟 |
-| [14.7](./14.7_security_cases.md) | 安全监控类 | 10 | 50分钟 |
-| [14.8](./14.8_social_cases.md) | 社交媒体类 | 4 | 20分钟 |
-| [14.9](./14.9_creative_cases.md) | 创意构建类 | 5 | 30分钟 |
-| [14.10](./14.10_infra_cases.md) | 基础设施类 | 2 | 15分钟 |
-| [14.11](./14.11_research_cases.md) | 研究学习类 | 5 | 25分钟 |
-| [14.12](./14.12_finance_cases.md) | 金融交易类 | 1 | 10分钟 |
-| [14.13](./14.13_ai_agent_collaboration_cases.md) | AI Agent 协作类 | 5 | 30分钟 |
+| [18.1](./14.1_comprehensive_cases.md) | 综合案例集 | 5 | 60分钟 |
+| [18.2](./14.2_lifestyle_cases.md) | 日常生活类 | 20 | 90分钟 |
+| [18.3](./14.3_content_conversion_cases.md) | 内容转换类 | 7 | 30分钟 |
+| [18.4](./14.4_memory_cases.md) | 记忆管理类 | 8 | 40分钟 |
+| [18.5](./14.5_automation_cases.md) | 夜间自动化类 | 12 | 60分钟 |
+| [18.6](./14.6_data_cases.md) | 数据分析类 | 11 | 50分钟 |
+| [18.7](./14.7_security_cases.md) | 安全监控类 | 10 | 50分钟 |
+| [18.8](./14.8_social_cases.md) | 社交媒体类 | 4 | 20分钟 |
+| [18.9](./14.9_creative_cases.md) | 创意构建类 | 5 | 30分钟 |
+| [18.10](./14.10_infra_cases.md) | 基础设施类 | 2 | 15分钟 |
+| [18.11](./14.11_research_cases.md) | 研究学习类 | 5 | 25分钟 |
+| [18.12](./14.12_finance_cases.md) | 金融交易类 | 1 | 10分钟 |
+| [18.13](./14.13_ai_agent_collaboration_cases.md) | AI Agent 协作类 | 5 | 30分钟 |
 
 ## 完整实战项目
 

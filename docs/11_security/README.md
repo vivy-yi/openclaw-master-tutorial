@@ -6,12 +6,12 @@
 
 | 小节 | 主题 | 核心内容 |
 |-----|------|---------|
-| [11.1](./11.1_security_overview.md) | 安全概述 | 安全架构、分层防御 |
-| [11.2](./11.2_permission.md) | 权限管理 | Profile 机制、工具权限 |
-| [11.3](./11.3_data_security.md) | 数据安全 | 加密、敏感信息保护 |
-| [11.4](./11.4_audit_log.md) | 审计日志 | 日志记录、查询分析 |
-| [11.5](./11.5_auth_profiles.md) | 多密钥治理 | keys、keyId、轮换策略 |
-| [11.6](./11.6_secrets_management.md) | 密钥管理 | SecretRef、密钥提供商、1Password/Vault 集成 |
+| [13.1](./13.1_security_overview.md) | 安全概述 | 安全架构、分层防御 |
+| [13.2](./13.2_permission.md) | 权限管理 | Profile 机制、工具权限 |
+| [13.3](./13.3_data_security.md) | 数据安全 | 加密、敏感信息保护 |
+| [13.4](./13.4_audit_log.md) | 审计日志 | 日志记录、查询分析 |
+| [13.5](./13.5_auth_profiles.md) | 多密钥治理 | keys、keyId、轮换策略 |
+| [13.6](./13.6_secrets_management.md) | 密钥管理 | SecretRef、密钥提供商、1Password/Vault 集成 |
 
 ## 学习目标
 

@@ -11,11 +11,11 @@
 | [5.3](./5.3_skills_system.md) | Skills 系统 | 30分钟 |
 | [5.4](./5.4_skill_market.md) | 技能市场 | 20分钟 |
 | [5.5](./5.5_custom_skill.md) | 自定义技能 | 30分钟 |
-| [5.6](./5.6_browser_automation.md) | 浏览器自动化 | 40分钟 |
+| [5.6](./5.7_overview.md) | 浏览器自动化 | 40分钟 |
 | [5.6_builtin_skills](./5.6_builtin_skills.md) | 内置 Skills 详解 | 30分钟 |
-| [5.7](./5.7_clawhub.md) | ClawHub 市场使用 | 20分钟 |
-| [5.8](./5.8_skills_scenarios.md) | 常用场景 Skills | 30分钟 |
-| [5.9](./5.9_skills_occupation.md) | 职业场景 Skills | 30分钟 |
+| [5.7](./5.8_clawhub.md) | ClawHub 市场使用 | 20分钟 |
+| [5.8](./5.9_skills_scenarios.md) | 常用场景 Skills | 30分钟 |
+| [5.9](./5.10_skills_occupation.md) | 职业场景 Skills | 30分钟 |
 
 ## 学习目标
 
