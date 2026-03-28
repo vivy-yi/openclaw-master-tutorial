@@ -1,0 +1,221 @@
+{
+  "root": {
+    "path": "/Volumes/waku/大模型/Agentic-tools/skills/skills-git",
+    "version": "2.0",
+    "lastScanned": "2026-03-27T19:58:00Z",
+    "stats": {
+      "totalRepositories": 50,
+      "topLevelRepositories": 17,
+      "nestedRepositories": 35,
+      "totalSkills": 4041,
+      "awesomeLists": 3
+    }
+  },
+  "topLevelRepositories": [
+    {
+      "id": "AI-Research-SKILLs",
+      "name": "AI Research SKILLs",
+      "localPath": "AI-Research-SKILLs",
+      "remote": { "owner": "Orchestra-Research", "repo": "AI-Research-SKILLs", "url": "https://github.com/Orchestra-Research/AI-Research-SKILLs" },
+      "type": "skills",
+      "skillCount": 40,
+      "nested": false
+    },
+    {
+      "id": "agent-skills-cli",
+      "name": "Agent Skills CLI",
+      "localPath": "agent-skills-cli",
+      "remote": { "owner": "Karanjot786", "repo": "agent-skills-cli", "url": "https://github.com/Karanjot786/agent-skills-cli" },
+      "type": "skills",
+      "skillCount": 10,
+      "nested": false
+    },
+    {
+      "id": "ai-labs-claude-skills",
+      "name": "AI Labs Claude Skills",
+      "localPath": "ai-labs-claude-skills",
+      "remote": { "owner": "ailabs-393", "repo": "ai-labs-claude-skills", "url": "https://github.com/ailabs-393/ai-labs-claude-skills" },
+      "type": "skills",
+      "skillCount": 54,
+      "nested": false
+    },
+    {
+      "id": "anthropic-agent-skills",
+      "name": "Anthropic Agent Skills",
+      "localPath": "anthropic-agent-skills",
+      "remote": { "owner": "anthropics", "repo": "skills", "url": "https://github.com/anthropics/skills" },
+      "type": "skills",
+      "skillCount": 18,
+      "nested": false
+    },
+    {
+      "id": "awesome-agent-skills",
+      "name": "Awesome Agent Skills",
+      "localPath": "awesome-agent-skills",
+      "remote": { "owner": "heilcheng", "repo": "awesome-agent-skills", "url": "https://github.com/heilcheng/awesome-agent-skills" },
+      "type": "awesome",
+      "skillCount": 0,
+      "nested": false
+    },
+    {
+      "id": "awesome-claude-skills",
+      "name": "Awesome Claude Skills",
+      "localPath": "awesome-claude-skills",
+      "remote": { "owner": "travisvn", "repo": "awesome-claude-skills", "url": "https://github.com/travisvn/awesome-claude-skills" },
+      "type": "awesome",
+      "skillCount": 0,
+      "nested": false
+    },
+    {
+      "id": "awesome-openclaw",
+      "name": "Awesome OpenClaw",
+      "localPath": "awesome-openclaw",
+      "remote": { "owner": "SamurAIGPT", "repo": "awesome-openclaw", "url": "https://github.com/SamurAIGPT/awesome-openclaw" },
+      "type": "awesome",
+      "skillCount": 0,
+      "nested": false
+    },
+    {
+      "id": "baoyu-skills",
+      "name": "Baoyu Skills",
+      "localPath": "baoyu-skills",
+      "remote": { "owner": "JimLiu", "repo": "baoyu-skills", "url": "https://github.com/JimLiu/baoyu-skills" },
+      "type": "skills",
+      "skillCount": 18,
+      "nested": false
+    },
+    {
+      "id": "claude-code-plugins-plus-skills",
+      "name": "Claude Code Plugins Plus Skills",
+      "localPath": "claude-code-plugins-plus-skills",
+      "remote": { "owner": "jeremylongshore", "repo": "claude-code-plugins-plus-skills", "url": "https://github.com/jeremylongshore/claude-code-plugins-plus-skills" },
+      "type": "skills",
+      "skillCount": 3148,
+      "nested": false
+    },
+    {
+      "id": "claude-skills",
+      "name": "Claude Skills",
+      "localPath": "claude-skills",
+      "remote": { "owner": "glebis", "repo": "claude-skills", "url": "https://github.com/glebis/claude-skills" },
+      "type": "skills",
+      "skillCount": 28,
+      "nested": false
+    },
+    {
+      "id": "claude-skills-1",
+      "name": "Claude Skills Collection",
+      "localPath": "claude-skills-1",
+      "remote": { "owner": "alirezarezvani", "repo": "claude-skills", "url": "https://github.com/alirezarezvani/claude-skills" },
+      "type": "skills",
+      "skillCount": 44,
+      "nested": false
+    },
+    {
+      "id": "claudekit-skills",
+      "name": "Claudekit Skills",
+      "localPath": "claudekit-skills",
+      "remote": { "owner": "mrgoinion", "repo": "claudekit-skills", "url": "https://github.com/mrgoinion/claudekit-skills" },
+      "type": "skills",
+      "skillCount": 44,
+      "nested": false
+    },
+    {
+      "id": "claude-skills-by-role",
+      "name": "Claude Skills by Role",
+      "localPath": "claude-skills-by-role",
+      "type": "container",
+      "nested": true,
+      "childRepositories": 25,
+      "children": {
+        "程序员": [
+          { "id": "claude-skills-by-role/程序员/claude-code-tresor", "remote": "alirezarezvani/claude-code-tresor" },
+          { "id": "claude-skills-by-role/程序员/claude-code-action", "remote": "anthropics/claude-code-action" },
+          { "id": "claude-skills-by-role/程序员/claude-code-skill-factory", "remote": "alirezarezvani/claude-code-skill-factory" },
+          { "id": "claude-skills-by-role/程序员/knowledge-work-plugins", "remote": "anthropics/knowledge-work-plugins" },
+          { "id": "claude-skills-by-role/程序员/cursor-rules-java", "remote": "jabrena/cursor-rules-java" },
+          { "id": "claude-skills-by-role/程序员/ai-guide", "remote": "liyupi/ai-guide" },
+          { "id": "claude-skills-by-role/程序员/jeffreysprompts.com", "remote": "Ducklesworthstone/jeffreysprompts.com" }
+        ],
+        "产品经理": [
+          { "id": "claude-skills-by-role/产品经理/Product-Manager-Skills", "remote": "deanpeters/Product-Manager-Skills" },
+          { "id": "claude-skills-by-role/产品经理/pm-skills-for-claude", "remote": "sunnyyanghicks6/pm-skills-for-claude" },
+          { "id": "claude-skills-by-role/产品经理/pm-claude-skills", "remote": "aakashg/pm-claude-skills" },
+          { "id": "claude-skills-by-role/产品经理/product-manager-prompts", "remote": "deanpeters/product-manager-prompts" },
+          { "id": "claude-skills-by-role/产品经理/pm-ai-playbook", "remote": "fimoklei/pm-ai-playbook" }
+        ],
+        "人力资源": [
+          { "id": "claude-skills-by-role/人力资源/resume-skill-extractor", "remote": "artworxai/resume-skill-extractor" },
+          { "id": "claude-skills-by-role/人力资源/Resume-Analysis-and-Recruitment-Assistant", "remote": "amogh-vardhan/Resume-Analysis-and-Recruitment-Assistant" }
+        ],
+        "电商运营": [
+          { "id": "claude-skills-by-role/电商运营/dgtldept", "remote": "thatrebeccarae/dgtldept" },
+          { "id": "claude-skills-by-role/电商运营/ecommerce-product-import-skill", "remote": "Mikimouse11/ecommerce-product-import-skill" }
+        ],
+        "新媒体运营": [
+          { "id": "claude-skills-by-role/新媒体运营/Claude-Code-Content-Marketing-Toolkit", "remote": "wilwaldon/Claude-Code-Content-Marketing-Toolkit" },
+          { "id": "claude-skills-by-role/新媒体运营/claude-prompt-engineering-guide", "remote": "ThamJiaHe/claude-prompt-engineering-guide" },
+          { "id": "claude-skills-by-role/新媒体运营/create-viral-content", "remote": "aaaronmiller/create-viral-content" },
+          { "id": "claude-skills-by-role/新媒体运营/head-of-content", "remote": "bradautomates/head-of-content" },
+          { "id": "claude-skills-by-role/新媒体运营/prompt-engineering-skills", "remote": "treylom/prompt-engineering-skills" },
+          { "id": "claude-skills-by-role/新媒体运营/social-media-manager-skills", "remote": "prateekjain98/social-media-manager-skills" }
+        ],
+        "视频处理": [
+          { "id": "claude-skills-by-role/视频处理/Video-Wrapper-Skills", "remote": "op7418/Video-Wrapper-Skills" }
+        ],
+        "其他": [
+          { "id": "claude-skills-by-role/Generative-Media-Skills", "remote": "SamurAIGPT/Generative-Media-Skills" }
+        ]
+      }
+    },
+    {
+      "id": "data-ai-skills",
+      "name": "Data AI Skills",
+      "localPath": "data-ai-skills",
+      "type": "container",
+      "nested": true,
+      "children": {
+        "skills": [
+          { "id": "data-ai-skills/data-analytics-claude", "remote": "donparay114-code/data-analytics-claude" },
+          { "id": "data-ai-skills/agent-skills", "remote": "spivx/agent-skills" },
+          { "id": "data-ai-skills/agentic-data-kit", "remote": "luccapinto/agentic-data-kit" },
+          { "id": "data-ai-skills/skilless.ai", "remote": "BrikerMan/skilless.ai" }
+        ]
+      }
+    },
+    {
+      "id": "openclaw-skills",
+      "name": "OpenClaw Skills",
+      "localPath": "openclaw-skills",
+      "type": "container",
+      "nested": true,
+      "children": {
+        "skills": [
+          { "id": "openclaw-skills/awesome openclaw", "remote": "vivy-yi/awesome-openclaw" },
+          { "id": "openclaw-skills/awesome-openclaw-skills", "remote": "VoltAgent/awesome-openclaw-skills" },
+          { "id": "openclaw-skills/awesome-moltbot-skills", "remote": "VoltAgent/awesome-moltbot-skills" },
+          { "id": "openclaw-skills/clawdhub", "remote": "clawdbot/clawdhub" },
+          { "id": "openclaw-skills/skills", "remote": "clawdbot/skills" }
+        ]
+      }
+    },
+    {
+      "id": "skills",
+      "name": "Anthropic Skills",
+      "localPath": "skills",
+      "remote": { "owner": "anthropics", "repo": "skills", "url": "https://github.com/anthropics/skills" },
+      "type": "skills",
+      "skillCount": 18,
+      "nested": false
+    },
+    {
+      "id": "superpowers",
+      "name": "Superpowers",
+      "localPath": "superpowers",
+      "remote": { "owner": "obra", "repo": "superpowers", "url": "https://github.com/obra/superpowers" },
+      "type": "skills",
+      "skillCount": 20,
+      "nested": false
+    }
+  ]
+}

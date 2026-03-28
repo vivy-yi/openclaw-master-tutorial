@@ -691,6 +691,45 @@ ps aux | grep openclaw
 kill <PID>
 ```
 
+#### Bug #55360 — setTimeout 溢出导致 100% CPU 热循环（已修复 ✅）
+
+**问题**：`setTimeout` 的 `delay` 参数若超出 `setTimeout` 可接受的最大值（约 2147483647ms，即 ~24.8 天），会被静默截断为 0 或极小值，导致事件循环以极高频率反复调度，形成 100% CPU 占用热循环。
+
+**根因**：JavaScript `setTimeout` 规范规定超出范围的超时会被自动修正为 0，但修正行为在某些边缘情况下触发高频重排。
+
+**影响范围**：长时间运行（如 cron 任务延迟触发）且超时值意外溢出时，OpenClaw Gateway 进程 CPU 飙升至 100%，无响应。
+
+**修复状态**：**PR 已合并**（`setTimeout` 调用前增加 clamp 逻辑，将 delay 限制在安全范围内）。
+
+**验证修复**（v2026.3.24+）：
+
+```bash
+# 查看 Gateway 版本
+openclaw --version
+
+# 确认 openclaw.json 中 cron 调度参数合法
+# 超时值不应超过 2147483647ms（约24.8天）
+```
+
+**诊断命令**：
+
+```bash
+# 发现 CPU 异常飙高时
+top -o cpu
+ps aux | grep openclaw  # 查看 openclaw 进程 CPU%
+
+# 检查是否是 setTimeout 问题（需要 debug 日志）
+OPENCLAW_LOG_LEVEL=debug openclaw gateway 2>&1 | grep -i "timeout\|loop\|cpu"
+
+# 恢复方法：重启 Gateway
+openclaw gateway restart
+```
+
+**预防措施**：
+
+- 配置 cron 任务时，避免设置超长延迟（>24天）
+- 定期检查 Gateway 运行时长，若 >20天考虑重启
+
 ---
 
 ### 常见问题诊断
@@ -704,6 +743,7 @@ kill <PID>
 | Heartbeat 大量重复 | #56049 Heartbeat 风暴 | `logs \| grep HEARTBEAT_OK` |
 | Session 被卡住 | #55380 timeout 未生效 | `/sessions list` 查看锁状态 |
 | Subagent 无法访问记忆 | #55385 memory_search 被禁用 | 检查 Subagent 工具列表 |
+| CPU 100% 热循环 | #55360 setTimeout 溢出 | `ps aux \| grep openclaw` + `restart` |
 
 ---
 
@@ -715,4 +755,4 @@ kill <PID>
 
 ---
 
-**最后更新**：2026-03-28（新增 v2026.3.24 Bug 章节）
+**最后更新**：2026-03-29（新增 #55360 setTimeout CPU fix，已在 v2026.3.24 合并）

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw 工具箱 | OpenClaw Master Tutorial</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #FF6B35;
+            --primary-dark: #E85D2C;
+            --secondary: #4ECDC4;
+            --dark: #1A1A2E;
+            --light: #F7F7F7;
+            --gray: #6B7280;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+        }
+        
+        .tool-card .icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        
+        .tool-card h2 {
+            color: var(--dark);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .tool-card p {
+            color: var(--gray);
+            line-height: 1.6;
+            flex: 1;
+        }
+        
+        .tool-card .features {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #E5E7EB;
+        }
+        
+        .tool-card .features li {
+            list-style: none;
+            padding: 8px 0;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tool-card .features li::before {
+            content: "✓";
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        .tool-card .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 15px 30px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .tool-card .btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+        
+        .badge.new {
+            background: #FF6B35;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .back-link:hover {
+            opacity: 1;
+        }
+
+        .stats-bar {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px 40px;
+            margin: 40px auto;
+            max-width: 600px;
+            display: flex;
+            justify-content: space-around;
+            color: white;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../" class="back-link">← 返回教程首页</a>
+        
+        <header>
+            <h1>🛠️ OpenClaw 工具箱</h1>
+            <p>让 OpenClaw 的配置和部署更简单，一站式工具帮你快速上手</p>
+            
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">配套工具</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">免费使用</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">下载安装</div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="tools-grid">
+            <!-- 快速开始向导 -->
+            <a href="landing-page/" class="tool-card">
+                <span class="icon">🚀</span>
+                <span class="badge new">新手必看</span>
+                <h2>快速开始向导</h2>
+                <p>可视化入门导航，根据你的使用场景（个人效率/开发辅助/团队协作）快速定位所需章节，10分钟上手OpenClaw。</p>
+                <ul class="features">
+                    <li>场景化学习路径</li>
+                    <li>一键跳转对应章节</li>
+                    <li>交互式功能演示</li>
+                    <li>美观现代UI设计</li>
+                </ul>
+                <span class="btn">开始探索 →</span>
+            </a>
+            
+            <!-- 配置生成器 -->
+            <a href="config-generator/" class="tool-card">
+                <span class="icon">⚙️</span>
+                <span class="badge">热门工具</span>
+                <h2>配置生成器</h2>
+                <p>根据你的需求一键生成 openclaw.json 配置文件。支持多种预设场景，可视化编辑，告别手写JSON的烦恼。</p>
+                <ul class="features">
+                    <li>4种预设场景模板</li>
+                    <li>支持5种AI模型</li>
+                    <li>实时成本估算</li>
+                    <li>一键复制配置</li>
+                </ul>
+                <span class="btn">开始使用 →</span>
+            </a>
+            
+            <!-- 成本计算器 -->
+            <a href="cost-calculator/" class="tool-card">
+                <span class="icon">💰</span>
+                <span class="badge">省钱必备</span>
+                <h2>成本计算器</h2>
+                <p>估算不同使用场景下的月度费用，对比各种部署方案和AI模型，帮你找到性价比最高的配置。</p>
+                <ul class="features">
+                    <li>使用量智能估算</li>
+                    <li>多模型价格对比</li>
+                    <li>与ChatGPT Plus对比</li>
+                    <li>省钱建议</li>
+                </ul>
+                <span class="btn">开始计算 →</span>
+            </a>
+            
+            <!-- 技能推荐器 -->
+            <a href="skill-recommender/" class="tool-card">
+                <span class="icon">🧩</span>
+                <span class="badge new">全新上线</span>
+                <h2>技能推荐器</h2>
+                <p>根据你的使用场景，智能推荐最适合的 Skills。3步问卷快速匹配，自动生成配置代码。</p>
+                <ul class="features">
+                    <li>场景化技能推荐</li>
+                    <li>3步快速匹配</li>
+                    <li>配置自动生成</li>
+                    <li>一键复制安装</li>
+                </ul>
+                <span class="btn">获取推荐 →</span>
+            </a>
+            
+            <!-- 诊断工具 -->
+            <a href="diagnostic-tool/" class="tool-card">
+                <span class="icon">🔧</span>
+                <span class="badge new">全新上线</span>
+                <h2>诊断工具</h2>
+                <p>一键检测 OpenClaw 安装状态，4类检查16项指标，自动诊断常见问题并提供修复命令。</p>
+                <ul class="features">
+                    <li>4类配置检查</li>
+                    <li>16项健康指标</li>
+                    <li>一键修复命令</li>
+                    <li>健康度评分</li>
+                </ul>
+                <span class="btn">运行诊断 →</span>
+            </a>
+        </div>
+        
+        <footer>
+            <p>© 2026 OpenClaw Master Tutorial | <a href="../">返回教程首页</a></p>
+        </footer>
+    </div>
+</body>
+</html>

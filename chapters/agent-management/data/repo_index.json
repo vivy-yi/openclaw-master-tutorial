@@ -1,0 +1,160 @@
+{
+  "market": {
+    "version": "1.0.0",
+    "lastUpdated": "2026-03-27T19:47:00Z",
+    "totalRepositories": 11,
+    "totalSkills": 4041
+  },
+  "repositories": [
+    {
+      "id": "awesome-agent-skills",
+      "type": "awesome",
+      "name": "Awesome Agent Skills",
+      "description": "精选的 AI 程序编码代理技能、工具和功能列表",
+      "localPath": "/Volumes/waku/大模型/Agentic-tools/skills/skills-git/awesome-agent-skills",
+      "remote": {
+        "owner": "heilcheng",
+        "repo": "awesome-agent-skills",
+        "url": "https://github.com/heilcheng/awesome-agent-skills"
+      },
+      "language": "zh-CN",
+      "lastSync": "2026-03-18T23:55:00Z",
+      "tags": ["agent", "skills", "awesome", "列表"],
+      "categories": ["文档处理", "开发和代码工具", "数据分析", "集成和自动化", "协作与项目管理"]
+    },
+    {
+      "id": "awesome-claude-skills",
+      "type": "awesome",
+      "name": "Awesome Claude Skills",
+      "description": "A curated list of awesome Claude Code and Claude.ai skills",
+      "localPath": "/Volumes/waku/大模型/Agentic-tools/skills/skills-git/awesome-claude-skills",
+      "remote": {
+        "owner": "travisvn",
+        "repo": "awesome-claude-skills",
+        "url": "https://github.com/travisvn/awesome-claude-skills"
+      },
+      "language": "en",
+      "lastSync": "2026-03-18T23:55:00Z",
+      "tags": ["claude", "skills", "awesome"]
+    },
+    {
+      "id": "awesome-openclaw",
+      "type": "awesome",
+      "name": "Awesome OpenClaw",
+      "description": "OpenClaw Skills 列表",
+      "localPath": "/Volumes/waku/大模型/Agentic-tools/skills/skills-git/awesome-openclaw",
+      "language": "zh-CN",
+      "lastSync": "2026-03-19T00:48:00Z",
+      "tags": ["openclaw", "skills", "awesome"]
+    },
+    {
+      "id": "claude-skills",
+      "type": "skills",
+      "name": "Claude Skills",
+      "description": "A collection of Claude Code skills by glebis",
+      "localPath": "/Volumes/waku/大模型/Agentic-tools/skills/skills-git/claude-skills",
+      "remote": {
+        "owner": "glebis",
+        "repo": "claude-skills",
+        "url": "https://github.com/glebis/claude-skills"
+      },
+      "platform": ["claude", "claude-code"],
+      "language": "en",
+      "skillCount": 28,
+      "lastSync": "2026-03-09T11:49:00Z",
+      "tags": ["claude", "code", "github", "gist"]
+    },
+    {
+      "id": "anthropic-agent-skills",
+      "type": "skills",
+      "name": "Anthropic Agent Skills",
+      "description": "Official Anthropic skills for Claude agents",
+      "localPath": "/Volumes/waku/大模型/Agentic-tools/skills/skills-git/anthropic-agent-skills",
+      "remote": {
+        "owner": "anthropics",
+        "repo": "skills",
+        "url": "https://github.com/anthropics/skills"
+      },
+      "platform": ["claude", "claude-code"],
+      "language": "en",
+      "skillCount": 18,
+      "lastSync": "2026-03-20T20:18:00Z",
+      "tags": ["anthropic", "official", "document", "pdf", "docx"]
+    },
+    {
+      "id": "baoyu-skills",
+      "type": "skills",
+      "name": "Baoyu Skills",
+      "description": "AI Agent Skills collection",
+      "localPath": "/Volumes/waku/大模型/Agentic-tools/skills/skills-git/baoyu-skills",
+      "remote": {
+        "owner": "JimLiu",
+        "repo": "baoyu-skills",
+        "url": "https://github.com/JimLiu/baoyu-skills"
+      },
+      "platform": ["claude", "claude-code"],
+      "language": "zh-CN",
+      "skillCount": 18,
+      "lastSync": "2026-03-18T23:58:00Z",
+      "tags": ["chinese", "agent", "collection"]
+    },
+    {
+      "id": "ai-labs-claude-skills",
+      "type": "skills",
+      "name": "AI Labs Claude Skills",
+      "description": "AI Labs Claude skills collection",
+      "localPath": "/Volumes/waku/大模型/Agentic-tools/skills/skills-git/ai-labs-claude-skills",
+      "remote": {
+        "owner": "ailabs-393",
+        "repo": "ai-labs-claude-skills",
+        "url": "https://github.com/ailabs-393/ai-labs-claude-skills"
+      },
+      "platform": ["claude", "claude-code"],
+      "language": "en",
+      "skillCount": 54,
+      "lastSync": "2026-03-09T11:46:00Z",
+      "tags": ["ai-labs", "collection"]
+    },
+    {
+      "id": "claudekit-skills",
+      "type": "skills",
+      "name": "Claudekit Skills",
+      "description": "Claudekit skills collection",
+      "localPath": "/Volumes/waku/大模型/Agentic-tools/skills/skills-git/claudekit-skills",
+      "remote": {
+        "owner": "mrgoinion",
+        "repo": "claudekit-skills",
+        "url": "https://github.com/mrgoinion/claudekit-skills"
+      },
+      "platform": ["claude", "claude-code"],
+      "language": "en",
+      "skillCount": 44,
+      "lastSync": "2026-03-18T23:59:00Z",
+      "tags": ["claudekit", "mcp", "plugins"]
+    },
+    {
+      "id": "data-ai-skills",
+      "type": "skills",
+      "name": "Data AI Skills",
+      "description": "Data and AI skills collection",
+      "localPath": "/Volumes/waku/大模型/Agentic-tools/skills/skills-git/data-ai-skills",
+      "platform": ["claude", "claude-code"],
+      "language": "en",
+      "skillCount": 76,
+      "lastSync": "2026-03-19T14:25:00Z",
+      "tags": ["data", "ai", "analytics"]
+    },
+    {
+      "id": "openclaw-skills",
+      "type": "skills",
+      "name": "OpenClaw Skills",
+      "description": "OpenClaw skills collection",
+      "localPath": "/Volumes/waku/大模型/Agentic-tools/skills/skills-git/openclaw-skills",
+      "platform": ["openclaw"],
+      "language": "zh-CN",
+      "skillCount": 655,
+      "lastSync": "2026-03-27T19:28:00Z",
+      "tags": ["openclaw", "skills"]
+    }
+  ]
+}

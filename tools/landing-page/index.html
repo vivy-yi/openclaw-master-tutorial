@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw 快速开始向导</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        header {
+            text-align: center;
+            color: white;
+            padding: 60px 20px;
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #1a1a2e;
+        }
+        
+        .path-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .path-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            border-radius: 16px;
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .path-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            border-color: #667eea;
+        }
+        
+        .path-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .path-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1a1a2e;
+        }
+        
+        .path-desc {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .path-chapters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .chapter-tag {
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .time-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+        
+        .tools-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .tool-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s;
+        }
+        
+        .tool-card:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .tool-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .tool-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .tool-desc {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .back-link:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .hero-stats { flex-direction: column; gap: 20px; }
+            .section { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../" class="back-link">← 返回项目首页</a>
+        
+        <header>
+            <h1>🚀 快速开始向导</h1>
+            <p>选择适合你的学习路径，10分钟上手 OpenClaw</p>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">完整章节</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">配套工具</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">30min</div>
+                    <div class="stat-label">快速上手</div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- 学习路径 -->
+        <div class="section">
+            <h2 class="section-title">🎯 选择你的学习路径</h2>
+            <div class="path-grid">
+                <div class="path-card" onclick="location.href='../../docs/chapters/chapter01/'">
+                    <div class="path-icon">👤</div>
+                    <div class="path-title">个人效率助手</div>
+                    <div class="path-desc">管理日程、整理文件、构建个人知识库，让AI成为你的私人助理</div>
+                    <div class="path-chapters">
+                        <span class="chapter-tag">第1章</span>
+                        <span class="chapter-tag">第2章</span>
+                        <span class="chapter-tag">第3章</span>
+                        <span class="chapter-tag">第4章</span>
+                        <span class="chapter-tag">第5章</span>
+                    </div>
+                    <div class="time-badge">⏱️ 约3-5小时</div>
+                </div>
+                
+                <div class="path-card" onclick="location.href='../../docs/chapters/chapter06/'">
+                    <div class="path-icon">💻</div>
+                    <div class="path-title">开发辅助工具</div>
+                    <div class="path-desc">代码生成、自动审查、Git管理，提升开发效率的利器</div>
+                    <div class="path-chapters">
+                        <span class="chapter-tag">第6章</span>
+                        <span class="chapter-tag">第7章</span>
+                        <span class="chapter-tag">第14章</span>
+                    </div>
+                    <div class="time-badge">⏱️ 约4-6小时</div>
+                </div>
+                
+                <div class="path-card" onclick="location.href='../../docs/chapters/chapter08/'">
+                    <div class="path-icon">🏢</div>
+                    <div class="path-title">团队协作平台</div>
+                    <div class="path-desc">接入飞书、企业微信，打造团队智能助手</div>
+                    <div class="path-chapters">
+                        <span class="chapter-tag">第8章</span>
+                        <span class="chapter-tag">第9章</span>
+                        <span class="chapter-tag">第10章</span>
+                    </div>
+                    <div class="time-badge">⏱️ 约3-4小时</div>
+                </div>
+                
+                <div class="path-card" onclick="location.href='../../docs/chapters/chapter11/'">
+                    <div class="path-icon">🚀</div>
+                    <div class="path-title">生产部署运维</div>
+                    <div class="path-desc">云端部署、安全配置、监控维护，企业级最佳实践</div>
+                    <div class="path-chapters">
+                        <span class="chapter-tag">第11章</span>
+                        <span class="chapter-tag">第12章</span>
+                        <span class="chapter-tag">第13章</span>
+                    </div>
+                    <div class="time-badge">⏱️ 约4-5小时</div>
+                </div>
+                
+                <div class="path-card" onclick="location.href='../../docs/chapters/chapter14/'">
+                    <div class="path-icon">🧩</div>
+                    <div class="path-title">Skills 开发进阶</div>
+                    <div class="path-desc">开发自定义Skills，扩展OpenClaw能力边界</div>
+                    <div class="path-chapters">
+                        <span class="chapter-tag">第14章</span>
+                        <span class="chapter-tag">第15章</span>
+                    </div>
+                    <div class="time-badge">⏱️ 约4-6小时</div>
+                </div>
+                
+                <div class="path-card" onclick="location.href='../../docs/USECASES.md'">
+                    <div class="path-icon">📚</div>
+                    <div class="path-title">实战案例库</div>
+                    <div class="path-desc">6个真实场景案例，STATE.yaml项目管理模式，即学即用</div>
+                    <div class="path-chapters">
+                        <span class="chapter-tag" style="background: #FF6B35;">案例1-6</span>
+                    </div>
+                    <div class="time-badge">⏱️ 按需学习</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 配套工具 -->
+        <div class="section">
+            <h2 class="section-title">🛠️ 配套工具</h2>
+            <div class="tools-section">
+                <a href="../config-generator/" class="tool-card">
+                    <div class="tool-icon">⚙️</div>
+                    <div class="tool-name">配置生成器</div>
+                    <div class="tool-desc">一键生成配置文件</div>
+                </a>
+                <a href="../cost-calculator/" class="tool-card">
+                    <div class="tool-icon">💰</div>
+                    <div class="tool-name">成本计算器</div>
+                    <div class="tool-desc">估算月度费用</div>
+                </a>
+                <a href="../skill-recommender/" class="tool-card">
+                    <div class="tool-icon">🧩</div>
+                    <div class="tool-name">技能推荐器</div>
+                    <div class="tool-desc">智能推荐Skills</div>
+                </a>
+                <a href="../diagnostic-tool/" class="tool-card">
+                    <div class="tool-icon">🔧</div>
+                    <div class="tool-name">诊断工具</div>
+                    <div class="tool-desc">检测配置问题</div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- CTA -->
+        <div class="section cta-section">
+            <h2 style="font-size: 2rem; margin-bottom: 20px; color: #1a1a2e;">准备好开始了吗？</h2>
+            <p style="color: #666; margin-bottom: 30px; max-width: 500px; margin-left: auto; margin-right: auto;">
+                如果你还不了解OpenClaw，建议从第一章开始。如果你已经准备好部署，直接使用配置生成器。
+            </p>
+            <a href="../../docs/chapters/chapter01/" class="btn-primary">开始第一章：认识OpenClaw</a>
+        </div>
+        
+        <footer>
+            <p>© 2026 OpenClaw Master Tutorial | <a href="../../docs/">浏览完整文档</a> | <a href="../../LEARNING_PATH.md">7天学习路径</a></p>
+        </footer>
+    </div>
+</body>
+</html>
