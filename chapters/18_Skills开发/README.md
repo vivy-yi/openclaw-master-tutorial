@@ -403,6 +403,38 @@ git clone https://github.com/claw-opus/proactive-self-improving-agent.git ~/.ope
 
 ---
 
+## 18.10 CLI 转化技术
+
+> ⚠️ **此内容已移至独立章节**
+>
+> CLI 转化技术是一个独立的主题，现已移到 **第21章 CLI 工具与命令行开发**。
+>
+> 本节仅作概述。
+
+### 概述
+
+将各种工具/API/MCP Server 转化为统一的 CLI 接口，让 AI Agent 可以通过标准 shell 命令调用任意工具。
+
+### 三种转化模式
+
+| 技术 | 输入 | 输出 | 代表项目 |
+|------|------|------|----------|
+| **MCP → CLI** | MCP Server | CLI 包装 | mcp2cli |
+| **API → CLI** | OpenAPI/Discovery | 完整 CLI | Google Workspace CLI |
+| **NL → CLI** | 源码/GUI | 完整项目 | CLI-Anything |
+
+### 核心价值
+
+| 技术 | 核心价值 |
+|------|----------|
+| mcp2cli | 解决 MCP Tool Schema 的 Token 膨胀问题（节省 96-99%） |
+| Google Workspace CLI | 动态适配 API 变化，零维护成本 |
+| CLI-Anything | 将任意软件 AI Agent 化，自动生成 SKILL.md |
+
+详见：[第21章 CLI 工具与命令行开发](../21_CLI工具与命令行开发/README.md)
+
+---
+
 ## 相关参考
 
 - [ClawHub 官方市场](https://clawhub.ai)

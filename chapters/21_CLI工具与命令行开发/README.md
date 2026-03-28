@@ -234,7 +234,44 @@ opencli synthesize mysite
 
 ---
 
-## 21.5 GUI → CLI (CLI-Anything)
+## 21.5 Browser → MCP/CLI (浏览器自动化工具)
+
+### 项目概览
+
+| 工具 | Stars | 类型 | 语言 |
+|------|-------|------|------|
+| **browser-use** | ⭐ 84,829 | Python 库 | Python |
+| **playwright-mcp** | ⭐ 29,874 | MCP Server | TypeScript |
+| **github-mcp-server** | ⭐ 28,339 | MCP Server | TypeScript |
+| **agent-browser** | ⭐ 25,187 | CLI | Rust |
+| **mcp-chrome** | ⭐ 10,994 | MCP Server | TypeScript |
+| **bb-browser** | ⭐ 3,041 | CLI + MCP | TypeScript |
+
+### 核心分类
+
+| 类型 | 工具 | 说明 |
+|------|------|------|
+| **AI Agent 控制** | browser-use | Python 库，让 AI 控制浏览器 |
+| **MCP 协议** | playwright-mcp, mcp-chrome | 通过 MCP 协议暴露浏览器 |
+| **CLI** | agent-browser | 命令行浏览器自动化 |
+| **GitHub 专用** | github-mcp-server | MCP 操作 GitHub |
+
+### 快速选择
+
+```
+需要 AI Agent 控制浏览器？
+├─ 复杂任务、需要反检测 → Browser-Use Cloud ✅
+├─ 开源自托管 → Browser-Use ⭐
+├─ 需要 MCP 协议 → Playwright MCP ✅
+├─ 高性能 CLI → Agent Browser (Rust) ✅
+└─ GitHub 操作 → GitHub MCP Server ✅
+```
+
+详见：[浏览器自动化工具专题](./browser-automation-tools.md)
+
+---
+
+## 21.6 GUI → CLI (CLI-Anything)
 
 ### 项目信息
 
@@ -302,7 +339,7 @@ generated-cli/
 
 ---
 
-## 21.6 四者对比与选择
+## 21.7 四者对比与选择
 
 ### 功能对比
 
@@ -353,7 +390,7 @@ generated-cli/
 
 ---
 
-## 21.7 案例：飞书 CLI (lark-cli)
+## 21.8 案例：飞书 CLI (lark-cli)
 
 > 📅 2026-03-28 飞书官方发布
 
@@ -405,7 +442,7 @@ lark-workflow-meeting-summary  lark-workflow-standup-report
 
 ---
 
-## 21.8 实战：构建自己的 CLI 转化工具
+## 21.9 实战：构建自己的 CLI 转化工具
 
 ### OpenAPI → CLI 模板
 
@@ -483,7 +520,7 @@ if __name__ == '__main__':
 
 ---
 
-## 21.9 常见问题
+## 21.10 常见问题
 
 ### Q1: mcp2cli 连接失败
 
@@ -517,7 +554,7 @@ cli-anything ./gimp --verbose
 
 ---
 
-## 21.10 最佳实践
+## 21.11 最佳实践
 
 ```
 ✅ 推荐做法：
