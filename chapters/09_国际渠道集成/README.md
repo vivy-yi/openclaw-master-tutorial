@@ -1,60 +1,19 @@
-# 第9章 国际渠道集成
+# 09 国际渠道集成（已迁移）
 
-> **本章学习目标**: 掌握Telegram、Discord配置
-> **预计用时**: 45-60分钟
-> **前置要求**: 完成基础部署
+> ⚠️ **本章内容已迁移至 [05_渠道集成](../05_渠道集成/)**
 
----
+所有国际渠道（Telegram/Discord/Slack 等）文档已合并到 `05_渠道集成/`：
 
-## 9.1 Telegram Bot
-
-### 创建Bot
-
-1. @BotFather
-2. /newbot
-3. 获取Token
-
-### 配置
-
-```json
-{
-  "channels": {
-    "telegram": {
-      "enabled": true,
-      "token": "your-bot-token"
-    }
-  }
-}
-```
+| 原内容 | 新文件 |
+|--------|--------|
+| Telegram 集成 | [5.7 Telegram 集成](../05_渠道集成/5.7_Telegram集成.md) |
+| Discord 集成 | [5.8 Discord 集成](../05_渠道集成/5.8_Discord集成.md) |
+| Slack 集成 | [5.9 Slack 集成](../05_渠道集成/5.9_Slack集成.md) |
+| WhatsApp 集成 | [5.10 WhatsApp 集成](../05_渠道集成/5.10_WhatsApp集成.md) |
+| Signal 集成 | [5.11 Signal 集成](../05_渠道集成/5.11_Signal集成.md) |
+| LINE 集成 | [5.12 LINE 集成](../05_渠道集成/5.12_LINE集成.md) |
+| Microsoft Teams 集成 | [5.13 Microsoft Teams 集成](../05_渠道集成/5.13_Microsoft_Teams集成.md) |
 
 ---
 
-## 9.2 Discord Bot
-
-### 创建应用
-
-1. [Discord Developer Portal](https://discord.com/developers/applications)
-2. 创建Application
-3. 添加Bot用户
-
-### 配置
-
-```json
-{
-  "channels": {
-    "discord": {
-      "enabled": true,
-      "token": "your-bot-token",
-      "channelIds": ["your-channel-id"]
-    }
-  }
-}
-```
-
----
-
-## 本章小结
-
-1. Telegram：BotFather创建
-2. Discord：Developer Portal配置
-3. 两者都支持群聊和私聊
+**最后更新**：2026-04-06

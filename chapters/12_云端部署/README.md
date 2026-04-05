@@ -17,9 +17,9 @@
 
 ---
 
-## 12.2 Docker部署
+## 12.2 Docker 部署
 
-### 安装Docker
+### 安装 Docker
 
 ```bash
 # Ubuntu
@@ -28,6 +28,12 @@ curl -fsSL https://get.docker.com | sh
 # 启动
 sudo systemctl start docker
 ```
+
+### 核心架构与原理
+
+| 文档 | 主题 | 说明 |
+|------|------|------|
+| [OpenClaw Docker 部署 Agent 原理与架构](./OpenClaw_Docker部署Agent原理与架构.md) | 深度原理 | Gateway 架构、Agent Loop、Sandbox 机制、多 Agent 路由 |
 
 ### 运行OpenClaw
 

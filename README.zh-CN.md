@@ -128,6 +128,8 @@ openclaw gateway logs -f # 查看日志
 | 工具问题 | [15.3 工具问题](docs/15_troubleshooting/15.3_tool_issues.md) |
 | 模型问题 | [15.4 模型问题](docs/15_troubleshooting/15.4_model_issues.md) |
 
+> 👋 **需要反馈或建议？** → [👋 社区反馈指南](docs/feedback/README.md)
+
 ---
 
 ## 📚 文档结构说明
@@ -136,6 +138,7 @@ openclaw gateway logs -f # 查看日志
 |------|------|--------|
 | [docs/](docs/) | 功能模块参考手册（按技术域分类） | 所有读者 |
 | [chapters/](chapters/) | 学习路径章节（按学习顺序） | 按步骤学习的用户 |
+| [chapters/22_新兴应用场景/](chapters/22_新兴应用场景/) | 🆕 最新：Agent 社交、安全、自主交易、生活自动化、多 Agent 编排 | 早期采用者 |
 | [architect-guide/](architect-guide/) | 架构师深度文档（源码级） | 开发者 / 架构师 |
 
 ---

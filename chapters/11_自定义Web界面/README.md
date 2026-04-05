@@ -1,73 +1,43 @@
-# 第11章 自建Web控制界面
+# 09 Web UI
 
-> **本章学习目标**: 掌握Web API和自定义界面开发
-> **预计用时**: 60-90分钟
-> **前置要求**: 完成基础部署
+本章节介绍 OpenClaw 的各类 Web 管理界面和可视化工具，帮助你监控和管理 AI Agent 的运行状态。
 
----
+## 内容导航
 
-## 11.1 Web API使用
+| 小节 | 主题 | 核心内容 |
+|-----|------|---------|
+| [9.1 Web UI 概述](./11.1_webui_overview.md) | 主流 Web UI 工具 | 功能对比、选择指南 |
+| [9.2 Star-Office-UI](./11.2_star_office_ui.md) | 像素风办公室看板 | 状态可视化、多 Agent |
+| [11.3 webclaw](./11.3_webclaw.md) | 快速 Web 客户端 | 轻量级界面 |
+| [11.4 clawdeck](./11.4_clawdeck.md) | Agent 任务控制 | 任务管理、监控 |
+| [11.5 LobsterBoard](./11.5_lobsterboard.md) | 仪表盘构建器 | 自定义仪表盘 |
 
-### 启用Web服务
+## 学习目标
 
-```json
-{
-  "server": {
-    "enabled": true,
-    "port": 8080,
-    "host": "0.0.0.0"
-  }
-}
+完成本章后，你将能够：
+
+- ✅ 了解主流 Web UI 工具的特点和适用场景
+- ✅ 部署 Star-Office-UI 实现状态可视化
+- ✅ 使用 webclaw 快速访问 Agent
+- ✅ 配置 clawdeck 进行任务控制
+- ✅ 使用 LobsterBoard 构建自定义仪表盘
+
+## 核心概念
+
+```
+Web UI = 状态看板 + 任务管理 + 监控仪表盘 + 实时协作
 ```
 
-### API端点
+## 快速导航
 
-| 端点 | 方法 | 功能 |
-|-----|-----|-----|
-| /api/chat | POST | 发送消息 |
-| /api/history | GET | 获取历史 |
-| /api/config | GET | 获取配置 |
+- [上一章：08 扩展开发 →](../08_extension/)
+- [下一章：10 高级功能 →](../10_advanced/)
+- [文档总览 →](../)
 
----
+## 补充资源
 
-## 11.2 WebSocket实时通信
-
-### 连接
-
-```javascript
-const ws = new WebSocket('ws://localhost:8080/ws');
-ws.onmessage = (event) => {
-  console.log(event.data);
-};
-```
+- [Awesome OpenClaw - Web UI 分类](https://github.com/vivy-yi/awesome-openclaw)
 
 ---
 
-## 11.3 自定义界面开发
-
-### 示例：简单聊天界面
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-  <title>OpenClaw Chat</title>
-</head>
-<body>
-  <div id="messages"></div>
-  <input type="text" id="input" />
-  <button onclick="send()">发送</button>
-  <script>
-    // WebSocket连接代码
-  </script>
-</body>
-</html>
-```
-
----
-
-## 本章小结
-
-1. Web API：RESTful接口
-2. WebSocket：实时通信
-3. 自定义界面：HTML/CSS/JS
+**最后更新**：2026-03-28（由 Tutorial Master Skill 自动更新）

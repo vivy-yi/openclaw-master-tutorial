@@ -435,6 +435,150 @@ git clone https://github.com/claw-opus/proactive-self-improving-agent.git ~/.ope
 
 ---
 
+## 18.18 知识蒸馏到 Skills
+
+### 概述
+
+将 AI Agent 在执行任务过程中积累的**隐式经验**转化为**显式的、可复用的结构化 Skills** 的过程。
+
+### 三种待蒸馏对象
+
+| 对象 | 难度 | 代表来源 |
+|------|------|--------|
+| 知识 (Knowledge) | ⭐⭐ | 用户偏好、规则判断 |
+| 流程 (Process) | ⭐⭐⭐ | 多步骤工作流 |
+| 轨迹 (Trace) | ⭐⭐⭐⭐ | sessions 历史、错误恢复 |
+
+### 六步蒸馏法
+
+```
+触发条件 → 数据收集 → 模式分析 → 知识编码 → Skill 生成 → 验证回路 → 持续蒸馏
+```
+
+### 相关 Skills
+
+| Skill | 用途 | 来源 |
+|-------|------|------|
+| `knowledge-distillation` | 扫描 memory/sessions 蒸馏知识要点 | ClawHub ⭐2.929 |
+| `Phoenix Loop` | 自动从错误中创建 Skill 修复 | ClawHub |
+| `self-improving` | 纠正循环 + 偏好进化 | 本地已安装 |
+
+详见：[18-18_知识蒸馏.md](18-18_知识蒸馏.md)
+
+---
+
+## 18.19 Skills 创建工具全景
+
+### 工具分类
+
+```
+Skills 创建工具
+├── 🟢 官方内置（OpenClaw 自带）
+│   ├── openclaw skills CLI
+│   ├── init_skill.py / package_skill.py
+│   └── quick_validate.py
+├── 🟠 ClawHub Skills 创建类
+│   ├── skill-builder       ⭐ 推荐（渐进式披露）
+│   ├── skill-template      ⚠️ 安全警告
+│   └── skill-forge        ⚠️ 安全警告
+└── 🟡 ClawHub 辅助类
+    ├── skill-test          ⭐ 沙箱测试
+    ├── skill-assessment
+    └── skill-compiler
+```
+
+### 推荐组合
+
+| 场景 | 工具链 |
+|------|--------|
+| 从零创建 | `init_skill.py` → `skill-builder` → `quick_validate.py` |
+| 从文档蒸馏 | `knowledge-distillation` → `skill-builder` |
+| 发布前验证 | `skill-test`（沙箱隔离）→ `package_skill.py` |
+
+详见：[18-19_Skills创建工具全景.md](18-19_Skills创建工具全景.md)
+
+---
+
+## 18.20 Skill_Seekers 深度解析
+
+### 定位
+
+将文档网站/GitHub/PDF/视频等 **17 种来源**转换为 AI Skill 的预处理层，支持导出到 **24+ 平台**。
+
+```
+原始文档（17种来源）
+    ↓
+五阶段流水线：Scrape → Build → Merge → Enhance → Package
+    ↓
+SKILL.md / 向量索引 / 平台适配包
+```
+
+### 核心亮点
+
+| 功能 | 说明 |
+|------|------|
+| **冲突检测** | 文档 vs 代码 4 类冲突自动检测 |
+| **多源合并** | pairwise synthesis 处理 docs+github+pdf 组合 |
+| **提示词组装** | 来源优先级（代码>文档>issues>PDF） |
+| **三流架构** | 代码/文档/社区分层抓取 |
+
+### 与 skill-creator 的互补
+
+```
+skill-creator   → 从"人脑知识"创建 Skill
+Skill_Seekers   → 从"外部文档"蒸馏 Skill
+共同产出        → SKILL.md
+```
+
+详见：[18-20_Skill_Seekers深度解析.md](18-20_Skill_Seekers深度解析.md)
+
+---
+
+## 18.21 RAG 与 Skills 对比
+
+### 核心区别
+
+| 技术 | 知识形态 | 加载方式 | 适用场景 |
+|------|---------|---------|---------|
+| Skills | 静态 SKILL.md | 启动时全部加载 | 高频、标准化、可预测 |
+| RAG | 向量数据库 | 查询时按需检索 | 海量、事实型、需要推理 |
+
+### 决策树
+
+```
+高频使用（肌肉记忆）→ Skills
+低频但需准确（参考资料）→ RAG
+版本号/参数类（量化精确）→ RAG
+```
+
+### Google Vertex AI RAG Engine
+
+- ✅ 全托管（embedding model + vector store Google 帮你管）
+- ✅ LLM parser（自动解析文档结构）
+- ✅ Hybrid search + Re-ranking
+- 📖 https://cloud.google.com/vertex-ai/generative-ai/docs/rag-engine/rag-overview
+
+### Apple 开发者场景组合
+
+```
+WWDC 视频/文档/PPT
+    ├──→ Skill_Seekers → Apple Dev Skill（肌肉记忆）
+    └──→ RAG Pipeline → Apple Dev RAG（参考资料）
+```
+
+### ClawHub RAG Skills 推荐
+
+| Skill | 用途 |
+|-------|------|
+| `rag-search` | RAG 语义搜索 |
+| `rag-system-builder` | 本地 FAISS RAG 系统 |
+| `rag-construction` | 建筑 RAG（chunking 策略完整） |
+| `ClawRAG Connector` | OpenClaw → 自托管 ClawRAG |
+
+详见：[18-21_RAG与Skills对比.md](18-21_RAG与Skills对比.md)
+
+---
+
 ## 相关参考
 
 - [ClawHub 官方市场](https://clawhub.ai)
