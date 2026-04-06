@@ -8,6 +8,7 @@
 
 | 小节 | 主题 | 核心内容 |
 |-----|------|---------|
+| [Gateway API 参考手册](./Gateway_API参考手册.md) | **完整 API 速查** | Cron/Agent/Session/Config/Channel + OpenAI兼容 + 工具直调 |
 | [12.1](./12.1_gateway_overview.md) | Gateway 概述 | 架构、职责边界 |
 | [12.2](./12.2_api_config.md) | API 配置 | 端点配置、路由规则 |
 | [12.3](./12.3_auth_config.md) | 认证配置 | 认证模式、令牌管理 |
