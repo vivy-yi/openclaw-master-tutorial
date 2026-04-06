@@ -69,8 +69,8 @@
 
 ## 相关资源
 
-- [OpenClaw 内部提示词全解析](../OpenClaw内部提示词全解析.md) — 包含各节详细解读和自定义方法
-- [Workspace 维护指南](../OpenClaw%20Workspace%20维护指南.md)
+- [OpenClaw 内部提示词全解析](../chapters/06_上下文与记忆/OpenClaw内部提示词全解析.md) — 包含各节详细解读和自定义方法
+- [Workspace 维护指南](../chapters/06_上下文与记忆/OpenClaw%20Workspace%20维护指南.md)
 - 官方文档：[System Prompt](https://docs.openclaw.ai/concepts/system-prompt)
 
 ---
