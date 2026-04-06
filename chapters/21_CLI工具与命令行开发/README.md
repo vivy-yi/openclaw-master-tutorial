@@ -593,23 +593,12 @@ cli-anything ./gimp --verbose
 
 ---
 
-## 相关章节
+## 快速导航
 
-- [第18章 Skills 开发与生态](../18_Skills开发/README.md) - SKILL.md 规范与发布
-- [第7章 代码开发辅助](../07_代码开发辅助/README.md) - AI 辅助编程
-
----
-
-## 延伸阅读
-
-| 项目 | 链接 | 说明 |
-|------|------|------|
-| mcp2cli | [GitHub](https://github.com/knowsuchagency/mcp2cli) | MCP → CLI |
-| Google Workspace CLI | [GitHub](https://github.com/googleworkspace/cli) | API → CLI |
-| CLI-Anything | [GitHub](https://github.com/HKUDS/CLI-Anything) | NL → CLI |
-| Click | [文档](https://click.palletsprojects.com/) | CLI 框架 |
-| Fire | [GitHub](https://github.com/google/python-fire) | Python 对象 → CLI |
+- [上一章：19 Agent管理专题 →](../19_Agent管理专题/)
+- [下一章：22 新兴应用场景 →](../22_新兴应用场景/)
+- [文档总览 →](../)
 
 ---
 
-*更新时间: 2026-03-29*
+*更新时间: 2026-04-06*

@@ -756,7 +756,7 @@ class CompetitorTracker(AgentTeam):
 - [Browser Use GitHub](https://github.com/browser-use/browser-use)
 - [Context Studios Blog](https://context-studios.example.com)
 - [OpenClaw 安全配置指南](../13_安全配置/README.md)
-- [多 Agent 协作](../19_多Agent协作/README.md)
+- [多 Agent 协作](../19_Agent管理专题/README.md)
 
 ---
 
