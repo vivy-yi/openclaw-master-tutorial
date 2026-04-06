@@ -44,3 +44,10 @@ config.json
 # 排除 chapters 和 tools 目录
 # chapters/
 # tools/
+
+# Tutorial Master exclusions
+mo-xi/
+chapters/mo-xi/
+chapters/案例集/
+chapters/附录/
+chapters/LEARNING_PATH.md
