@@ -1,8 +1,8 @@
 # ## Reasoning Format
 
-> 源码位置：`buildAgentSystemPrompt()`，`pi-embedded-bukGSgEe.js` 第 28080 行
+> 源码：`src/agents/system-prompt.ts` — `buildAgentSystemPrompt()`，约 line 380
 >
-> **注意**：Minimal 模式下此节不注入。仅当配置了 `reasoningHint` 时注入。
+> **注意**：Minimal 模式下此节**可能被注入**（取决于 `reasoningHint` 配置）
 
 ---
 
@@ -15,21 +15,31 @@
 
 ## reasoningHint 来源
 
-`reasoningHint` 由 Agent 配置中的 `reasoningTagHint` 字段提供。
+`reasoningHint` 由 Provider 的 `reasoningTagHint` 配置提供，非 OpenClaw 核心配置。
 
-## 使用说明
+## 注入逻辑
+
+```typescript
+if (reasoningHint) {
+  lines.push("## Reasoning Format", reasoningHint, "");
+}
+```
+
+---
+
+## 推理格式说明
 
 ```
 Reasoning: <reasoningLevel> (hidden unless on/stream). Toggle /reasoning; /status shows Reasoning when enabled.
 ```
 
-## 推理模式说明
+## reasoningLevel 选项
 
-| 模式 | 状态 | 说明 |
-|------|------|------|
-| `off`（默认） | 隐藏 | 推理过程不对用户可见 |
-| `on` | 可见 | 推理过程对用户可见 |
-| `stream` | 流式可见 | 推理过程流式输出 |
+| 值 | 说明 |
+|----|------|
+| `off`（默认） | 隐藏推理过程 |
+| `on` | 推理过程对用户可见 |
+| `stream` | 推理过程流式输出 |
 
 ## 切换命令
 
@@ -37,6 +47,8 @@ Reasoning: <reasoningLevel> (hidden unless on/stream). Toggle /reasoning; /statu
 |------|------|
 | `/reasoning` | 切换推理模式 |
 | `/status` | 显示当前推理状态 |
+
+---
 
 ## 推理格式要求
 
@@ -46,6 +58,7 @@ Reasoning: <reasoningLevel> (hidden unless on/stream). Toggle /reasoning; /statu
 <think>
 内部推理内容
 </think>
+
 <final>
 最终回复
 </final>

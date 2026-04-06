@@ -1,18 +1,42 @@
 # ## Model Aliases
 
-> 源码位置：`buildAgentSystemPrompt()` 函数内，`pi-embedded-bukGSgEe.js` 第 28016 行
+> 源码：`src/agents/system-prompt.ts` — `buildAgentSystemPrompt()`，约 line 560
 >
-> **注意**：Minimal 模式下此节不注入
+> **注意**：Minimal 模式下此节**不注入**（`!isMinimal`）
 
 ---
 
-## 说明
+## 注入条件
 
-```
-Prefer aliases when specifying model overrides; full provider/model is also accepted.
+```typescript
+modelAliasLines.length > 0 && !isMinimal ? "## Model Aliases" : "",
+modelAliasLines.length > 0 && !isMinimal
+  ? "Prefer aliases when specifying model overrides; full provider/model is also accepted."
+  : "",
+modelAliasLines.length > 0 && !isMinimal ? modelAliasLines.join("\n") : "",
 ```
 
-## 当前可用别名
+---
+
+## Model Alias Lines
+
+`modelAliasLines` 由 `agents.defaults.modelAliases` 配置注入，格式为：
+
+```json
+{
+  "agents": {
+    "defaults": {
+      "modelAliases": [
+        "minimax-m2.1 → minimax-portal/MiniMax-M2.1",
+        "minimax-m2.7 → minimax-portal/MiniMax-M2.7",
+        "claude-3.5 → anthropic/Claude-Sonnet-4-20250514"
+      ]
+    }
+  }
+}
+```
+
+## 当前默认别名（从源码提取）
 
 | 别名 | 对应模型 |
 |------|---------|
@@ -24,13 +48,23 @@ Prefer aliases when specifying model overrides; full provider/model is also acce
 ## 使用方式
 
 ```
+Prefer aliases when specifying model overrides; full provider/model is also accepted.
+```
+
+示例：
+```
 /model minimax-m2.7
 # 或完整写法：
 /model minimax-portal/MiniMax-M2.7
 ```
 
-## 模型选择规则
+## 子 Agent 模型覆盖
 
-- 使用别名时优先使用别名（更简洁）
-- 使用完整 provider/model 格式时直接透传到后端
-- 子 Agent 可以通过 `sessions_spawn` 时指定 `model` 参数来覆盖模型
+在 `sessions_spawn` 时指定 `model` 参数：
+
+```json
+{
+  "model": "minimax-m2.7",
+  "task": "执行知识蒸馏..."
+}
+```

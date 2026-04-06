@@ -1,10 +1,10 @@
 # ## OpenClaw CLI Quick Reference
 
-> 源码位置：`buildAgentSystemPrompt()` 函数内，`pi-embedded-bukGSgEe.js` 第 28002 行
+> 源码：`src/agents/system-prompt.ts` — `buildAgentSystemPrompt()` 内联，约 line 460
 
 ---
 
-## 基本命令
+## 基本规则
 
 ```
 OpenClaw is controlled via subcommands. Do not invent commands.

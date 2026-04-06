@@ -1,52 +1,50 @@
 # ## Silent Replies
 
-> 源码位置：`buildAgentSystemPrompt()` 函数内，`pi-embedded-bukGSgEe.js` 第 28120 行
->
-> **注意**：Minimal 模式下此节不注入
+> 源码：`src/agents/system-prompt.ts` — `buildAgentSystemPrompt()`，约 line 710
 
 ---
 
-## 核心规范
+## SILENT_REPLY_TOKEN 常量
 
+```typescript
+import { SILENT_REPLY_TOKEN } from "../auto-reply/tokens.js";
+// 值为: "NO_REPLY"
 ```
-When you have nothing to say, respond with ONLY: NO_REPLY
+
+## 完整规范
+
+```typescript
+"Use ${SILENT_REPLY_TOKEN} ONLY when no user-visible reply is required.",
+"- Valid cases: silent housekeeping, deliberate no-op ambient wakeups,
+  or after a messaging tool already delivered the user-visible reply.",
+"- Never append it to an actual response (never include \"${SILENT_REPLY_TOKEN}\" in real replies).",
+"",
+"⚠️ Rules:",
+"- It must be your ENTIRE message — nothing else",
+"- Never wrap it in markdown or code blocks",
+"",
+"❌ Wrong: \"Here's help... ${SILENT_REPLY_TOKEN}\"",
+"❌ Wrong: \"${SILENT_REPLY_TOKEN}\"",
+"✅ Right: ${SILENT_REPLY_TOKEN}",
 ```
 
-## 完整规则
+---
 
-```
-When you have nothing to say, respond with ONLY: NO_REPLY
+## SILENT_REPLY_TOKEN vs HEARTBEAT_OK
 
-⚠️ Rules:
-- It must be your ENTIRE message — nothing else
-- Never append it to an actual response (never include "NO_REPLY" in real replies)
-- Never wrap it in markdown or code blocks
+| 指令 | 值 | 场景 |
+|------|-----|------|
+| `SILENT_REPLY_TOKEN` | `NO_REPLY` | 无任何内容要回复 |
+| `HEARTBEAT_OK` | `HEARTBEAT_OK` | 心跳轮询正常结束 |
 
-❌ Wrong: "Here's help... NO_REPLY"
-❌ Wrong: "NO_REPLY"
-✅ Right: NO_REPLY
-```
+**注意**：`SILENT_REPLY_TOKEN` = `"NO_REPLY"` 是精确字符串，不是 token 占位符。
 
 ---
 
 ## 使用场景
 
-| 场景 | 行为 |
-|------|------|
-| 群组中不需要回复时 | `NO_REPLY` |
-| 心跳检查无异常时 | `HEARTBEAT_OK` |
-| 有实际内容要回复 | 正常回复文本 |
-
-## 常见误解
-
 ```
-NO_REPLY 不等于"不回复"
-NO_REPLY = 回复一个空消息，让渠道不要显示任何内容
-HEARTBEAT_OK = 回复一个特殊标记，被 OpenClaw 识别为心跳确认，可能被丢弃
-```
-
-## 在工具调用中的使用
-
-```
-Use message tool with action=send to deliver your user-visible reply → respond with ONLY: NO_REPLY (avoid duplicate replies).
+1. 工具调用后 message tool 已送达 → 回复 NO_REPLY 避免重复
+2. 心跳轮询无异常 → 回复 HEARTBEAT_OK
+3. Compaction 中无内容 → 回复 NO_REPLY（不 flush HEARTBEAT_OK）
 ```

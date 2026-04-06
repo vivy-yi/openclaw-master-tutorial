@@ -1,71 +1,119 @@
 # ## Heartbeats
 
-> 源码位置：`buildAgentSystemPrompt()` 函数内，`pi-embedded-bukGSgEe.js` 第 28123 行
->
-> **注意**：Minimal 模式下此节不注入。仅当配置了 `heartbeatPrompt` 时注入。
+> 源码：`src/agents/system-prompt.ts` — `buildAgentSystemPrompt()`，约 line 749
 
 ---
 
 ## 注入条件
 
+```typescript
+if (!isMinimal && heartbeatPrompt) {
+  lines.push(
+    "## Heartbeats",
+    `Heartbeat prompt: ${heartbeatPrompt}`,
+    "If you receive a heartbeat poll (a user message matching the heartbeat prompt above),",
+    "and there is nothing that needs attention, reply exactly:",
+    "HEARTBEAT_OK",
+    'OpenClaw treats a leading/trailing "HEARTBEAT_OK" as a heartbeat ack (and may discard it).',
+    'If something needs attention, do NOT include "HEARTBEAT_OK"; reply with the alert text instead.',
+  );
+}
 ```
-if (!isMinimal && heartbeatPrompt) lines.push("## Heartbeats", ...)
+
+## Minimal 模式
+
+Minimal 模式（sub-agent）**不注入此节**。
+
+---
+
+## AGENTS.md 中的 Heartbeat vs Cron 对比
+
+> 来源：`docs/reference/templates/AGENTS.md`（由官方模板提供）
+
+### 何时用 Heartbeat
+
+```
+- Multiple checks can batch together (inbox + calendar + notifications in one turn)
+- You need conversational context from recent messages
+- Timing can drift slightly (every ~30 min is fine, not exact)
+- You want to reduce API calls by combining periodic checks
 ```
 
-## Heartbeats 节内容
+### 何时用 Cron
 
 ```
-## Heartbeats
-Heartbeat prompt: <heartbeat_prompt>
+- Exact timing matters ("9:00 AM sharp every Monday")
+- Task needs isolation from main session history
+- You want a different model or thinking level for the task
+- One-shot reminders ("remind me in 20 minutes")
+- Output should deliver directly to a channel without main session involvement
+```
 
-If you receive a heartbeat poll (a user message matching the heartbeat prompt above), and there is nothing that needs attention, reply exactly:
+### 建议
 
-HEARTBEAT_OK
-
-OpenClaw treats a leading/trailing "HEARTBEAT_OK" as a heartbeat ack (and may discard it).
-
-If something needs attention, do NOT include "HEARTBEAT_OK"; reply with the alert text instead.
+```
+Batch similar periodic checks into HEARTBEAT.md instead of creating multiple cron jobs.
+Use cron for precise schedules and standalone tasks.
 ```
 
 ---
 
-## HEARTBEAT_OK 规范
+## HEARTBEAT.md 模板
 
-```
-Heartbeat poll（心跳轮询）= 用户消息匹配 HEARTBEAT 模式
-- 无需处理 → 回复 HEARTBEAT_OK（可能被丢弃）
-- 需要处理 → 正常回复，不包含 HEARTBEAT_OK
-```
-
-## HEARTBEAT_OK 在 Compaction 中的行为
-
-> 来源：`src/agents/pi-embedded-runner/system-prompt.ts`
-
-```
-NO_FLUSH: If there is nothing to note, reply exactly: NO_REPLY (do not include HEARTBEAT_OK in compaction output).
-```
-
-## HEARTBEAT_OK 与 NO_REPLY 的区别
-
-| 指令 | 场景 | 含义 |
-|------|------|------|
-| `HEARTBEAT_OK` | 心跳轮询 + 无异常 | 心跳确认 |
-| `NO_REPLY` | 无内容需要回复 | 静默 |
-| `NO_FLUSH` | Compaction 阶段 | 禁止冲洗 |
-
-## 配置方式
-
-在 Agent 的 Workspace 中放置 `HEARTBEAT.md` 文件：
+> 源码：`docs/reference/templates/HEARTBEAT.md`
 
 ```markdown
-# Heartbeat 巡逻计划
+# Keep this file empty (or with only comments) to skip heartbeat API calls.
 
-## 检查内容
-- Cron 任务执行状态
-- 异常日志
-
-## 触发条件
-消息内容匹配: "HEARTBEAT"
+# Add tasks below when you want the agent to check something periodically.
 ```
 
-OpenClaw 会根据 HEARTBEAT.md 的内容生成 `heartbeatPrompt`，并注入到系统提示词中。
+---
+
+## AGENTS.md 中的 Heartbeat 检查清单
+
+> 来源：`docs/reference/templates/AGENTS.md`
+
+### 周期性检查项（每天 2-4 次轮换）
+
+```
+- Emails — Any urgent unread messages?
+- Calendar — Upcoming events in next 24-48h?
+- Mentions — Twitter/social notifications?
+- Weather — Relevant if your human might go out?
+```
+
+### 主动联系时机
+
+```
+- Important email arrived
+- Calendar event coming up (<2h)
+- Something interesting you found
+- It's been >8h since you said anything
+```
+
+### 保持安静时机（直接 HEARTBEAT_OK）
+
+```
+- Late night (23:00-08:00) unless urgent
+- Human is clearly busy
+- Nothing new since last check
+- You just checked <30 minutes ago
+```
+
+---
+
+## 状态追踪
+
+Agent 在每次心跳巡逻后记录状态：
+
+```json
+// memory/heartbeat-state.json
+{
+  "lastChecks": {
+    "email": 1703275200,
+    "calendar": 1703260800,
+    "weather": null
+  }
+}
+```

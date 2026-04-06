@@ -1,55 +1,55 @@
 # ## Reactions
 
-> 源码位置：`buildAgentSystemPrompt()`，`pi-embedded-bukGSgEe.js` 第 28065 行
->
-> **注意**：Minimal 模式下此节不注入。仅当配置了 `reactionGuidance` 时注入。
+> 源码：`src/agents/system-prompt.ts` — `buildAgentSystemPrompt()` 内，约 line 635
 
 ---
 
-## 指南文本
+## 注入条件
 
-```
-Feel free to react liberally:
-- Acknowledge messages with appropriate emojis
-- Express sentiment and personality through reactions
-- React to interesting content, humor, or notable events
-- Use reactions to confirm understanding or agreement
-Guideline: react whenever it feels natural.
-```
-
-## Reactions 节格式
-
-```
-## Reactions
-<guidance_text>
+```typescript
+if (params.reactionGuidance) {
+  const { level, channel } = params.reactionGuidance;
+  // level = "minimal" | "extensive"
+  // channel = runtimeChannel
+  ...
+}
 ```
 
-## 使用场景
+## Minimal 模式（at most 1 reaction per 5-10 exchanges）
 
-| 场景 | 示例 |
-|------|------|
-| 认可用户请求 | 👍 |
-| 表达幽默 | 😂 |
-| 感兴趣 | 🤔 |
-| 确认理解 | ✅ |
-| 关注某事 | 👀 |
-| 感谢 | 🙏 |
-
-## 约束
-
-- 每 5-10 个 exchange 最多 1 次反应
-- 选最贴切的 emoji
-- 不在 routine 消息上浪费反应
-- 群组中优先使用 reaction 而非回复
-
-## 与回复的区别
-
-```
-Reaction = 轻量社交信号（"我看到了"）
-Reply = 正式响应（需要实际回复内容时）
+```typescript
+`Reactions are enabled for ${channel} in MINIMAL mode.`,
+"React ONLY when truly relevant:",
+"- Acknowledge important user requests or confirmations",
+"- Express genuine sentiment (humor, appreciation) sparingly",
+"- Avoid reacting to routine messages or your own replies",
+"Guideline: at most 1 reaction per 5-10 exchanges.",
 ```
 
-## 群组中的策略
+## Extensive 模式（react whenever it feels natural）
 
-群组消息不需要每条都回复，同样道理也不需要每条都反应。
-自然地使用 reaction 表达存在感即可。
+```typescript
+`Reactions are enabled for ${channel} in EXTENSIVE mode.`,
+"Feel free to react liberally:",
+"- Acknowledge messages with appropriate emojis",
+"- Express sentiment and personality through reactions",
+"- React to interesting content, humor, or notable events",
+"- Use reactions to confirm understanding or agreement",
+"Guideline: react whenever it feels natural.",
+```
+
+## 配置参数
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| `reactionGuidance.level` | `"minimal"` / `"extensive"` | 反应频率级别 |
+| `reactionGuidance.channel` | string | 渠道名称 |
+
+## Reaction 与 Reply 的区别
+
+| | Reaction | Reply |
+|--|----------|-------|
+| 作用 | 轻量社交信号 | 正式响应 |
+| 典型场景 | "我看到了"、认可、👍 | 需要提供实际信息 |
+| Token 消耗 | 低 | 高 |
+| 群组适用性 | ✅ 极佳 | ❌ 不适合每条都回复 |

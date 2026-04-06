@@ -1,14 +1,49 @@
 # ## Runtime
 
-> 源码位置：`buildRuntimeLine()`，`pi-embedded-bukGSgEe.js` 第 28135 行
+> 源码：`src/agents/system-prompt.ts` — `buildRuntimeLine()`，约 line 770
 
 ---
 
-## 基本格式
+## buildRuntimeLine 函数
+
+```typescript
+export function buildRuntimeLine(
+  runtimeInfo?: {
+    agentId?: string; host?: string; os?: string; arch?: string;
+    node?: string; model?: string; defaultModel?: string;
+    shell?: string; repoRoot?: string;
+  },
+  runtimeChannel?: string,
+  runtimeCapabilities: string[] = [],
+  defaultThinkLevel?: ThinkLevel,
+): string {
+  return `Runtime: ${[
+    runtimeInfo?.agentId ? `agent=${runtimeInfo.agentId}` : "",
+    runtimeInfo?.host ? `host=${runtimeInfo.host}` : "",
+    runtimeInfo?.repoRoot ? `repo=${runtimeInfo.repoRoot}` : "",
+    runtimeInfo?.os ? `os=${runtimeInfo.os}${runtimeInfo?.arch ? ` (${runtimeInfo.arch})` : ""}` : "",
+    runtimeInfo?.node ? `node=${runtimeInfo.node}` : "",
+    runtimeInfo?.model ? `model=${runtimeInfo.model}` : "",
+    runtimeInfo?.defaultModel ? `default_model=${runtimeInfo.defaultModel}` : "",
+    runtimeInfo?.shell ? `shell=${runtimeInfo.shell}` : "",
+    runtimeChannel ? `channel=${runtimeChannel}` : "",
+    runtimeChannel
+      ? `capabilities=${normalizedRuntimeCapabilities.length > 0 ? normalizedRuntimeCapabilities.join(",") : "none"}`
+      : "",
+    `thinking=${defaultThinkLevel ?? "off"}`,
+  ]...}`
+}
+```
+
+---
+
+## 实际输出示例
 
 ```
-Runtime: agent=<agentId> | host=<host> | repo=<repoRoot> | os=<os> (<arch>) | node=<nodeVersion> | model=<model> | default_model=<defaultModel> | shell=<shell> | channel=<channel> | capabilities=<caps> | thinking=<thinkLevel>
+Runtime: agent=openclaw-assistant | host=d的Mac-mini | repo=/Users/d/.openclaw | os=Darwin 25.3.0 (arm64) | node=v24.10.0 | model=minimax-portal/MiniMax-M2.7 | default_model=minimax-portal/MiniMax-M2.7 | shell=zsh | channel=telegram | capabilities=inlineButtons | thinking=off
 ```
+
+---
 
 ## 字段说明
 
@@ -17,21 +52,14 @@ Runtime: agent=<agentId> | host=<host> | repo=<repoRoot> | os=<os> (<arch>) | no
 | `agent` | `runtimeInfo.agentId` | Agent ID |
 | `host` | `runtimeInfo.host` | 主机名 |
 | `repo` | `runtimeInfo.repoRoot` | 仓库根目录 |
-| `os` | `runtimeInfo.os` | 操作系统（如 Darwin） |
-| `arch` | `runtimeInfo.arch` | CPU 架构（如 arm64） |
+| `os` | `runtimeInfo.os` + `arch` | 操作系统 |
 | `node` | `runtimeInfo.node` | Node 版本 |
 | `model` | `runtimeInfo.model` | 当前使用模型 |
 | `default_model` | `runtimeInfo.defaultModel` | 默认模型 |
-| `shell` | `runtimeInfo.shell` | 默认 shell（如 zsh） |
+| `shell` | `runtimeInfo.shell` | 默认 shell |
 | `channel` | `runtimeChannel` | 当前渠道 |
 | `capabilities` | `runtimeCapabilities` | 渠道能力 |
 | `thinking` | `defaultThinkLevel` | 推理模式 |
-
-## 示例
-
-```
-Runtime: agent=openclaw-assistant | host=d的Mac-mini | repo=/Users/d/.openclaw | os=Darwin 25.3.0 (arm64) | node=v24.10.0 | model=minimax-portal/MiniMax-M2.7 | default_model=minimax-portal/MiniMax-M2.7 | shell=zsh | channel=telegram | capabilities=inlineButtons | thinking=off
-```
 
 ## 推理说明
 
@@ -39,10 +67,10 @@ Runtime: agent=openclaw-assistant | host=d的Mac-mini | repo=/Users/d/.openclaw 
 Reasoning: <reasoningLevel> (hidden unless on/stream). Toggle /reasoning; /status shows Reasoning when enabled.
 ```
 
-| reasoningLevel 值 | 说明 |
-|-------------------|------|
-| `off` | 默认关闭推理 |
-| `on` | 默认开启推理 |
+| reasoningLevel | 说明 |
+|---------------|------|
+| `off`（默认） | 隐藏推理过程 |
+| `on` | 推理过程对用户可见 |
 | `stream` | 推理过程流式输出 |
 
 ## capabilities 支持情况

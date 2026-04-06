@@ -1,36 +1,38 @@
 # ## Current Date & Time
 
-> 源码位置：`buildTimeSection()`，`pi-embedded-bukGSgEe.js` 第 27715 行
+> 源码：`src/agents/system-prompt.ts` — `buildTimeSection()`，约 line 646
 
 ---
 
 ## 注入条件
 
-```
-if (!params.userTimezone) return [];
-```
-
-仅当配置了 `userTimezone` 时才注入。
-
-## 内容格式
-
-```
-## Current Date & Time
-Time zone: <userTimezone>
+```typescript
+userTimezone
+  ? "If you need the current date, time, or day of week, run session_status (📊 session_status)."
+  : "",
 ```
 
-## 示例
+---
+
+## 注入内容
 
 ```
-## Current Date & Time
-Time zone: Asia/Shanghai
+If you need the current date, time, or day of week, run session_status (📊 session_status).
 ```
 
-## userTime 和 userTimeFormat
+---
 
-系统还支持 `userTime`（当前时间戳）和 `userTimeFormat`（时间格式字符串）。
+## userTimezone 和 userTime
 
-## 时区配置位置
+| 字段 | 说明 |
+|------|------|
+| `userTimezone` | 用户时区（用于日期时间显示） |
+| `userTime` | 当前时间戳（可选） |
+| `userTimeFormat` | 时间格式字符串（可选） |
+
+---
+
+## 配置位置
 
 在 `openclaw.json` 中：
 
@@ -42,6 +44,26 @@ Time zone: Asia/Shanghai
 }
 ```
 
+---
+
+## session_status 命令
+
+当 Agent 需要当前日期时间时，应调用：
+
+```
+session_status
+```
+
+会返回类似：
+```
+📊 Session Status
+model: minimax-portal/MiniMax-M2.7
+current_time: 2026-04-06T09:00:00+08:00
+timezone: Asia/Shanghai
+```
+
+---
+
 ## 对记忆召回的影响
 
-记忆召回时，系统会根据当前时间判断记忆的有效性和相关性。
+记忆召回时，系统根据当前时间判断记忆的有效性和相关性。
