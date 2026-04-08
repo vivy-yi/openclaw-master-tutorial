@@ -1,0 +1,89 @@
+import{_ as n,o as s,c as t,ae as p}from"./chunks/framework.Czhw_PXq.js";const g=JSON.parse('{"title":"1.3 OpenClaw 与其他工具对比","description":"","frontmatter":{},"headers":[],"relativePath":"chapters/01_认识openclaw/1.3_comparison.md","filePath":"chapters/01_认识openclaw/1.3_comparison.md"}'),l={name:"chapters/01_认识openclaw/1.3_comparison.md"};function e(d,a,i,r,o,c){return s(),t("div",null,[...a[0]||(a[0]=[p(`<h1 id="_1-3-openclaw-与其他工具对比" tabindex="-1">1.3 OpenClaw 与其他工具对比 <a class="header-anchor" href="#_1-3-openclaw-与其他工具对比" aria-label="Permalink to &quot;1.3 OpenClaw 与其他工具对比&quot;">​</a></h1><h2 id="本节目标" tabindex="-1">本节目标 <a class="header-anchor" href="#本节目标" aria-label="Permalink to &quot;本节目标&quot;">​</a></h2><ul><li>理解 OpenClaw 与其他 AI 工具的根本区别</li><li>掌握如何选择合适的 AI 工具</li><li>了解 OpenClaw 的优劣势</li></ul><hr><h2 id="_1-3-1-对比概览" tabindex="-1">1.3.1 对比概览 <a class="header-anchor" href="#_1-3-1-对比概览" aria-label="Permalink to &quot;1.3.1 对比概览&quot;">​</a></h2><table tabindex="0"><thead><tr><th>特性</th><th>OpenClaw</th><th>ChatGPT Plus</th><th>Claude Pro</th><th>Cursor</th><th>Wordware</th></tr></thead><tbody><tr><td><strong>部署方式</strong></td><td>本地/云端</td><td>在线服务</td><td>在线服务</td><td>本地应用</td><td>在线服务</td></tr><tr><td><strong>数据隐私</strong></td><td>✅ 完全本地</td><td>⚠️ 云端处理</td><td>⚠️ 云端处理</td><td>⚠️ 部分云端</td><td>⚠️ 云端处理</td></tr><tr><td><strong>文件访问</strong></td><td>✅ 完整访问</td><td>❌ 不支持</td><td>❌ 不支持</td><td>✅ 工作区</td><td>❌ 不支持</td></tr><tr><td><strong>系统操作</strong></td><td>✅ 支持</td><td>❌ 不支持</td><td>❌ 不支持</td><td>⚠️ 有限</td><td>❌ 不支持</td></tr><tr><td><strong>自动化</strong></td><td>✅ 定时任务</td><td>❌ 不支持</td><td>❌ 不支持</td><td>❌ 不支持</td><td>❌ 不支持</td></tr><tr><td><strong>多平台</strong></td><td>✅ 30+渠道</td><td>❌ 不支持</td><td>❌ 不支持</td><td>❌ 不支持</td><td>❌ 不支持</td></tr><tr><td><strong>扩展性</strong></td><td>✅ Skills生态</td><td>❌ 固定功能</td><td>❌ 固定功能</td><td>⚠️ 插件</td><td>⚠️ 有限</td></tr><tr><td><strong>月费用</strong></td><td>5-50元</td><td>140元</td><td>140元</td><td>140元</td><td>付费订阅</td></tr><tr><td><strong>技能系统</strong></td><td>✅ 1800+</td><td>❌</td><td>❌</td><td>⚠️</td><td>❌</td></tr></tbody></table><hr><h2 id="_1-3-2-与-chatgpt-claude-对比" tabindex="-1">1.3.2 与 ChatGPT/Claude 对比 <a class="header-anchor" href="#_1-3-2-与-chatgpt-claude-对比" aria-label="Permalink to &quot;1.3.2 与 ChatGPT/Claude 对比&quot;">​</a></h2><h3 id="核心区别" tabindex="-1">核心区别 <a class="header-anchor" href="#核心区别" aria-label="Permalink to &quot;核心区别&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>┌─────────────────────────────────────────────────────────────┐</span></span>
+<span class="line"><span>│                     ChatGPT / Claude                        │</span></span>
+<span class="line"><span>├─────────────────────────────────────────────────────────────┤</span></span>
+<span class="line"><span>│  只读对话                                                       │</span></span>
+<span class="line"><span>│  &quot;帮我整理桌面文件&quot; → &quot;我可以告诉你如何整理...&quot;                 │</span></span>
+<span class="line"><span>│                                                             │</span></span>
+<span class="line"><span>│  无法访问本地                                                  │</span></span>
+<span class="line"><span>│  不能读取你的文件、日历、邮件                                   │</span></span>
+<span class="line"><span>│                                                             │</span></span>
+<span class="line"><span>│  没有记忆                                                      │</span></span>
+<span class="line"><span>│  每次对话都是重新开始                                          │</span></span>
+<span class="line"><span>│                                                             │</span></span>
+<span class="line"><span>│  数据上传云端                                                  │</span></span>
+<span class="line"><span>│  敏感文件需要上传到第三方服务器                                 │</span></span>
+<span class="line"><span>└─────────────────────────────────────────────────────────────┘</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>                          VS</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>┌─────────────────────────────────────────────────────────────┐</span></span>
+<span class="line"><span>│                        OpenClaw                             │</span></span>
+<span class="line"><span>├─────────────────────────────────────────────────────────────┤</span></span>
+<span class="line"><span>│  执行任务                                                      │</span></span>
+<span class="line"><span>│  &quot;帮我整理桌面文件&quot; → 真的帮你移动文件                         │</span></span>
+<span class="line"><span>│                                                             │</span></span>
+<span class="line"><span>│  完整本地访问                                                  │</span></span>
+<span class="line"><span>│  读取文件、操作日历、发送邮件                                   │</span></span>
+<span class="line"><span>│                                                             │</span></span>
+<span class="line"><span>│  持久记忆                                                      │</span></span>
+<span class="line"><span>│  记住你的偏好、习惯、重要信息                                   │</span></span>
+<span class="line"><span>│                                                             │</span></span>
+<span class="line"><span>│  数据完全私有                                                  │</span></span>
+<span class="line"><span>│  所有数据保存在你自己的设备上                                   │</span></span>
+<span class="line"><span>└─────────────────────────────────────────────────────────────┘</span></span></code></pre></div><h3 id="比喻理解" tabindex="-1">比喻理解 <a class="header-anchor" href="#比喻理解" aria-label="Permalink to &quot;比喻理解&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>ChatGPT/Claude = 一个被困在玻璃罩里的天才</span></span>
+<span class="line"><span>                你可以和他聊天，但他摸不到任何东西</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>OpenClaw = 打碎玻璃罩的天才</span></span>
+<span class="line"><span>           真正走进你的生活，帮你处理实际事务</span></span></code></pre></div><hr><h2 id="_1-3-3-与现有-agent-框架对比" tabindex="-1">1.3.3 与现有 Agent 框架对比 <a class="header-anchor" href="#_1-3-3-与现有-agent-框架对比" aria-label="Permalink to &quot;1.3.3 与现有 Agent 框架对比&quot;">​</a></h2><table tabindex="0"><thead><tr><th>框架</th><th>特点</th><th>适用场景</th><th>门槛</th></tr></thead><tbody><tr><td><strong>OpenClaw</strong></td><td>开源、多渠道、本地部署</td><td>个人/企业助理</td><td>低</td></tr><tr><td>LangChain</td><td>专注于 LLM 应用开发</td><td>开发者构建 AI 应用</td><td>高</td></tr><tr><td>AutoGen</td><td>Microsoft 出品，多 Agent 协作</td><td>复杂任务编排</td><td>高</td></tr><tr><td>LangGraph</td><td>状态机工作流</td><td>可视化流程设计</td><td>中</td></tr><tr><td>CrewAI</td><td>多 Agent 角色扮演</td><td>团队协作模拟</td><td>中</td></tr></tbody></table><h3 id="openclaw-的独特优势" tabindex="-1">OpenClaw 的独特优势 <a class="header-anchor" href="#openclaw-的独特优势" aria-label="Permalink to &quot;OpenClaw 的独特优势&quot;">​</a></h3><ol><li><strong>开箱即用</strong> - 不需要编写代码，配置即可使用</li><li><strong>多渠道接入</strong> - 支持 30+ 通讯平台</li><li><strong>本地部署</strong> - 数据完全自主可控</li><li><strong>丰富生态</strong> - 1800+ Skills 即装即用</li></ol><hr><h2 id="_1-3-4-成本分析" tabindex="-1">1.3.4 成本分析 <a class="header-anchor" href="#_1-3-4-成本分析" aria-label="Permalink to &quot;1.3.4 成本分析&quot;">​</a></h2><h3 id="openclaw-成本构成" tabindex="-1">OpenClaw 成本构成 <a class="header-anchor" href="#openclaw-成本构成" aria-label="Permalink to &quot;OpenClaw 成本构成&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>┌─────────────────────────────────────────────┐</span></span>
+<span class="line"><span>│              部署成本 (可选)                  │</span></span>
+<span class="line"><span>├─────────────────────────────────────────────┤</span></span>
+<span class="line"><span>│  本地部署        0元/月   有可用电脑         │</span></span>
+<span class="line"><span>│  腾讯云轻量     20元/月   需要24/7在线        │</span></span>
+<span class="line"><span>│  火山引擎       9.9元/月  性价比之选          │</span></span>
+<span class="line"><span>│  阿里云ECS     30元+/月  高性能需求          │</span></span>
+<span class="line"><span>└─────────────────────────────────────────────┘</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>┌─────────────────────────────────────────────┐</span></span>
+<span class="line"><span>│              API 成本 (必须)                  │</span></span>
+<span class="line"><span>├─────────────────────────────────────────────┤</span></span>
+<span class="line"><span>│  DeepSeek      5-15元/月  性价比高           │</span></span>
+<span class="line"><span>│  Kimi         10-30元/月  长文档处理强       │</span></span>
+<span class="line"><span>│  GLM-4        10-25元/月  国产大模型         │</span></span>
+<span class="line"><span>│  Claude       50-200元/月 能力强但贵         │</span></span>
+<span class="line"><span>│  GPT-4        50-150元/月 综合能力强         │</span></span>
+<span class="line"><span>└─────────────────────────────────────────────┘</span></span></code></pre></div><h3 id="总成本对比" tabindex="-1">总成本对比 <a class="header-anchor" href="#总成本对比" aria-label="Permalink to &quot;总成本对比&quot;">​</a></h3><table tabindex="0"><thead><tr><th>方案</th><th>月费用</th><th>年费用</th></tr></thead><tbody><tr><td><strong>OpenClaw (本地 + DeepSeek)</strong></td><td>5元</td><td>60元</td></tr><tr><td><strong>OpenClaw (云端 + Kimi)</strong></td><td>30元</td><td>360元</td></tr><tr><td><strong>ChatGPT Plus</strong></td><td>140元</td><td>1680元</td></tr><tr><td><strong>Claude Pro</strong></td><td>140元</td><td>1680元</td></tr><tr><td><strong>Cursor Pro</strong></td><td>140元</td><td>1680元</td></tr></tbody></table><p><strong>结论</strong>: OpenClaw 相比 ChatGPT Plus 可节省 <strong>73%-96%</strong> 成本</p><hr><h2 id="_1-3-5-什么时候选择-openclaw" tabindex="-1">1.3.5 什么时候选择 OpenClaw <a class="header-anchor" href="#_1-3-5-什么时候选择-openclaw" aria-label="Permalink to &quot;1.3.5 什么时候选择 OpenClaw&quot;">​</a></h2><h3 id="✅-openclaw-适合" tabindex="-1">✅ OpenClaw 适合 <a class="header-anchor" href="#✅-openclaw-适合" aria-label="Permalink to &quot;✅ OpenClaw 适合&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>☑️ 需要处理敏感数据，担心隐私泄露</span></span>
+<span class="line"><span>   → 数据完全保存在本地，不经过第三方</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>☑️ 希望 AI 能主动帮你处理日常事务</span></span>
+<span class="line"><span>   → 自动执行任务，不只是回答问题</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>☑️ 需要定制化的自动化工作流</span></span>
+<span class="line"><span>   → 定时任务、自动化流程</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>☑️ 希望通过熟悉的聊天工具与 AI 交互</span></span>
+<span class="line"><span>   → 飞书、企业微信、Telegram 等</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>☑️ 希望控制 AI 的使用成本</span></span>
+<span class="line"><span>   → 每月几块钱 vs 140元</span></span></code></pre></div><h3 id="❌-openclaw-不适合" tabindex="-1">❌ OpenClaw 不适合 <a class="header-anchor" href="#❌-openclaw-不适合" aria-label="Permalink to &quot;❌ OpenClaw 不适合&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>☐ 不想花任何时间配置和维护</span></span>
+<span class="line"><span>   → 初期配置需要 30分钟-1小时</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>☐ 只需要偶尔提问，不需要自动化</span></span>
+<span class="line"><span>   → 简单的问答 ChatGPT 更适合</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>☐ 对技术完全不感兴趣</span></span>
+<span class="line"><span>   → 需要一定的配置能力</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>☐ 没有可靠的服务器或电脑来运行</span></span>
+<span class="line"><span>   → 需要 24/7 在线设备</span></span></code></pre></div><hr><h2 id="_1-3-6-混合使用策略" tabindex="-1">1.3.6 混合使用策略 <a class="header-anchor" href="#_1-3-6-混合使用策略" aria-label="Permalink to &quot;1.3.6 混合使用策略&quot;">​</a></h2><p>你不需要完全抛弃现有工具，可以采用混合策略：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>┌─────────────────────────────────────────────────────────────┐</span></span>
+<span class="line"><span>│                    混合使用策略                              │</span></span>
+<span class="line"><span>├─────────────────────────────────────────────────────────────┤</span></span>
+<span class="line"><span>│                                                             │</span></span>
+<span class="line"><span>│  OpenClaw                    ChatGPT / Claude              │</span></span>
+<span class="line"><span>│  ─────────                   ──────────────────            │</span></span>
+<span class="line"><span>│  • 本地任务执行              • 复杂问题咨询                  │</span></span>
+<span class="line"><span>│  • 文件操作                  • 创意写作                     │</span></span>
+<span class="line"><span>│  • 自动化工作流              • 代码调试                     │</span></span>
+<span class="line"><span>│  • 多渠道接入                • 知识问答                     │</span></span>
+<span class="line"><span>│  • 数据敏感任务              • 快速灵感                     │</span></span>
+<span class="line"><span>│                                                             │</span></span>
+<span class="line"><span>└─────────────────────────────────────────────────────────────┘</span></span></code></pre></div><hr><h2 id="本节小结" tabindex="-1">本节小结 <a class="header-anchor" href="#本节小结" aria-label="Permalink to &quot;本节小结&quot;">​</a></h2><ol><li><strong>根本区别</strong>: OpenClaw 是执行型 Agent，ChatGPT/Claude 是对话型 AI</li><li><strong>成本优势</strong>: OpenClaw 5-50元/月 vs ChatGPT 140元/月</li><li><strong>隐私优势</strong>: 完全本地部署，数据不经过第三方</li><li><strong>生态优势</strong>: 1800+ Skills，30+ 渠道支持</li><li><strong>选择原则</strong>: 需要执行任务选 OpenClaw，需要创意咨询选 ChatGPT</li></ol><hr><h2 id="课后思考" tabindex="-1">课后思考 <a class="header-anchor" href="#课后思考" aria-label="Permalink to &quot;课后思考&quot;">​</a></h2><ol><li>你目前使用哪些 AI 工具？它们有哪些痛点？</li><li>哪些场景可以用 OpenClaw 替代现有工具？</li><li>成本对你来说是否是重要考量因素？</li></ol>`,40)])])}const u=n(l,[["render",e]]);export{g as __pageData,u as default};

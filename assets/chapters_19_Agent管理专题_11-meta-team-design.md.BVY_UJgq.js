@@ -1,0 +1,71 @@
+import{_ as n,o as s,c as t,ae as e}from"./chunks/framework.Czhw_PXq.js";const g=JSON.parse('{"title":"元团队架构设计指南","description":"","frontmatter":{},"headers":[],"relativePath":"chapters/19_Agent管理专题/11-meta-team-design.md","filePath":"chapters/19_Agent管理专题/11-meta-team-design.md"}'),p={name:"chapters/19_Agent管理专题/11-meta-team-design.md"};function d(l,a,o,r,i,c){return s(),t("div",null,[...a[0]||(a[0]=[e(`<h1 id="元团队架构设计指南" tabindex="-1">元团队架构设计指南 <a class="header-anchor" href="#元团队架构设计指南" aria-label="Permalink to &quot;元团队架构设计指南&quot;">​</a></h1><blockquote><p>本文档介绍如何将元团队定位为&quot;平台层&quot;，为所有业务Agent提供通用能力。 日期：2026-03-27 来源：DM主控对话</p></blockquote><hr><h2 id="一、核心概念-一个-群-本质是什么" tabindex="-1">一、核心概念：一个&quot;群&quot;本质是什么？ <a class="header-anchor" href="#一、核心概念-一个-群-本质是什么" aria-label="Permalink to &quot;一、核心概念：一个&quot;群&quot;本质是什么？&quot;">​</a></h2><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>┌─────────────────────────────────────────────────────────┐</span></span>
+<span class="line"><span>│                        群                                │</span></span>
+<span class="line"><span>│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐    │</span></span>
+<span class="line"><span>│  │  Agent1 │  │  Agent2 │  │  Agent3 │  │  Agent4 │    │ ← 业务执行层</span></span>
+<span class="line"><span>│  └────┬────┘  └────┬────┘  └────┬────┘  └────┬────┘    │</span></span>
+<span class="line"><span>│       └─────────────┴─────────────┴─────────────┘        │</span></span>
+<span class="line"><span>│                          │                              │</span></span>
+<span class="line"><span>│                    ┌─────┴─────┐                        │</span></span>
+<span class="line"><span>│                    │  工作空间  │                        │ ← 数据隔离层</span></span>
+<span class="line"><span>│                    └───────────┘                        │</span></span>
+<span class="line"><span>└─────────────────────────────────────────────────────────┘</span></span></code></pre></div><p><strong>一个群 = 独立的工作空间 + 专属业务Agent矩阵</strong></p><hr><h2 id="二、各群的共性需求" tabindex="-1">二、各群的共性需求 <a class="header-anchor" href="#二、各群的共性需求" aria-label="Permalink to &quot;二、各群的共性需求&quot;">​</a></h2><p>无论什么群，都需要以下通用能力：</p><table tabindex="0"><thead><tr><th>需求层次</th><th>说明</th><th>例子</th></tr></thead><tbody><tr><td><strong>执行</strong></td><td>业务Agent</td><td>股票分析、内容创作</td></tr><tr><td><strong>调度</strong></td><td>定时任务</td><td>早间简报、晚间总结</td></tr><tr><td><strong>监控</strong></td><td>健康检查</td><td>Agent是否正常</td></tr><tr><td><strong>日志</strong></td><td>问题排查</td><td>错误原因</td></tr><tr><td><strong>通知</strong></td><td>消息触达</td><td>任务完成通知</td></tr><tr><td><strong>存储</strong></td><td>数据持久化</td><td>用户偏好、缓存</td></tr><tr><td><strong>搜索</strong></td><td>信息获取</td><td>全网搜索</td></tr></tbody></table><hr><h2 id="三、元团队的定位" tabindex="-1">三、元团队的定位 <a class="header-anchor" href="#三、元团队的定位" aria-label="Permalink to &quot;三、元团队的定位&quot;">​</a></h2><h3 id="核心问题-元团队应该服务-群-还是服务-agent" tabindex="-1">核心问题：元团队应该服务&quot;群&quot;还是服务&quot;Agent&quot;？ <a class="header-anchor" href="#核心问题-元团队应该服务-群-还是服务-agent" aria-label="Permalink to &quot;核心问题：元团队应该服务&quot;群&quot;还是服务&quot;Agent&quot;？&quot;">​</a></h3><table tabindex="0"><thead><tr><th>视角</th><th>答案</th></tr></thead><tbody><tr><td><strong>服务群</strong></td><td>每个群都要配监控、日志 → 重复建设</td></tr><tr><td><strong>服务Agent</strong></td><td>Agent是元团队的&quot;客户&quot; → 更合理</td></tr></tbody></table><h3 id="关键洞察" tabindex="-1">关键洞察 <a class="header-anchor" href="#关键洞察" aria-label="Permalink to &quot;关键洞察&quot;">​</a></h3><blockquote><p>元团队不是&quot;第9个业务团队&quot;，而是<strong>平台层</strong></p></blockquote><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>┌─────────────────────────────────────────────────────────┐</span></span>
+<span class="line"><span>│                    用户/群入口层                        │</span></span>
+<span class="line"><span>└───────────────────────┬─────────────────────────────────┘</span></span>
+<span class="line"><span>                        │</span></span>
+<span class="line"><span>    ┌───────────────────┼───────────────────┐</span></span>
+<span class="line"><span>    │                   │                   │</span></span>
+<span class="line"><span>    ▼                   ▼                   ▼</span></span>
+<span class="line"><span>┌─────────┐        ┌─────────┐        ┌─────────┐</span></span>
+<span class="line"><span>│ 生活群  │        │ 金融群  │        │内容运营群│</span></span>
+<span class="line"><span>│(25个A)  │        │(26个A)  │        │(41个A)  │</span></span>
+<span class="line"><span>└────┬────┘        └────┬────┘        └────┬────┘</span></span>
+<span class="line"><span>     │                 │                 │</span></span>
+<span class="line"><span>     └─────────────────┼─────────────────┘</span></span>
+<span class="line"><span>                       │</span></span>
+<span class="line"><span>           ┌───────────┴───────────┐</span></span>
+<span class="line"><span>           │    元团队(平台层)     │</span></span>
+<span class="line"><span>           │  ┌─────┐ ┌─────┐    │</span></span>
+<span class="line"><span>           │  │墨监 │ │墨历 │    │  ← 通用服务</span></span>
+<span class="line"><span>           │  └─────┘ └─────┘    │</span></span>
+<span class="line"><span>           └───────────────────┘</span></span></code></pre></div><hr><h2 id="四、元团队的正确抽象能力" tabindex="-1">四、元团队的正确抽象能力 <a class="header-anchor" href="#四、元团队的正确抽象能力" aria-label="Permalink to &quot;四、元团队的正确抽象能力&quot;">​</a></h2><h3 id="核心原则" tabindex="-1">核心原则 <a class="header-anchor" href="#核心原则" aria-label="Permalink to &quot;核心原则&quot;">​</a></h3><blockquote><p><strong>元团队服务Agent，不服务群；元团队提供能力，不提供业务</strong></p></blockquote><table tabindex="0"><thead><tr><th>能力</th><th>正确理解</th><th>错误理解</th></tr></thead><tbody><tr><td>监控</td><td>&quot;Agent你还好吗&quot;</td><td>&quot;群运营健康吗&quot;</td></tr><tr><td>日志</td><td>&quot;出了什么问题&quot;</td><td>&quot;群数据报表&quot;</td></tr><tr><td>调度</td><td>&quot;触发定时任务&quot;</td><td>&quot;群定时推送&quot;</td></tr><tr><td>画像</td><td>&quot;用户有什么偏好&quot;</td><td>&quot;群用户画像&quot;</td></tr></tbody></table><hr><h3 id="元团队的6大抽象能力" tabindex="-1">元团队的6大抽象能力 <a class="header-anchor" href="#元团队的6大抽象能力" aria-label="Permalink to &quot;元团队的6大抽象能力&quot;">​</a></h3><table tabindex="0"><thead><tr><th>能力</th><th>名称</th><th>核心职责</th></tr></thead><tbody><tr><td><strong>能力1</strong></td><td>墨监</td><td>Agent状态守护者：存活检测、任务失败告警、性能指标、Cron状态监控</td></tr><tr><td><strong>能力2</strong></td><td>墨历</td><td>问题追溯中心：操作日志、错误追踪、审计合规、日志检索</td></tr><tr><td><strong>能力3</strong></td><td>墨联</td><td>信息获取中枢：全网搜索、社媒采集、网页抓取、GitHub</td></tr><tr><td><strong>能力4</strong></td><td>墨邮</td><td>通知分发中枢：邮件处理、消息推送、定时报告</td></tr><tr><td><strong>能力5</strong></td><td>墨析</td><td>个性化服务基座：偏好学习、跨平台画像、历史记录</td></tr><tr><td><strong>能力6</strong></td><td>墨创</td><td>快速创建能力：模板生成、自动注册、批量创建</td></tr></tbody></table><hr><h2 id="五、与各群的关系" tabindex="-1">五、与各群的关系 <a class="header-anchor" href="#五、与各群的关系" aria-label="Permalink to &quot;五、与各群的关系&quot;">​</a></h2><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>                    ┌─────────────────┐</span></span>
+<span class="line"><span>                    │   元团队(平台)  │</span></span>
+<span class="line"><span>                    │  ┌───────────┐  │</span></span>
+<span class="line"><span>                    │  │ 墨监      │  │ ← 能力1</span></span>
+<span class="line"><span>                    │  ├───────────┤  │</span></span>
+<span class="line"><span>                    │  │ 墨历      │  │ ← 能力2</span></span>
+<span class="line"><span>                    │  ├───────────┤  │</span></span>
+<span class="line"><span>                    │  │ 墨联      │  │ ← 能力3</span></span>
+<span class="line"><span>                    │  ├───────────┤  │</span></span>
+<span class="line"><span>                    │  │ 墨邮      │  │ ← 能力4</span></span>
+<span class="line"><span>                    │  ├───────────┤  │</span></span>
+<span class="line"><span>                    │  │ 墨析      │  │ ← 能力5</span></span>
+<span class="line"><span>                    │  ├───────────┤  │</span></span>
+<span class="line"><span>                    │  │ 墨创      │  │ ← 能力6</span></span>
+<span class="line"><span>                    │  └───────────┘  │</span></span>
+<span class="line"><span>                    └────────┬────────┘</span></span>
+<span class="line"><span>                             │ &quot;能力调用&quot;</span></span>
+<span class="line"><span>         ┌───────────────────┼───────────────────┐</span></span>
+<span class="line"><span>         │          ┌────────┴────────┐           │</span></span>
+<span class="line"><span>         ▼          ▼                 ▼           ▼</span></span>
+<span class="line"><span>   ┌──────────┐┌──────────┐    ┌──────────┐┌──────────┐</span></span>
+<span class="line"><span>   │  生活群   ││  金融群  │    │ 内容运营群││ 高考群   │</span></span>
+<span class="line"><span>   │  shenghuo││mo-finance│    │mo-yunying││gaokao   │</span></span>
+<span class="line"><span>   │(26个Agent)││(26个Agent)    │(41个Agent)││ (5个Agent)│</span></span>
+<span class="line"><span>   └─────┬────┘└─────┬────┘    └─────┬────┘└─────┬────┘</span></span>
+<span class="line"><span>         │           │              │           │</span></span>
+<span class="line"><span>         │    &quot;业务独立，各群数据隔离&quot;         │</span></span>
+<span class="line"><span>         └─────────────────────────────────────┘</span></span></code></pre></div><hr><h2 id="六、如何支持未来更多群" tabindex="-1">六、如何支持未来更多群？ <a class="header-anchor" href="#六、如何支持未来更多群" aria-label="Permalink to &quot;六、如何支持未来更多群？&quot;">​</a></h2><h3 id="扩展模型" tabindex="-1">扩展模型 <a class="header-anchor" href="#扩展模型" aria-label="Permalink to &quot;扩展模型&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>新增一个群 = 定义业务Agent + 接入通用能力</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>例子：新增&quot;健康群&quot;</span></span>
+<span class="line"><span>  1. 业务层：创建 健康Agent组（墨医、墨康、墨食）</span></span>
+<span class="line"><span>  2. 平台层：复用 元团队能力</span></span>
+<span class="line"><span>     • 墨监 → 监控健康Agent</span></span>
+<span class="line"><span>     • 墨历 → 日志审计</span></span>
+<span class="line"><span>     • 墨析 → 用户健康偏好</span></span>
+<span class="line"><span>     • 墨邮 → 定时健康提醒</span></span></code></pre></div><h3 id="元团队的正确接入方式" tabindex="-1">元团队的正确接入方式 <a class="header-anchor" href="#元团队的正确接入方式" aria-label="Permalink to &quot;元团队的正确接入方式&quot;">​</a></h3><table tabindex="0"><thead><tr><th>方式</th><th>说明</th></tr></thead><tbody><tr><td><strong>被调用</strong></td><td>各群Agent需要时调用元团队能力</td></tr><tr><td><strong>不绑定群</strong></td><td>元团队不绑定具体群（无binding）</td></tr><tr><td><strong>独立工作空间</strong></td><td>元团队有独立workspace</td></tr><tr><td><strong>能力暴露</strong></td><td>通过skill或子agent调用</td></tr></tbody></table><hr><h2 id="七、最终结论" tabindex="-1">七、最终结论 <a class="header-anchor" href="#七、最终结论" aria-label="Permalink to &quot;七、最终结论&quot;">​</a></h2><p><strong>元团队 = 平台能力，不是一个&quot;业务群&quot;</strong></p><table tabindex="0"><thead><tr><th>属性</th><th>业务团队</th><th>元团队</th></tr></thead><tbody><tr><td>绑定群</td><td>✅ 绑定</td><td>❌ 不绑定</td></tr><tr><td>子Agent</td><td>业务Agent</td><td>平台能力Agent</td></tr><tr><td>服务对象</td><td>群用户</td><td>其他Agent</td></tr><tr><td>数据</td><td>群隔离</td><td>共享</td></tr><tr><td>扩展方式</td><td>新增业务</td><td>新增能力</td></tr></tbody></table><hr><h2 id="八、当前实现的元团队结构" tabindex="-1">八、当前实现的元团队结构 <a class="header-anchor" href="#八、当前实现的元团队结构" aria-label="Permalink to &quot;八、当前实现的元团队结构&quot;">​</a></h2><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>meta-team (元团队平台)</span></span>
+<span class="line"><span>  ├── 墨监 (监控告警) - /Users/d/.openclaw/workspaces/meta-team/agents/墨监/</span></span>
+<span class="line"><span>  ├── 墨历 (日志审计) - /Users/d/.openclaw/workspaces/meta-team/agents/墨历/</span></span>
+<span class="line"><span>  ├── 墨联 (统一搜索) - /Users/d/.openclaw/workspaces/meta-team/agents/墨联/</span></span>
+<span class="line"><span>  ├── 墨邮 (消息路由) - /Users/d/.openclaw/workspaces/meta-team/agents/墨邮/</span></span>
+<span class="line"><span>  ├── 墨析 (用户画像) - /Users/d/.openclaw/workspaces/meta-team/agents/墨析/</span></span>
+<span class="line"><span>  └── 墨创 (Agent工厂) - /Users/d/.openclaw/workspaces/meta-team/agents/墨创/</span></span></code></pre></div><hr><h2 id="九、配置管理教训" tabindex="-1">九、配置管理教训 <a class="header-anchor" href="#九、配置管理教训" aria-label="Permalink to &quot;九、配置管理教训&quot;">​</a></h2><p><strong>⚠️ 重要：配置更新时必须使用 <code>openclaw config</code> CLI，禁止直接用 <code>config.apply</code> 传入 raw JSON</strong></p><p>正确做法：</p><ol><li>优先用 <code>openclaw config set &lt;path&gt; &lt;value&gt;</code></li><li>交互式编辑：<code>openclaw config edit</code></li><li>必须用 apply 时：先写文件 → 用 <code>jq</code> 校验格式 → 确认无误后再 apply</li></ol><hr><p><em>文档更新时间: 2026-03-27</em><em>来源：DM主控对话</em></p>`,48)])])}const u=n(p,[["render",d]]);export{g as __pageData,u as default};

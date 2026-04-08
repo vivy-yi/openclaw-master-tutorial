@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>项目一：AI 专家团队 - 完整实施指南 | OpenClaw 教程</title>
+    <meta name="description" content="OpenClaw 完整教程 - 从入门到精通">
+    <meta name="generator" content="VitePress v1.6.4">
+    <link rel="preload stylesheet" href="/assets/style.NAqjKYEt.css" as="style">
+    <link rel="preload stylesheet" href="/vp-icons.css" as="style">
+    
+    <script type="module" src="/assets/app.YytxICdd.js"></script>
+    <link rel="preload" href="/assets/inter-roman-latin.Di8DUHzh.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="modulepreload" href="/assets/chunks/theme.DusTRZQk.js">
+    <link rel="modulepreload" href="/assets/chunks/framework.Czhw_PXq.js">
+    <link rel="modulepreload" href="/assets/chapters_案例集_project1_ai_team.md.DGv_P93P.lean.js">
+    <link rel="icon" href="/favicon.ico">
+    <script id="check-dark-mode">(()=>{const e=localStorage.getItem("vitepress-theme-appearance")||"auto",a=window.matchMedia("(prefers-color-scheme: dark)").matches;(!e||e==="auto"?a:e==="dark")&&document.documentElement.classList.add("dark")})();</script>
+    <script id="check-mac-os">document.documentElement.classList.toggle("mac",/Mac|iPhone|iPod|iPad/i.test(navigator.platform));</script>
+  </head>
+  <body>
+    <div id="app"><div class="Layout" data-v-5d98c3a5><!--[--><!--]--><!--[--><span tabindex="-1" data-v-0b0ada53></span><a href="#VPContent" class="VPSkipLink visually-hidden" data-v-0b0ada53>Skip to content</a><!--]--><!----><header class="VPNav" data-v-5d98c3a5 data-v-ae24b3ad><div class="VPNavBar" data-v-ae24b3ad data-v-6aa21345><div class="wrapper" data-v-6aa21345><div class="container" data-v-6aa21345><div class="title" data-v-6aa21345><div class="VPNavBarTitle" data-v-6aa21345 data-v-1168a8e4><a class="title" href="/" data-v-1168a8e4><!--[--><!--]--><!----><span data-v-1168a8e4>OpenClaw 教程</span><!--[--><!--]--></a></div></div><div class="content" data-v-6aa21345><div class="content-body" data-v-6aa21345><!--[--><!--]--><div class="VPNavBarSearch search" data-v-6aa21345><!----></div><!----><!----><div class="VPNavBarAppearance appearance" data-v-6aa21345 data-v-6c893767><button class="VPSwitch VPSwitchAppearance" type="button" role="switch" title aria-checked="false" data-v-6c893767 data-v-5337faa4 data-v-1d5665e3><span class="check" data-v-1d5665e3><span class="icon" data-v-1d5665e3><!--[--><span class="vpi-sun sun" data-v-5337faa4></span><span class="vpi-moon moon" data-v-5337faa4></span><!--]--></span></span></button></div><!----><div class="VPFlyout VPNavBarExtra extra" data-v-6aa21345 data-v-bb2aa2f0 data-v-cf11d7a2><button type="button" class="button" aria-haspopup="true" aria-expanded="false" aria-label="extra navigation" data-v-cf11d7a2><span class="vpi-more-horizontal icon" data-v-cf11d7a2></span></button><div class="menu" data-v-cf11d7a2><div class="VPMenu" data-v-cf11d7a2 data-v-b98bc113><!----><!--[--><!--[--><!----><div class="group" data-v-bb2aa2f0><div class="item appearance" data-v-bb2aa2f0><p class="label" data-v-bb2aa2f0>Appearance</p><div class="appearance-action" data-v-bb2aa2f0><button class="VPSwitch VPSwitchAppearance" type="button" role="switch" title aria-checked="false" data-v-bb2aa2f0 data-v-5337faa4 data-v-1d5665e3><span class="check" data-v-1d5665e3><span class="icon" data-v-1d5665e3><!--[--><span class="vpi-sun sun" data-v-5337faa4></span><span class="vpi-moon moon" data-v-5337faa4></span><!--]--></span></span></button></div></div></div><!----><!--]--><!--]--></div></div></div><!--[--><!--]--><button type="button" class="VPNavBarHamburger hamburger" aria-label="mobile navigation" aria-expanded="false" aria-controls="VPNavScreen" data-v-6aa21345 data-v-e5dd9c1c><span class="container" data-v-e5dd9c1c><span class="top" data-v-e5dd9c1c></span><span class="middle" data-v-e5dd9c1c></span><span class="bottom" data-v-e5dd9c1c></span></span></button></div></div></div></div><div class="divider" data-v-6aa21345><div class="divider-line" data-v-6aa21345></div></div></div><!----></header><div class="VPLocalNav empty fixed" data-v-5d98c3a5 data-v-a6f0e41e><div class="container" data-v-a6f0e41e><!----><div class="VPLocalNavOutlineDropdown" style="--vp-vh:0px;" data-v-a6f0e41e data-v-8a42e2b4><button data-v-8a42e2b4>Return to top</button><!----></div></div></div><!----><div class="VPContent" id="VPContent" data-v-5d98c3a5 data-v-1428d186><div class="VPDoc has-aside" data-v-1428d186 data-v-39a288b8><!--[--><!--]--><div class="container" data-v-39a288b8><div class="aside" data-v-39a288b8><div class="aside-curtain" data-v-39a288b8></div><div class="aside-container" data-v-39a288b8><div class="aside-content" data-v-39a288b8><div class="VPDocAside" data-v-39a288b8 data-v-3f215769><!--[--><!--]--><!--[--><!--]--><nav aria-labelledby="doc-outline-aria-label" class="VPDocAsideOutline" data-v-3f215769 data-v-a5bbad30><div class="content" data-v-a5bbad30><div class="outline-marker" data-v-a5bbad30></div><div aria-level="2" class="outline-title" id="doc-outline-aria-label" role="heading" data-v-a5bbad30>On this page</div><ul class="VPDocOutlineItem root" data-v-a5bbad30 data-v-b933a997><!--[--><!--]--></ul></div></nav><!--[--><!--]--><div class="spacer" data-v-3f215769></div><!--[--><!--]--><!----><!--[--><!--]--><!--[--><!--]--></div></div></div></div><div class="content" data-v-39a288b8><div class="content-container" data-v-39a288b8><!--[--><!--]--><main class="main" data-v-39a288b8><div style="position:relative;" class="vp-doc _chapters_%E6%A1%88%E4%BE%8B%E9%9B%86_project1_ai_team" data-v-39a288b8><div><h1 id="项目一-ai-专家团队-完整实施指南" tabindex="-1">项目一：AI 专家团队 - 完整实施指南 <a class="header-anchor" href="#项目一-ai-专家团队-完整实施指南" aria-label="Permalink to &quot;项目一：AI 专家团队 - 完整实施指南&quot;">​</a></h1><p>本指南将帮助你构建一个由多个专业化 AI Agent 组成的团队，通过单一 Telegram 对话界面协调工作。</p><hr><h2 id="_1-1-项目概述" tabindex="-1">1.1 项目概述 <a class="header-anchor" href="#_1-1-项目概述" aria-label="Permalink to &quot;1.1 项目概述&quot;">​</a></h2><h3 id="什么是-ai-专家团队" tabindex="-1">什么是 AI 专家团队 <a class="header-anchor" href="#什么是-ai-专家团队" aria-label="Permalink to &quot;什么是 AI 专家团队&quot;">​</a></h3><p>AI 专家团队是一种多 Agent 协作模式，通过为每个 Agent 分配特定角色和专业领域，形成一个虚拟的专业团队。</p><h3 id="核心优势" tabindex="-1">核心优势 <a class="header-anchor" href="#核心优势" aria-label="Permalink to &quot;核心优势&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>★ Insight ─────────────────────────────────────</span></span>
+<span class="line"><span>为什么需要多个 Agent：</span></span>
+<span class="line"><span>1. 单 Agent 上下文有限，多角色易混淆</span></span>
+<span class="line"><span>2. 专业模型做专业事，成本优化</span></span>
+<span class="line"><span>3. 并行处理提高效率</span></span>
+<span class="line"><span>4. 单一入口简化管理</span></span>
+<span class="line"><span>─────────────────────────────────────────────────</span></span></code></pre></div><p>![AI团队案例]/assets/diagrams/71_case_ai_team.png)</p><h3 id="团队成员" tabindex="-1">团队成员 <a class="header-anchor" href="#团队成员" aria-label="Permalink to &quot;团队成员&quot;">​</a></h3><table tabindex="0"><thead><tr><th>Agent</th><th>角色</th><th>模型</th><th>特长</th></tr></thead><tbody><tr><td>Milo</td><td>战略 Lead</td><td>Sonnet</td><td>规划、协调、决策</td></tr><tr><td>Josh</td><td>商业分析</td><td>Haiku</td><td>数据、增长、定价</td></tr><tr><td>Marketing</td><td>市场研究</td><td>Gemini</td><td>内容、趋势、SEO</td></tr><tr><td>Dev</td><td>开发工程师</td><td>Opus</td><td>编码、架构、审查</td></tr></tbody></table><hr><h2 id="_1-2-准备工作" tabindex="-1">1.2 准备工作 <a class="header-anchor" href="#_1-2-准备工作" aria-label="Permalink to &quot;1.2 准备工作&quot;">​</a></h2><h3 id="环境要求" tabindex="-1">环境要求 <a class="header-anchor" href="#环境要求" aria-label="Permalink to &quot;环境要求&quot;">​</a></h3><div class="language-bash vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">bash</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 基础要求</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">-</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> VPS</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 或常开电脑</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (推荐 </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">2GB+</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> RAM</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">-</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> Telegram</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 账号</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">-</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> OpenClaw</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 已安装并运行</span></span></code></pre></div><h3 id="安装依赖" tabindex="-1">安装依赖 <a class="header-anchor" href="#安装依赖" aria-label="Permalink to &quot;安装依赖&quot;">​</a></h3><div class="language-bash vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">bash</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 安装核心工具</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">openclaw</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> tools</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> install</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> telegram</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">openclaw</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> tools</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> install</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> sessions</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 验证安装</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">openclaw</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> tools</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> list</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> |</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> grep</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -E</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;telegram|sessions&quot;</span></span></code></pre></div><hr><h2 id="_1-3-目录结构" tabindex="-1">1.3 目录结构 <a class="header-anchor" href="#_1-3-目录结构" aria-label="Permalink to &quot;1.3 目录结构&quot;">​</a></h2><h3 id="创建项目目录" tabindex="-1">创建项目目录 <a class="header-anchor" href="#创建项目目录" aria-label="Permalink to &quot;创建项目目录&quot;">​</a></h3><div class="language-bash vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">bash</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">mkdir</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -p</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> ~/openclaw-teams/founder-team/{milo,josh,marketing,dev}</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">mkdir</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -p</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> ~/openclaw-teams/founder-team/shared/{goals,decisions,status}</span></span></code></pre></div><h3 id="目录结构" tabindex="-1">目录结构 <a class="header-anchor" href="#目录结构" aria-label="Permalink to &quot;目录结构&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>openclaw-teams/</span></span>
+<span class="line"><span>└── founder-team/</span></span>
+<span class="line"><span>    ├── shared/</span></span>
+<span class="line"><span>    │   ├── goals/</span></span>
+<span class="line"><span>    │   │   └── README.md          # OKR 和目标</span></span>
+<span class="line"><span>    │   ├── decisions/</span></span>
+<span class="line"><span>    │   │   └── README.md          # 决策日志</span></span>
+<span class="line"><span>    │   └── status/</span></span>
+<span class="line"><span>    │       └── README.md          # 项目状态</span></span>
+<span class="line"><span>    ├── milo/</span></span>
+<span class="line"><span>    │   ├── soul.md                # Agent 人设</span></span>
+<span class="line"><span>    │   └── memory.md              # 私人笔记</span></span>
+<span class="line"><span>    ├── josh/</span></span>
+<span class="line"><span>    │   ├── soul.md</span></span>
+<span class="line"><span>    │   └── memory.md</span></span>
+<span class="line"><span>    ├── marketing/</span></span>
+<span class="line"><span>    │   ├── soul.md</span></span>
+<span class="line"><span>    │   └── memory.md</span></span>
+<span class="line"><span>    └── dev/</span></span>
+<span class="line"><span>        ├── soul.md</span></span>
+<span class="line"><span>        └── memory.md</span></span></code></pre></div><hr><h2 id="_1-4-agent-配置" tabindex="-1">1.4 Agent 配置 <a class="header-anchor" href="#_1-4-agent-配置" aria-label="Permalink to &quot;1.4 Agent 配置&quot;">​</a></h2><h3 id="milo-战略-lead" tabindex="-1">Milo - 战略 Lead <a class="header-anchor" href="#milo-战略-lead" aria-label="Permalink to &quot;Milo - 战略 Lead&quot;">​</a></h3><div class="language-yaml vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">yaml</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># ~/openclaw-teams/founder-team/milo/agent.yaml</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">milo</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">model</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">claude-sonnet-4-20250514</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">temperature</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0.7</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">channel</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">telegram</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">allow_from</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;*&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">persona</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">|</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  你是 Milo，团队的战略领导者。</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  性格：自信、大局观强、富有魅力</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  职责：</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 战略规划和优先级设定</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 协调其他 Agent</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 每周目标设定和 OKR 跟踪</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 汇总各方洞察为可执行决策</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  沟通风格：</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 简洁有力</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 善于激励</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 数据驱动决策</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">memory</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">  workspace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">~/openclaw-teams/founder-team/milo</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">  longterm</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">true</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">context</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">  read_shared</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">~/openclaw-teams/founder-team/shared/goals/README.md</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">~/openclaw-teams/founder-team/shared/decisions/README.md</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">~/openclaw-teams/founder-team/shared/status/README.md</span></span></code></pre></div><h3 id="josh-商业分析" tabindex="-1">Josh - 商业分析 <a class="header-anchor" href="#josh-商业分析" aria-label="Permalink to &quot;Josh - 商业分析&quot;">​</a></h3><div class="language-yaml vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">yaml</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># ~/openclaw-teams/founder-team/josh/agent.yaml</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">josh</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">model</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">claude-haiku-4-20250514</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">temperature</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0.5</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">channel</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">telegram</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">allow_from</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;*&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">persona</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">|</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  你是 Josh，商业分析师。</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  性格：务实、直截了当、数据驱动</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  职责：</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 定价策略和竞争分析</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 增长指标和 KPI 跟踪</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 营收建模和单位经济效益</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 客户反馈分析</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  沟通风格：</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 用数据说话</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 直接指出问题</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 提供可执行建议</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">memory</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">  workspace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">~/openclaw-teams/founder-team/josh</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">  longterm</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">true</span></span></code></pre></div><h3 id="marketing-市场研究" tabindex="-1">Marketing - 市场研究 <a class="header-anchor" href="#marketing-市场研究" aria-label="Permalink to &quot;Marketing - 市场研究&quot;">​</a></h3><div class="language-yaml vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">yaml</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># ~/openclaw-teams/founder-team/marketing/agent.yaml</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">marketing</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">model</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">gemini-2.0-flash</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">temperature</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0.9</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">channel</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">telegram</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">allow_from</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;*&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">persona</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">|</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  你是市场研究专家。</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  性格：创意十足、好奇心强、趋势敏感</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  职责：</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 内容创意和草稿</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 竞争社交媒体监控</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - Reddit/HN/X 趋势追踪</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - SEO 关键词研究</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  沟通风格：</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 富有创意</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 紧跟热点</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 提供多种选择</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">memory</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">  workspace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">~/openclaw-teams/founder-team/marketing</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">  longterm</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">true</span></span></code></pre></div><h3 id="dev-开发工程师" tabindex="-1">Dev - 开发工程师 <a class="header-anchor" href="#dev-开发工程师" aria-label="Permalink to &quot;Dev - 开发工程师&quot;">​</a></h3><div class="language-yaml vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">yaml</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># ~/openclaw-teams/founder-team/dev/agent.yaml</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">dev</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">model</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">claude-opus-4-6</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">temperature</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0.3</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">channel</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">telegram</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">allow_from</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;*&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">persona</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">|</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  你是开发工程师。</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  性格：精确、严谨、安全意识强</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  职责：</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 编码和架构决策</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 代码审查和质量检查</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - Bug 调查和修复</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 技术文档编写</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  沟通风格：</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 严谨准确</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 代码优先</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 安全第一</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">memory</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">  workspace</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">~/openclaw-teams/founder-team/dev</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">  longterm</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">true</span></span></code></pre></div><hr><h2 id="_1-5-共享记忆系统" tabindex="-1">1.5 共享记忆系统 <a class="header-anchor" href="#_1-5-共享记忆系统" aria-label="Permalink to &quot;1.5 共享记忆系统&quot;">​</a></h2><h3 id="goals-md-目标管理" tabindex="-1">GOALS.md - 目标管理 <a class="header-anchor" href="#goals-md-目标管理" aria-label="Permalink to &quot;GOALS.md - 目标管理&quot;">​</a></h3><div class="language-markdown vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">markdown</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;"># 🎯 团队目标</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">## 本周 OKR</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">### Objective 1: 完成 MVP 开发</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> [ ] 完成用户认证系统</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> [ ] 实现核心业务流程</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> [ ] 部署到生产环境</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">### Objective 2: 获取 10 个测试用户</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> [ ] 发布测试邀请</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> [ ] 收集用户反馈</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> [ ] 优化用户体验</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">### Objective 3: 建立定价模型</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> [ ] 竞品定价分析</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> [ ] 成本核算</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> [ ] 定价方案设计</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">## 当前优先级 (P0-P3)</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">1.</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **P0**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: 技术架构设计评审</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">2.</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **P1**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: 用户注册流程</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">3.</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **P2**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: 基础 UI 组件</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">4.</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **P3**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: 文档完善</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">## 本周关键指标</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> DAU目标: 100</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 注册转化率: &gt; 20%</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 页面加载速度: &lt; 2s</span></span></code></pre></div><h3 id="decisions-md-决策日志" tabindex="-1">DECISIONS.md - 决策日志 <a class="header-anchor" href="#decisions-md-决策日志" aria-label="Permalink to &quot;DECISIONS.md - 决策日志&quot;">​</a></h3><div class="language-markdown vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">markdown</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;"># 📝 决策日志</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">## 2024-01-15</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;">**决策**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: 采用 Next.js + Supabase 技术栈</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;">**原因**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 团队熟悉 React</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Supabase 降低后端复杂度</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 快速原型开发</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;">**执行**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: @dev 负责技术选型验证</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">## 2024-01-14</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;">**决策**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: 定价采用分层订阅模式</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;">**原因**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 降低用户门槛</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 提供升级空间</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 易于扩展</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;">**执行**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: @josh 设计定价方案</span></span></code></pre></div><h3 id="project-status-md-项目状态" tabindex="-1">PROJECT_STATUS.md - 项目状态 <a class="header-anchor" href="#project-status-md-项目状态" aria-label="Permalink to &quot;PROJECT_STATUS.md - 项目状态&quot;">​</a></h3><div class="language-markdown vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">markdown</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;"># 📊 项目状态</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">## 整体进度: 35%</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">### 模块进度</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">| 模块 | 状态 | 负责人 |</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">|------|------|--------|</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">| 用户认证 | 80% | @dev |</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">| 数据库设计 | 100% | @dev |</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">| API 开发 | 60% | @dev |</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">| 前端 UI | 40% | @dev |</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">| 定价系统 | 20% | @josh |</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">| 内容策略 | 10% | @marketing |</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">### 风险项</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">1.</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> ⚠️ 用户认证集成复杂度高于预期</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">2.</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> ⚡ 数据库查询性能需要优化</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">3.</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 📅 测试用户招募进度滞后</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">### 今日重点</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> [ ] 完成 OAuth 集成</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> [ ] 设计定价页面</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> [ ] 准备测试邀请文案</span></span></code></pre></div><hr><h2 id="_1-6-telegram-路由配置" tabindex="-1">1.6 Telegram 路由配置 <a class="header-anchor" href="#_1-6-telegram-路由配置" aria-label="Permalink to &quot;1.6 Telegram 路由配置&quot;">​</a></h2><h3 id="创建-telegram-组" tabindex="-1">创建 Telegram 组 <a class="header-anchor" href="#创建-telegram-组" aria-label="Permalink to &quot;创建 Telegram 组&quot;">​</a></h3><ol><li>创建新 Telegram 组</li><li>添加所有 Agent Bot</li><li>设置组名为 &quot;Team&quot;</li></ol><h3 id="配置路由" tabindex="-1">配置路由 <a class="header-anchor" href="#配置路由" aria-label="Permalink to &quot;配置路由&quot;">​</a></h3><div class="language-yaml vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">yaml</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># ~/openclaw-teams/founder-team/routing.yaml</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">telegram</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">  group_name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Team&quot;</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">  routing</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">    # 精确匹配</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    &quot;@milo&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">milo</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    &quot;@josh&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">josh</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    &quot;@marketing&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">marketing</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    &quot;@dev&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">dev</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">    # 广播</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    &quot;@all&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">broadcast</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">    # 默认</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    default</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">milo</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">  triggers</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">    # 关键词触发</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    &quot;代码&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">dev</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    &quot;开发&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">dev</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    &quot;营收&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">josh</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    &quot;增长&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">josh</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    &quot;内容&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">marketing</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    &quot;推广&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">marketing</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    &quot;规划&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">milo</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    &quot;战略&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">milo</span></span></code></pre></div><h3 id="路由工作流程" tabindex="-1">路由工作流程 <a class="header-anchor" href="#路由工作流程" aria-label="Permalink to &quot;路由工作流程&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>┌─────────────────────────────────────────────────────────────┐</span></span>
+<span class="line"><span>│                   Telegram 消息路由                          │</span></span>
+<span class="line"><span>├─────────────────────────────────────────────────────────────┤</span></span>
+<span class="line"><span>│                                                             │</span></span>
+<span class="line"><span>│  用户发送: &quot;@dev 帮我审查这段代码&quot;                          │</span></span>
+<span class="line"><span>│       │                                                     │</span></span>
+<span class="line"><span>│       ▼                                                     │</span></span>
+<span class="line"><span>│  ┌─────────────────────────────────────────────────────┐   │</span></span>
+<span class="line"><span>│  │  1. 检测 @tag                                         │   │</span></span>
+<span class="line"><span>│  │  2. 匹配到 dev Agent                                  │   │</span></span>
+<span class="line"><span>│  │  3. 读取共享上下文 (goals/status/decisions)           │   │</span></span>
+<span class="line"><span>│  │  4. 读取 dev 私人记忆                                  │   │</span></span>
+<span class="line"><span>│  │  5. 处理请求                                           │   │</span></span>
+<span class="line"><span>│  │  6. 更新共享状态                                       │   │</span></span>
+<span class="line"><span>│  │  7. 返回结果                                           │   │</span></span>
+<span class="line"><span>│  └─────────────────────────────────────────────────────┘   │</span></span>
+<span class="line"><span>│                                                             │</span></span>
+<span class="line"><span>└─────────────────────────────────────────────────────────────┘</span></span></code></pre></div><hr><h2 id="_1-7-定时任务配置" tabindex="-1">1.7 定时任务配置 <a class="header-anchor" href="#_1-7-定时任务配置" aria-label="Permalink to &quot;1.7 定时任务配置&quot;">​</a></h2><h3 id="cron-配置" tabindex="-1">cron 配置 <a class="header-anchor" href="#cron-配置" aria-label="Permalink to &quot;cron 配置&quot;">​</a></h3><div class="language-yaml vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">yaml</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># ~/openclaw-teams/founder-team/schedules.yaml</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">schedules</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">  # Milo 早间站会</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  - </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">morning_standup</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    agent</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">milo</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    cron</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;0 8 * * 1-5&quot;</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    prompt</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">|</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      汇总昨晚所有 Agent 的活动，生成早间站会报告。</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      格式：</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      ## 站会 - {日期}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      ### 昨日完成</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      - [Agent]: 任务</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      ### 今日计划</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      - [Agent]: 任务</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      ### 障碍</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      - 问题描述</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      请读取共享状态文件获取详细信息。</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">  # Josh 指标汇总</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  - </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">metrics_summary</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    agent</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">josh</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    cron</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;0 9 * * 1-5&quot;</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    prompt</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">|</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      拉取并汇总关键指标：</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      - 用户注册数</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      - 活跃用户数</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      - 营收数据（如可用）</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      生成简短报告，标注趋势。</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">  # Marketing 内容创意</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  - </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">content_ideas</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    agent</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">marketing</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    cron</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;0 10 * * 1-5&quot;</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    prompt</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">|</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      基于当前趋势，生成 3 个内容创意。</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      参考：</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      - HackerNews 热门</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      - Reddit 相关讨论</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      - 竞品动态</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      格式：</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      ## 内容创意</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      ### 创意 1</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      标题: xxx</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      平台: xxx</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      要点: xxx</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">  # Milo 晚间总结</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  - </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">end_of_day</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    agent</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">milo</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    cron</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;0 18 * * 1-5&quot;</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    prompt</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">|</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      生成今日总结报告。</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      包含：</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      - 完成的 OKR 进度</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      - 各 Agent 工作汇总</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      - 明日重点</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">      更新 GOALS.md 和 STATUS.md</span></span></code></pre></div><h3 id="启用定时任务" tabindex="-1">启用定时任务 <a class="header-anchor" href="#启用定时任务" aria-label="Permalink to &quot;启用定时任务&quot;">​</a></h3><div class="language-bash vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">bash</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 在 OpenClaw 中加载定时任务</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">openclaw</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> cron</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> load</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> ~/openclaw-teams/founder-team/schedules.yaml</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 查看任务</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">openclaw</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> cron</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> list</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 启用</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">openclaw</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> cron</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> enable</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --all</span></span></code></pre></div><hr><h2 id="_1-8-agent-协作示例" tabindex="-1">1.8 Agent 协作示例 <a class="header-anchor" href="#_1-8-agent-协作示例" aria-label="Permalink to &quot;1.8 Agent 协作示例&quot;">​</a></h2><h3 id="场景-新功能开发" tabindex="-1">场景：新功能开发 <a class="header-anchor" href="#场景-新功能开发" aria-label="Permalink to &quot;场景：新功能开发&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>用户: &quot;@milo 我们需要做一个用户数据分析功能&quot;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>---</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>@milo:</span></span>
+<span class="line"><span>收到！让我协调团队完成这个任务。</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>@josh 分析一下竞品的数据分析功能，我们做什么差异化？</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>---</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>@josh:</span></span>
+<span class="line"><span>调研完成：</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>竞品分析 - 数据分析功能:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>| 功能 | 竞品A | 竞品B | 我们 |</span></span>
+<span class="line"><span>|------|-------|-------|-----|</span></span>
+<span class="line"><span>| 实时数据 | ✅ | ✅ | ❌ |</span></span>
+<span class="line"><span>| 自定义报表 | ✅ | ❌ | ✅ |</span></span>
+<span class="line"><span>| AI 洞察 | ❌ | ✅ | ❌ |</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>建议：</span></span>
+<span class="line"><span>- 重点做自定义报表（竞品B没有）</span></span>
+<span class="line"><span>- 添加基础 AI 洞察（竞品A没有）</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>---</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>@milo:</span></span>
+<span class="line"><span>好的，@marketing 做一个竞品内容调研，了解用户需求</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>@dev 技术可行性评估</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>---</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>@marketing:</span></span>
+<span class="line"><span>Reddit/HN 用户调研：</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>痛点：</span></span>
+<span class="line"><span>- &quot;现有工具太复杂&quot;</span></span>
+<span class="line"><span>- &quot;想要即时洞察&quot;</span></span>
+<span class="line"><span>- &quot;价格太高&quot;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>机会：</span></span>
+<span class="line"><span>- 简单易用的 AI 分析</span></span>
+<span class="line"><span>- 免费版基础功能</span></span>
+<span class="line"><span>- 引导式分析流程</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>---</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>@dev:</span></span>
+<span class="line"><span>技术评估：</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>方案 A: 自建 + AI API</span></span>
+<span class="line"><span>- 优点: 灵活</span></span>
+<span class="line"><span>- 成本: $500/月</span></span>
+<span class="line"><span>- 开发时间: 2周</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>方案 B: 第三方分析 + AI 层</span></span>
+<span class="line"><span>- 优点: 快</span></span>
+<span class="line"><span>- 成本: $200/月</span></span>
+<span class="line"><span>- 开发时间: 1周</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>推荐: 方案 B</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>---</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>@milo:</span></span>
+<span class="line"><span>汇总完成，决策建议：</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>## 用户数据分析功能 - 方案</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>**核心功能**:</span></span>
+<span class="line"><span>1. 自定义报表（差异化）</span></span>
+<span class="line"><span>2. AI 洞察（差异化）</span></span>
+<span class="line"><span>3. 实时数据（基础）</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>**定价**: $29/月</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>**时间**: 2周</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>@dev 开始技术实现</span></span>
+<span class="line"><span>@josh 制定推广计划</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>---</span></span></code></pre></div><hr><h2 id="_1-9-最佳实践" tabindex="-1">1.9 最佳实践 <a class="header-anchor" href="#_1-9-最佳实践" aria-label="Permalink to &quot;1.9 最佳实践&quot;">​</a></h2><h3 id="agent-命名规范" tabindex="-1">Agent 命名规范 <a class="header-anchor" href="#agent-命名规范" aria-label="Permalink to &quot;Agent 命名规范&quot;">​</a></h3><div class="language-markdown vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">markdown</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;"># SOUL.md 结构</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">## 身份</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 名字和角色</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 性格特点</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">## 职责</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 核心职责 (3-5条)</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 不涉及的职责（边界）</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">## 沟通风格</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 语气</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 格式偏好</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">## 上下文</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 需要读取的共享文件</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 需要维护的私人文件</span></span></code></pre></div><h3 id="避免的问题" tabindex="-1">避免的问题 <a class="header-anchor" href="#避免的问题" aria-label="Permalink to &quot;避免的问题&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>★ Insight ─────────────────────────────────────</span></span>
+<span class="line"><span>常见错误：</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>1. ❌ Agent 职责重叠</span></span>
+<span class="line"><span>   → 明确定义边界</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>2. ❌ 共享记忆混乱</span></span>
+<span class="line"><span>   → 定期整理结构</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>3. ❌ 单一 Agent 过载</span></span>
+<span class="line"><span>   → 分散任务到专业 Agent</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>4. ❌ 缺乏明确目标</span></span>
+<span class="line"><span>   → 每周更新 OKR</span></span>
+<span class="line"><span>─────────────────────────────────────────────────</span></span></code></pre></div><h3 id="调试技巧" tabindex="-1">调试技巧 <a class="header-anchor" href="#调试技巧" aria-label="Permalink to &quot;调试技巧&quot;">​</a></h3><div class="language-bash vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">bash</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 查看 Agent 活动日志</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">openclaw</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> sessions</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> list</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> milo</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">openclaw</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> sessions</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> history</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> milo</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 调试特定 Agent</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">openclaw</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> chat</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --agent</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> milo</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --debug</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 查看共享记忆</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">cat</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> ~/openclaw-teams/founder-team/shared/status/README.md</span></span></code></pre></div><hr><h2 id="_1-10-扩展建议" tabindex="-1">1.10 扩展建议 <a class="header-anchor" href="#_1-10-扩展建议" aria-label="Permalink to &quot;1.10 扩展建议&quot;">​</a></h2><h3 id="添加更多-agent" tabindex="-1">添加更多 Agent <a class="header-anchor" href="#添加更多-agent" aria-label="Permalink to &quot;添加更多 Agent&quot;">​</a></h3><div class="language-yaml vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">yaml</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># QA - 测试工程师</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">qa</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">model</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">claude-haiku-4-20250514</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">persona</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">|</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  你是 QA 工程师，负责测试和质量保证。</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  职责：</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 编写测试用例</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - 执行测试</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  - Bug 验证</span></span></code></pre></div><h3 id="集成外部工具" tabindex="-1">集成外部工具 <a class="header-anchor" href="#集成外部工具" aria-label="Permalink to &quot;集成外部工具&quot;">​</a></h3><div class="language-yaml vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">yaml</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 添加 JIRA 集成</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">integrations</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">  jira</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    enabled</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">true</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    projects</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">      - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">MVP</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 添加 GitHub 集成</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">integrations</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">  github</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    enabled</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">true</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    repo</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">org/project</span></span></code></pre></div><h3 id="多团队管理" tabindex="-1">多团队管理 <a class="header-anchor" href="#多团队管理" aria-label="Permalink to &quot;多团队管理&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>openclaw-teams/</span></span>
+<span class="line"><span>├── founder-team/      # 创始人团队</span></span>
+<span class="line"><span>├── product-team/      # 产品团队</span></span>
+<span class="line"><span>└── marketing-team/   # 市场团队</span></span></code></pre></div><hr><h2 id="本章小结" tabindex="-1">本章小结 <a class="header-anchor" href="#本章小结" aria-label="Permalink to &quot;本章小结&quot;">​</a></h2><ol><li><strong>团队架构</strong>: 4 个专业 Agent + 共享记忆</li><li><strong>单一入口</strong>: Telegram 组统一管理</li><li><strong>定时任务</strong>: 自动化的日常协调</li><li><strong>协作流程</strong>: 完整的工作流程示例</li></ol><h2 id="下一步" tabindex="-1">下一步 <a class="header-anchor" href="#下一步" aria-label="Permalink to &quot;下一步&quot;">​</a></h2><ul><li>尝试运行你的第一个 AI 团队</li><li>根据实际需求调整 Agent 配置</li><li>添加更多专业能力</li></ul><hr><h2 id="参考资源" tabindex="-1">参考资源 <a class="header-anchor" href="#参考资源" aria-label="Permalink to &quot;参考资源&quot;">​</a></h2><ul><li><a href="https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/multi-agent-team.md" target="_blank" rel="noreferrer">awesome-openclaw-usecases - Multi-Agent Team</a></li><li><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noreferrer">OpenClaw Subagent 文档</a></li><li><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noreferrer">Anthropic: Building Effective Agents</a></li></ul></div></div></main><footer class="VPDocFooter" data-v-39a288b8 data-v-e257564d><!--[--><!--]--><!----><!----></footer><!--[--><!--]--></div></div></div><!--[--><!--]--></div></div><!----><!--[--><!--]--></div></div>
+    <script>window.__VP_HASH_MAP__=JSON.parse("{\"chapters_01_认识openclaw_0-章节导读.md\":\"DIAjVkp8\",\"chapters_01_认识openclaw_1.1_history.md\":\"BkpRomZJ\",\"chapters_01_认识openclaw_1.2_architecture.md\":\"BqiHiAgm\",\"chapters_01_认识openclaw_1.3_comparison.md\":\"CSQiQm6S\",\"chapters_01_认识openclaw_1.4_use_cases.md\":\"DtugY8Uh\",\"chapters_01_认识openclaw_readme.md\":\"CGA0FE0z\",\"chapters_02_快速部署_0-章节导读.md\":\"C1woRxve\",\"chapters_02_快速部署_2.10_mobile.md\":\"Bs7n8AKL\",\"chapters_02_快速部署_2.1_requirements.md\":\"CtsCGrE_\",\"chapters_02_快速部署_2.2_installation.md\":\"Cb3B87Zk\",\"chapters_02_快速部署_2.3_configuration.md\":\"DxpT7YZo\",\"chapters_02_快速部署_2.4_first_run.md\":\"DxMEc5g2\",\"chapters_02_快速部署_2.5_docker.md\":\"CEsFo05i\",\"chapters_02_快速部署_2.6_cloud.md\":\"D5XXABql\",\"chapters_02_快速部署_2.7_local.md\":\"BNDv-UU5\",\"chapters_02_快速部署_2.8_cloud_fly.md\":\"CMB9qBo3\",\"chapters_02_快速部署_2.9_cloud_advanced.md\":\"CeP4-w5z\",\"chapters_02_快速部署_2026-04-07新手入门完全指南.md\":\"DcQXelZv\",\"chapters_02_快速部署_readme.md\":\"74R_3a2a\",\"chapters_03_agent运行循环_0-章节导读.md\":\"CizbAU0u\",\"chapters_03_agent运行循环_3.10_session_routing.md\":\"DGzEVNhp\",\"chapters_03_agent运行循环_3.11_session_context.md\":\"BA3lz95p\",\"chapters_03_agent运行循环_3.12_runtime_sandbox.md\":\"618ONgCr\",\"chapters_03_agent运行循环_3.1_agent_loop.md\":\"C_G5XUaZ\",\"chapters_03_agent运行循环_3.2_first_command.md\":\"oj2Jx85_\",\"chapters_03_agent运行循环_3.3_workspace.md\":\"Dx9dfqA6\",\"chapters_03_agent运行循环_3.4_memory.md\":\"heiRvSw5\",\"chapters_03_agent运行循环_3.5_daily_memory.md\":\"xfVjRYSV\",\"chapters_03_agent运行循环_3.6_multi_workspace.md\":\"DsVqVEVQ\",\"chapters_03_agent运行循环_3.7_message_routing.md\":\"DvG3-Pab\",\"chapters_03_agent运行循环_3.8_group_multi_agent.md\":\"RnZsut3v\",\"chapters_03_agent运行循环_3.9_session.md\":\"C9nTMC0t\",\"chapters_03_agent运行循环_openclaw workspace 维护指南.md\":\"DXdGPIFB\",\"chapters_03_agent运行循环_readme.md\":\"CytJC4hg\",\"chapters_04_模型配置_4.1_providers_overview.md\":\"DsMT17uC\",\"chapters_04_模型配置_4.2_deepseek_config.md\":\"B4IUIDof\",\"chapters_04_模型配置_4.3_openai_config.md\":\"BJNytWyc\",\"chapters_04_模型配置_4.4_anthropic_config.md\":\"BbK97-3F\",\"chapters_04_模型配置_4.5_ollama_config.md\":\"BsKElVpa\",\"chapters_04_模型配置_4.6_model_switch_tools.md\":\"Cfz4AMVu\",\"chapters_04_模型配置_4.7_telegram_group_multi_agent.md\":\"BQbMBxwq\",\"chapters_04_模型配置_readme.md\":\"DAOCDfe2\",\"chapters_05_渠道集成_5.10_whatsapp集成.md\":\"ffbBqnjc\",\"chapters_05_渠道集成_5.11_signal集成.md\":\"NnSWRfSj\",\"chapters_05_渠道集成_5.12_line集成.md\":\"CnXwQBJK\",\"chapters_05_渠道集成_5.13_microsoft_teams集成.md\":\"DjNotf5H\",\"chapters_05_渠道集成_5.14_webhook配置.md\":\"QxNDGFas\",\"chapters_05_渠道集成_5.15_自定义通道.md\":\"D5DWI-zA\",\"chapters_05_渠道集成_5.1_渠道系统概述.md\":\"De-r3T-S\",\"chapters_05_渠道集成_5.2_中国平台概述.md\":\"DNOMCCyu\",\"chapters_05_渠道集成_5.3_飞书集成.md\":\"CA_7_Lg-\",\"chapters_05_渠道集成_5.4_钉钉集成.md\":\"BARlkr60\",\"chapters_05_渠道集成_5.5_企业微信集成.md\":\"BDNycHRw\",\"chapters_05_渠道集成_5.6_qq集成.md\":\"DBnCp7Po\",\"chapters_05_渠道集成_5.7_telegram集成.md\":\"C8w07Jal\",\"chapters_05_渠道集成_5.8_discord集成.md\":\"KyRAllWS\",\"chapters_05_渠道集成_5.9_slack集成.md\":\"CIOchfO4\",\"chapters_05_渠道集成_readme.md\":\"DKqv1WoN\",\"chapters_06_上下文与记忆_6.1_context_system.md\":\"C00wpayQ\",\"chapters_06_上下文与记忆_6.2_message_history.md\":\"BLllN-Rz\",\"chapters_06_上下文与记忆_6.3_memory_system.md\":\"DhSA4EOg\",\"chapters_06_上下文与记忆_6.4_persona_config.md\":\"DKrfaG-c\",\"chapters_06_上下文与记忆_6.5_longterm_memory.md\":\"BlnBVB7A\",\"chapters_06_上下文与记忆_6.6_six_layer_memory.md\":\"B0Z3o-yF\",\"chapters_06_上下文与记忆_ai记忆系统横向对比.md\":\"Bsp3GBer\",\"chapters_06_上下文与记忆_lossless-claw与memory-lancedb-pro对比.md\":\"ZrdAYM9c\",\"chapters_06_上下文与记忆_memory-lancedb-pro 使用教程.md\":\"D6-lxyN0\",\"chapters_06_上下文与记忆_openclaw内部提示词全解析.md\":\"BLGJM8LZ\",\"chapters_06_上下文与记忆_readme.md\":\"D4VMA2ZY\",\"chapters_06_上下文与记忆_内存插件使用教程.md\":\"Dul-klCp\",\"chapters_06_上下文与记忆_知识蒸馏与遗忘机制.md\":\"Bm41CDlM\",\"chapters_07_agent协作_7.x_six_layer_framework.md\":\"Ck0VnoqY\",\"chapters_07_agent协作_six-layer-optimization_skill.md\":\"DtAWCQ-S\",\"chapters_07_代码开发辅助_readme.md\":\"DjOdahqc\",\"chapters_08_插件与工具_8.1_plugin_comparison.md\":\"DWVlNhDz\",\"chapters_09_日程任务自动化_0-章节导读.md\":\"DUNCG4Rd\",\"chapters_09_日程任务自动化_5-3_workflow-automation-原chapters.md\":\"BSwAYXvB\",\"chapters_09_日程任务自动化_9.1_automation_overview.md\":\"CDkV0WAB\",\"chapters_09_日程任务自动化_9.2_scheduled_tasks.md\":\"drcPdevg\",\"chapters_09_日程任务自动化_9.3_webhook_trigger.md\":\"vSjJQiqe\",\"chapters_09_日程任务自动化_9.4_workflow_automation.md\":\"Ch3YRUt3\",\"chapters_09_日程任务自动化_9.5_examples.md\":\"B-3K_R87\",\"chapters_09_日程任务自动化_9.6_heartbeat_vs_cron.md\":\"DpICjwFz\",\"chapters_09_日程任务自动化_9.7_agent_cron.md\":\"CufNXycQ\",\"chapters_09_日程任务自动化_readme.md\":\"eqEJzR-L\",\"chapters_10_工具与skills系统_10.10_skills_occupation.md\":\"C6NgjU3x\",\"chapters_10_工具与skills系统_10.1_tools_overview.md\":\"guF-gzHW\",\"chapters_10_工具与skills系统_10.2_builtin_tools.md\":\"Bs6RVZVi\",\"chapters_10_工具与skills系统_10.3_skills_system.md\":\"DJj4R94s\",\"chapters_10_工具与skills系统_10.4_skill_market.md\":\"w_jRx7mR\",\"chapters_10_工具与skills系统_10.5_custom_skill.md\":\"DigWePjH\",\"chapters_10_工具与skills系统_10.6_builtin_skills.md\":\"HPp38s51\",\"chapters_10_工具与skills系统_10.7.1_browser_overview.md\":\"BHPJr63k\",\"chapters_10_工具与skills系统_10.7.2_browser_config.md\":\"Cr2dNTxa\",\"chapters_10_工具与skills系统_10.7.3_browser_actions.md\":\"9rOI5AcF\",\"chapters_10_工具与skills系统_10.7.4_browser_snapshot.md\":\"BPaa92Hr\",\"chapters_10_工具与skills系统_10.7.5_chrome_extension.md\":\"BfasMUvr\",\"chapters_10_工具与skills系统_10.7.6_browser_troubleshooting.md\":\"DkHY_SkX\",\"chapters_10_工具与skills系统_10.8_clawhub.md\":\"BxWN7ePR\",\"chapters_10_工具与skills系统_10.9_skills_scenarios.md\":\"D4EHsSr8\",\"chapters_10_工具与skills系统_lossless-claw 使用教程.md\":\"DpD-6KJT\",\"chapters_10_工具与skills系统_readme.md\":\"DCcQ9J1O\",\"chapters_10_浏览器与系统操作_10.11_file_system.md\":\"DQmjTyP_\",\"chapters_10_浏览器与系统操作_10.12_cli_exec.md\":\"BGcqseH-\",\"chapters_10_浏览器与系统操作_10.13_screenshot_clipboard.md\":\"lk2xQQ0X\",\"chapters_10_浏览器与系统操作_10.3_browser_automation.md\":\"pUhAE8it\",\"chapters_10_浏览器与系统操作_10.4_web_api.md\":\"DWr1s8Uu\",\"chapters_10_浏览器与系统操作_10.5_database_ops.md\":\"CGkho818\",\"chapters_10_浏览器与系统操作_10.6_calendar.md\":\"BiM-x-LS\",\"chapters_10_浏览器与系统操作_10.7_process_canvas.md\":\"JjGAd9fA\",\"chapters_10_浏览器与系统操作_10.8_voice_media.md\":\"Bilo1iRl\",\"chapters_10_浏览器与系统操作_10.9_email.md\":\"AhuBTHYl\",\"chapters_10_浏览器与系统操作_browser-use-教程.md\":\"CXwy6Miz\",\"chapters_10_浏览器与系统操作_readme.md\":\"CwR7Jl3f\",\"chapters_11_自定义web界面_11-2_plugin-development.md\":\"CDup27sX\",\"chapters_11_自定义web界面_11.1_webui_overview.md\":\"BJb3fehd\",\"chapters_11_自定义web界面_11.2_star_office_ui.md\":\"DqM8yRgU\",\"chapters_11_自定义web界面_11.3_webclaw.md\":\"Bi5lZ4cB\",\"chapters_11_自定义web界面_11.4_clawdeck.md\":\"8PR_RNjW\",\"chapters_11_自定义web界面_11.5_lobsterboard.md\":\"BPtl_MZf\",\"chapters_11_自定义web界面_readme.md\":\"Bz19F125\",\"chapters_12_云端部署_openclaw_docker部署agent原理与架构.md\":\"PdWyNngD\",\"chapters_12_云端部署_readme.md\":\"zjyJdk1G\",\"chapters_13_安全配置_13.1_security_overview.md\":\"Bsph1GEB\",\"chapters_13_安全配置_13.2_permission.md\":\"DPwPi-Ga\",\"chapters_13_安全配置_13.3_data_security.md\":\"EfmWeyyU\",\"chapters_13_安全配置_13.4_audit_log.md\":\"D0gxXkRP\",\"chapters_13_安全配置_13.5_auth_profiles.md\":\"Do0bTaTt\",\"chapters_13_安全配置_13.6_secrets_management.md\":\"PbrU8lBs\",\"chapters_13_安全配置_readme.md\":\"D86LytaI\",\"chapters_14_监控维护_14.1_gateway_overview.md\":\"BuFen0Gq\",\"chapters_14_监控维护_14.1_会话重连与数据持久化实战.md\":\"Dl7d486_\",\"chapters_14_监控维护_14.2_api_config.md\":\"99VgAIAR\",\"chapters_14_监控维护_14.2_read工具路径验证实战.md\":\"DTDj67-P\",\"chapters_14_监控维护_14.3_auth_config.md\":\"CqChKuAW\",\"chapters_14_监控维护_14.3_webchat性能与ui问题实战.md\":\"KONvR181\",\"chapters_14_监控维护_14.4_rate_limit.md\":\"Chht2AUU\",\"chapters_14_监控维护_14.5_monitoring.md\":\"DiKYdhUe\",\"chapters_14_监控维护_14.6_gateway_protocol.md\":\"CXbWzP4a\",\"chapters_14_监控维护_14.7_command_queue.md\":\"CVeqPW_L\",\"chapters_14_监控维护_14.8_retry_policy.md\":\"CDdmg2Rw\",\"chapters_14_监控维护_15.1_startup_issues.md\":\"aLMbS5JV\",\"chapters_14_监控维护_15.2_channel_issues.md\":\"B7kg_Q1p\",\"chapters_14_监控维护_15.3_tool_issues.md\":\"DjLmkHm7\",\"chapters_14_监控维护_15.4_model_issues.md\":\"DULho22v\",\"chapters_14_监控维护_15.5_memory_issues.md\":\"a-TA-eaU\",\"chapters_14_监控维护_15.6_discord_websocket_issues.md\":\"2EJDdmEX\",\"chapters_14_监控维护_gateway_api参考手册.md\":\"DqXOhaBR\",\"chapters_14_监控维护_queue-collect-幻觉执行风险.md\":\"CLN-TRy5\",\"chapters_14_监控维护_readme.md\":\"Wjabg-jC\",\"chapters_16_扩展开发_16.1_extension_overview.md\":\"C9t5sJq9\",\"chapters_16_扩展开发_16.2_plugin_dev.md\":\"BCJzLodl\",\"chapters_16_扩展开发_16.3_custom_tool.md\":\"i73_D_C7\",\"chapters_16_扩展开发_16.4_plugin_install.md\":\"DAjIZos5\",\"chapters_16_扩展开发_16.5_plugin_common.md\":\"B7RSsvsi\",\"chapters_16_扩展开发_16.6_hook_events.md\":\"00uQ75Ui\",\"chapters_16_扩展开发_16.7_star_office_ui.md\":\"B2JCUuE1\",\"chapters_16_扩展开发_manifest 智能路由插件使用教程.md\":\"Nq4Oykfv\",\"chapters_16_扩展开发_readme.md\":\"D0H3gAw4\",\"chapters_17_进阶专题_17.1_pi.md\":\"CX0rYARl\",\"chapters_17_进阶专题_17.2_tts.md\":\"m7aX0OzH\",\"chapters_17_进阶专题_17.3_nodes.md\":\"vKoSA1cM\",\"chapters_17_进阶专题_readme.md\":\"B4y0y1_3\",\"chapters_18_skills开发_18-10_recommended-skills.md\":\"rKrcgdMN\",\"chapters_18_skills开发_18-11_agent-mode.md\":\"Bx-EZAEA\",\"chapters_18_skills开发_18-12_remote-access.md\":\"Q7IlReZy\",\"chapters_18_skills开发_18-13_knowledge-graph.md\":\"DI7H-5Aq\",\"chapters_18_skills开发_18-14_excalidraw-diagram.md\":\"BKbpd-0v\",\"chapters_18_skills开发_18-15_scientific-plotting.md\":\"CpY7wfG2\",\"chapters_18_skills开发_18-16_visualization-tools.md\":\"B9kc-Xpr\",\"chapters_18_skills开发_18-17_ai-auto-visualization.md\":\"6TluIu0g\",\"chapters_18_skills开发_18-18_知识蒸馏.md\":\"iNsXliDZ\",\"chapters_18_skills开发_18-19_skills创建工具全景.md\":\"BmKEWRhX\",\"chapters_18_skills开发_18-20_skill_seekers深度解析.md\":\"DPcLKgj2\",\"chapters_18_skills开发_18-21_rag与skills对比.md\":\"mKwP1REB\",\"chapters_18_skills开发_18-8_ontology知识图谱.md\":\"BlP8s6Y1\",\"chapters_18_skills开发_18-9_proactive-self-improving.md\":\"BnzY6xws\",\"chapters_18_skills开发_readme.md\":\"BbttBQbr\",\"chapters_19_agent管理专题_01-youtube-agent.md\":\"BubOsWsC\",\"chapters_19_agent管理专题_02-gateway-fail.md\":\"Dbd6ZX3j\",\"chapters_19_agent管理专题_03-create-flow.md\":\"lz0zSThK\",\"chapters_19_agent管理专题_04-multi-agent.md\":\"DOP9ikm0\",\"chapters_19_agent管理专题_05-workspace.md\":\"CY4oHdnB\",\"chapters_19_agent管理专题_06-openclaw-vs-clawd.md\":\"DICxFiTL\",\"chapters_19_agent管理专题_07-lifecycle.md\":\"BD8BKlNi\",\"chapters_19_agent管理专题_08-migration.md\":\"DWBQWB9Q\",\"chapters_19_agent管理专题_09-skills.md\":\"ezXr2aW0\",\"chapters_19_agent管理专题_10-workflow-automation.md\":\"Out_2Dnj\",\"chapters_19_agent管理专题_10-yunying-aigc.md\":\"CGpxh9Ll\",\"chapters_19_agent管理专题_11-meta-team-design.md\":\"BVY_UJgq\",\"chapters_19_agent管理专题_11-openclaw-config-guide.md\":\"WmWKbWRU\",\"chapters_19_agent管理专题_12-telegram-group-setup-guide.md\":\"DI3WgdU5\",\"chapters_19_agent管理专题_14-openclaw-memory-guide.md\":\"CJiCDl-h\",\"chapters_19_agent管理专题_15-memory-memos-openviking.md\":\"nl6t8-UA\",\"chapters_19_agent管理专题_16-openclaw-agent-architecture.md\":\"oePdepZy\",\"chapters_19_agent管理专题_17-agent-routing-strategies.md\":\"DTFFLxAF\",\"chapters_19_agent管理专题_18-agent-types-deep-dive.md\":\"BsFLMJbZ\",\"chapters_19_agent管理专题_19-1_openclaw-workflow-integration.md\":\"DDvRGZOD\",\"chapters_19_agent管理专题_19-openclaw-modes-guide.md\":\"jaOIt2fc\",\"chapters_19_agent管理专题_19-x_subagent-timeout.md\":\"CHe53UZd\",\"chapters_19_agent管理专题_20-agent-cli-tools.md\":\"Ds95cK2E\",\"chapters_19_agent管理专题_21-cli-conversion-tools.md\":\"eo-1rdz_\",\"chapters_19_agent管理专题_22-cli-packaging-philosophy.md\":\"BDkHmAm-\",\"chapters_19_agent管理专题_23-paradigm-shift-dev-to-agent-era.md\":\"Btu0xE1B\",\"chapters_19_agent管理专题_24-openclaw-claude-code-integration.md\":\"M5LU47R_\",\"chapters_19_agent管理专题_25-remote-access-dashboard.md\":\"VFzxd9o9\",\"chapters_19_agent管理专题_26-dashboard-research-comparison.md\":\"DfPSIAw5\",\"chapters_19_agent管理专题_27-agent-team-methodology-optimization.md\":\"CA7g2lvd\",\"chapters_19_agent管理专题_28.10_telegram_feishu_multi_agent.md\":\"CGx_ORSz\",\"chapters_19_agent管理专题_28.11_group_agent_communication.md\":\"BaUYQXaU\",\"chapters_19_agent管理专题_28.12_领域任务架构设计实战手册.md\":\"CMTAj7Su\",\"chapters_19_agent管理专题_28.1_multi_agent_overview.md\":\"Pcj_y1I_\",\"chapters_19_agent管理专题_28.2_agent_teams.md\":\"DF7k3KjA\",\"chapters_19_agent管理专题_28.3_collaboration_patterns.md\":\"CUVFD3Om\",\"chapters_19_agent管理专题_28.4_workflow_design.md\":\"4b6khO1c\",\"chapters_19_agent管理专题_28.5_case_study.md\":\"BZBQizaq\",\"chapters_19_agent管理专题_28.6_acp_agents.md\":\"Dit7Qhj6\",\"chapters_19_agent管理专题_28.7_agent_create.md\":\"Cg39F-Q5\",\"chapters_19_agent管理专题_28.8_agent_channel_binding.md\":\"kgPNNxTy\",\"chapters_19_agent管理专题_28.9_multi_agent_collaboration.md\":\"B2ObTJcn\",\"chapters_19_agent管理专题_agent-role.md\":\"BLC8SiCY\",\"chapters_19_agent管理专题_medium-33-automations.md\":\"CvIZzFKK\",\"chapters_19_agent管理专题_medium-article-research.md\":\"CTs5ycsm\",\"chapters_19_agent管理专题_readme.md\":\"B8GMG0LC\",\"chapters_19_agent管理专题_sessions_await-并行agent编排.md\":\"Dewk1bKz\",\"chapters_19_agent管理专题_skills-market-metadata.md\":\"CQq-urJe\",\"chapters_19_agent管理专题_telegram_agent_config.md\":\"ePkdxXqg\",\"chapters_19_agent管理专题_top10-profit-projects.md\":\"DWiMCYc_\",\"chapters_19_agent管理专题_生活助理团队_整合完成.md\":\"DOHrEDHd\",\"chapters_21_cli工具与命令行开发_browser-automation-tools.md\":\"CIi5EfVO\",\"chapters_21_cli工具与命令行开发_lark-cli-analysis.md\":\"BjfiGvjg\",\"chapters_21_cli工具与命令行开发_opencli-tutorial.md\":\"CVxpjhhN\",\"chapters_21_cli工具与命令行开发_qmd-tutorial.md\":\"09tlOGTg\",\"chapters_21_cli工具与命令行开发_quick-ref.md\":\"CktJTvAW\",\"chapters_21_cli工具与命令行开发_readme.md\":\"S-_uK9tt\",\"chapters_22_新兴应用场景_readme.md\":\"CMzsoqak\",\"chapters_learning_path.md\":\"BI0-NDub\",\"chapters_mo-xi_01-architecture.md\":\"CvGfOi-2\",\"chapters_mo-xi_02-workflow.md\":\"DB98deQF\",\"chapters_mo-xi_03-cdp-tools.md\":\"D8lfGa8g\",\"chapters_mo-xi_04-knowledge-base.md\":\"Cm2vQpOm\",\"chapters_mo-xi_05-quickstart.md\":\"fTFobOse\",\"chapters_mo-xi_06-scenarios.md\":\"Bi6zUaRf\",\"chapters_mo-xi_07-opencli-vs-cdp.md\":\"DgJrrLrP\",\"chapters_mo-xi_08-skill-design.md\":\"DeSFD4kr\",\"chapters_mo-xi_09-extension.md\":\"Crk_4jmG\",\"chapters_mo-xi_10-final-design.md\":\"Bli-egZ7\",\"chapters_mo-xi_11-app-automation.md\":\"Cs4APZYa\",\"chapters_mo-xi_12-supported-platforms.md\":\"-tY39ir6\",\"chapters_mo-xi_readme.md\":\"D5GS9MJu\",\"chapters_案例集_18.10_infra_cases.md\":\"ClGHsc1-\",\"chapters_案例集_18.11_research_cases.md\":\"Iw43glxS\",\"chapters_案例集_18.12_finance_cases.md\":\"CeolmYHQ\",\"chapters_案例集_18.13_ai_agent_collaboration_cases.md\":\"CNmhbpB5\",\"chapters_案例集_18.1_comprehensive_cases.md\":\"C6Xa_1lk\",\"chapters_案例集_18.2_lifestyle_cases.md\":\"D9bth5Ub\",\"chapters_案例集_18.3_content_conversion_cases.md\":\"Cvb7oRnw\",\"chapters_案例集_18.4_memory_cases.md\":\"DDrK5sO8\",\"chapters_案例集_18.5_automation_cases.md\":\"CSwGGza9\",\"chapters_案例集_18.6_data_cases.md\":\"BEA0qx--\",\"chapters_案例集_18.7_security_cases.md\":\"CuNMA6SF\",\"chapters_案例集_18.8_social_cases.md\":\"UdddaQ9x\",\"chapters_案例集_18.9_creative_cases.md\":\"fGyE6TpG\",\"chapters_案例集_project1_ai_team.md\":\"DGv_P93P\",\"chapters_案例集_project2_morning_brief.md\":\"ap842pJH\",\"chapters_案例集_project3_knowledge_rag.md\":\"DsvSD239\",\"chapters_案例集_project4_self_healing_server.md\":\"CURCWjVd\",\"chapters_案例集_project5_multi_channel_assistant.md\":\"D8W5rre5\",\"chapters_案例集_projects.md\":\"NoriKryK\",\"chapters_案例集_readme.md\":\"CgOixbhv\",\"chapters_案例集_usecases.md\":\"DFw-I14n\",\"chapters_案例集_截图完全指南.md\":\"CKTCPdAt\",\"chapters_案例集_自动化教程生成系统.md\":\"C-bAsEgm\",\"chapters_附录_appendix-a_readme.md\":\"DqWHq0Vk\",\"chapters_附录_appendix-b_readme.md\":\"BH4oe1D3\",\"chapters_附录_appendix-c_readme.md\":\"3jFm0bf_\",\"chapters_附录_appendix-d_readme.md\":\"PGClez4h\",\"chapters_附录_appendix-e_readme.md\":\"zICh4i52\",\"chapters_附录_appendix-f_readme.md\":\"B69Mi2sn\",\"chapters_附录_appendix-g_readme.md\":\"BuexTJRO\",\"chapters_附录_appendix-h_readme.md\":\"D-dCyq1z\",\"chapters_附录_readme.md\":\"B3INqUtW\",\"index.md\":\"BJzrY3Ci\",\"readme.md\":\"kIzCNhqP\"}");window.__VP_SITE_DATA__=JSON.parse("{\"lang\":\"en-US\",\"dir\":\"ltr\",\"title\":\"OpenClaw 教程\",\"description\":\"OpenClaw 完整教程 - 从入门到精通\",\"base\":\"/\",\"head\":[],\"router\":{\"prefetchLinks\":true},\"appearance\":true,\"themeConfig\":{},\"locales\":{},\"scrollOffset\":134,\"cleanUrls\":false}");</script>
+    
+  </body>
+</html>
