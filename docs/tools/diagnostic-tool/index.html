@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw 诊断工具</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding-top: 20px;
+        }
+        .header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .header p { font-size: 1.1em; opacity: 0.9; }
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .section-title {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .check-list { display: grid; gap: 12px; }
+        .check-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .check-item:hover { background: #e8e8e8; }
+        .check-item input { margin-right: 12px; width: 18px; height: 18px; }
+        .check-item.checked { background: #e8f5e9; }
+        .check-item.checked .check-text { text-decoration: line-through; opacity: 0.6; }
+        .check-text { flex: 1; }
+        .check-status { font-size: 0.85em; color: #666; }
+        .result-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: none;
+        }
+        .result-card.show { display: block; animation: slideUp 0.5s ease; }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            margin: 0 auto 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid rgba(255,255,255,0.3);
+        }
+        .score-number { font-size: 3em; font-weight: bold; }
+        .score-label { font-size: 0.9em; opacity: 0.9; }
+        .issue-list { margin-top: 20px; }
+        .issue-item {
+            background: rgba(255,255,255,0.15);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .issue-icon { font-size: 1.5em; }
+        .issue-content { flex: 1; }
+        .issue-title { font-weight: 600; margin-bottom: 5px; }
+        .issue-fix {
+            font-size: 0.9em;
+            opacity: 0.9;
+            background: rgba(255,255,255,0.1);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-top: 8px;
+            font-family: 'Consolas', monospace;
+        }
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto 0;
+            transition: transform 0.2s;
+        }
+        .btn:hover { transform: translateY(-2px); }
+        .category-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+        .tab {
+            padding: 10px 20px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s;
+        }
+        .tab.active { background: #667eea; color: white; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .hidden { display: none; }
+        .fix-btn {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85em;
+            margin-left: 10px;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.8em; }
+            .check-item { flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔧 诊断工具</h1>
+            <p>一键检测OpenClaw配置问题，自动提供修复方案</p>
+        </div>
+
+        <div class="card" id="check-card">
+            <div class="category-tabs">
+                <button class="tab active" onclick="showTab('basic')">基础检查</button>
+                <button class="tab" onclick="showTab('security')">安全检查</button>
+                <button class="tab" onclick="showTab('api')">API检查</button>
+                <button class="tab" onclick="showTab('channel')">渠道检查</button>
+            </div>
+
+            <!-- 基础检查 -->
+            <div class="tab-content active" id="tab-basic">
+                <div class="section-title">📋 基础配置检查</div>
+                <div class="check-list">
+                    <label class="check-item">
+                        <input type="checkbox" data-issue="config-format">
+                        <span class="check-text">配置文件格式正确（JSON语法）</span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox" data-issue="port-available">
+                        <span class="check-text">端口18789未被占用</span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox" data-issue="workspace-exists">
+                        <span class="check-text">工作目录存在且有权限</span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox" data-issue="env-vars">
+                        <span class="check-text">必要环境变量已设置</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 安全检查 -->
+            <div class="tab-content" id="tab-security">
+                <div class="section-title">🔒 安全配置检查</div>
+                <div class="check-list">
+                    <label class="check-item">
+                        <input type="checkbox" data-issue="api-key-env">
+                        <span class="check-text">API Key使用环境变量（非硬编码）</span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox" data-issue="gateway-auth">
+                        <span class="check-text">Gateway已启用Token认证</span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox" data-issue="tool-restrict">
+                        <span class="check-text">工具权限已限制（非全部开放）</span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox" data-issue="allowed-ips">
+                        <span class="check-text">已配置IP白名单（生产环境）</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- API检查 -->
+            <div class="tab-content" id="tab-api">
+                <div class="section-title">🔌 API连接检查</div>
+                <div class="check-list">
+                    <label class="check-item">
+                        <input type="checkbox" data-issue="api-key-valid">
+                        <span class="check-text">API Key有效且未过期</span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox" data-issue="network-connect">
+                        <span class="check-text">网络可连接到API服务商</span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox" data-issue="rate-limit">
+                        <span class="check-text">未达到API速率限制</span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox" data-issue="quota-check">
+                        <span class="check-text">API配额充足</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 渠道检查 -->
+            <div class="tab-content" id="tab-channel">
+                <div class="section-title">💬 渠道集成检查</div>
+                <div class="check-list">
+                    <label class="check-item">
+                        <input type="checkbox" data-issue="feishu-config">
+                        <span class="check-text">飞书配置正确（如启用）</span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox" data-issue="webhook-url">
+                        <span class="check-text">Webhook URL可访问</span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox" data-issue="encrypt-key">
+                        <span class="check-text">Encrypt Key配置正确</span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox" data-issue="bot-permission">
+                        <span class="check-text">机器人有所需权限</span>
+                    </label>
+                </div>
+            </div>
+
+            <button class="btn" onclick="runDiagnostic()">运行诊断</button>
+        </div>
+
+        <!-- 结果展示 -->
+        <div class="card result-card" id="result-card">
+            <div class="score-circle">
+                <div class="score-number" id="score">0</div>
+                <div class="score-label">健康度</div>
+            </div>
+            
+            <div class="issue-list" id="issue-list"></div>
+            
+            <button class="btn" onclick="resetDiagnostic()" style="background: white; color: #667eea;">重新诊断</button>
+        </div>
+    </div>
+
+    <script>
+        const fixes = {
+            'config-format': {
+                title: '配置文件格式错误',
+                fix: 'openclaw config validate'
+            },
+            'port-available': {
+                title: '端口18789被占用',
+                fix: 'lsof -i :18789 && kill -9 <PID>'
+            },
+            'workspace-exists': {
+                title: '工作目录问题',
+                fix: 'mkdir -p ~/.openclaw && chmod 755 ~/.openclaw'
+            },
+            'env-vars': {
+                title: '环境变量未设置',
+                fix: 'export DEEPSEEK_API_KEY="sk-xxx"'
+            },
+            'api-key-env': {
+                title: 'API Key硬编码风险',
+                fix: '将 "apiKey": "sk-xxx" 改为 "apiKey": "${DEEPSEEK_API_KEY}"'
+            },
+            'gateway-auth': {
+                title: 'Gateway未启用认证',
+                fix: '"auth": { "mode": "token", "token": "${GATEWAY_TOKEN}" }'
+            },
+            'tool-restrict': {
+                title: '工具权限过于宽松',
+                fix: '"exec": { "enabled": false }'
+            },
+            'allowed-ips': {
+                title: '未配置IP白名单',
+                fix: '"allowedIPs": ["10.0.0.0/8"]'
+            },
+            'api-key-valid': {
+                title: 'API Key无效',
+                fix: '检查 Key 是否过期，或重新生成'
+            },
+            'network-connect': {
+                title: '网络连接失败',
+                fix: 'ping api.deepseek.com'
+            },
+            'rate-limit': {
+                title: 'API速率限制',
+                fix: '等待1分钟后重试，或降低请求频率'
+            },
+            'quota-check': {
+                title: 'API配额不足',
+                fix: '登录控制台查看余额并充值'
+            },
+            'feishu-config': {
+                title: '飞书配置错误',
+                fix: '检查 AppID 和 AppSecret'
+            },
+            'webhook-url': {
+                title: 'Webhook不可访问',
+                fix: '确保外网可访问 https://your-domain/feishu/webhook'
+            },
+            'encrypt-key': {
+                title: 'Encrypt Key错误',
+                fix: '与飞书开发者后台的 Encrypt Key 保持一致'
+            },
+            'bot-permission': {
+                title: '机器人权限不足',
+                fix: '在飞书后台添加 im:message 权限'
+            }
+        };
+
+        // 监听checkbox变化
+        document.querySelectorAll('.check-item input').forEach(cb => {
+            cb.addEventListener('change', function() {
+                this.closest('.check-item').classList.toggle('checked', this.checked);
+            });
+        });
+
+        function showTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById('tab-' + tab).classList.add('active');
+        }
+
+        function runDiagnostic() {
+            const checked = document.querySelectorAll('.check-item input:checked');
+            const total = document.querySelectorAll('.check-item input').length;
+            const score = Math.round((checked.length / total) * 100);
+            
+            // 找出未检查的项目
+            const issues = [];
+            document.querySelectorAll('.check-item input:not(:checked)').forEach(cb => {
+                const issueKey = cb.dataset.issue;
+                if (fixes[issueKey]) {
+                    issues.push({
+                        key: issueKey,
+                        ...fixes[issueKey]
+                    });
+                }
+            });
+            
+            // 显示结果
+            document.getElementById('check-card').classList.add('hidden');
+            document.getElementById('result-card').classList.add('show');
+            
+            // 动画显示分数
+            animateScore(score);
+            
+            // 显示问题列表
+            const issueList = document.getElementById('issue-list');
+            if (issues.length === 0) {
+                issueList.innerHTML = `
+                    <div style="text-align: center; padding: 40px;">
+                        <div style="font-size: 4em; margin-bottom: 20px;">🎉</div>
+                        <div style="font-size: 1.3em; font-weight: 600;">太棒了！所有检查项通过</div>
+                        <div style="opacity: 0.9; margin-top: 10px;">你的OpenClaw配置非常健康</div>
+                    </div>
+                `;
+            } else {
+                issueList.innerHTML = `
+                    <div style="margin-bottom: 15px; font-weight: 600;">
+                        发现 ${issues.length} 个问题：
+                    </div>
+                    ${issues.map(issue => `
+                        <div class="issue-item">
+                            <div class="issue-icon">⚠️</div>
+                            <div class="issue-content">
+                                <div class="issue-title">${issue.title}</div>
+                                <div class="issue-fix">
+                                    💡 修复: ${issue.fix}
+                                    <button class="fix-btn" onclick="copyFix('${issue.fix}')">复制</button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                `;
+            }
+        }
+
+        function animateScore(target) {
+            const scoreEl = document.getElementById('score');
+            let current = 0;
+            const step = target / 30;
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                scoreEl.textContent = Math.round(current);
+                
+                // 根据分数改变颜色
+                const circle = document.querySelector('.score-circle');
+                if (current >= 80) circle.style.borderColor = '#4CAF50';
+                else if (current >= 60) circle.style.borderColor = '#FFC107';
+                else circle.style.borderColor = '#f44336';
+            }, 30);
+        }
+
+        function copyFix(text) {
+            navigator.clipboard.writeText(text);
+            const btn = event.target;
+            btn.textContent = '已复制!';
+            setTimeout(() => btn.textContent = '复制', 2000);
+        }
+
+        function resetDiagnostic() {
+            document.getElementById('check-card').classList.remove('hidden');
+            document.getElementById('result-card').classList.remove('show');
+            document.querySelectorAll('.check-item input').forEach(cb => {
+                cb.checked = false;
+                cb.closest('.check-item').classList.remove('checked');
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+/* 自定义样式 */
+
+:root {
+  --vp-c-brand: #646cff;
+  --vp-c-brand-light: #747bff;
+  --vp-c-brand-dark: #535bf2;
+}
+
+/* 深色模式适配 */
+.dark {
+  --vp-c-brand: #646cff;
+}
+
+/* 代码块样式 */
+.vp-doc pre {
+  border-radius: 8px;
+}
+
+/* 侧边栏样式 */
+.VPSidebar {
+  background-color: var(--vp-sidebar-bg-color);
+}
+
+/* 导航栏 */
+.VPNav {
+  background-color: var(--vp-nav-bg-color);
+}

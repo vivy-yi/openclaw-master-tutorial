@@ -4,6 +4,37 @@
 
 ---
 
+## 2026-04-08
+
+### 更新统计
+- 更新文档数: 4
+- 新增教程: 1 篇
+
+### 详细变更
+| 文件 | 操作 | 原因 |
+|------|------|------|
+| chapters/21_CLI工具与命令行开发/qmd-tutorial.md | new | 新增 QMD 本地文档搜索引警教程 |
+| chapters/21_CLI工具与命令行开发/README.md | update | 加入 QMD 案例 |
+| chapters/09_日程任务自动化/9.2_scheduled_tasks.md | update | 新增多群 sessionKey 配置章节 |
+| chapters/09_日程任务自动化/README.md | update | 更新 Cron sessionTarget 模式说明 |
+| chapters/09b_Cron和Session/README.md | new | 新增 Cron 和 Session 完全指南 |
+
+### 新增章节：09b Cron和Session
+- 完整教程：Cron + Session + sessionKey
+- 多群场景配置公式
+- 最佳实践模板
+- 故障排查
+
+### sessionKey 配置新增内容
+- 核心问题：isolated session + 多群场景
+- sessionKey 配置公式
+- 多群命名规范
+- 本地文档语义搜索引警
+- BM25 + 向量 + LLM 重新排序
+- MCP 服务器集成
+
+---
+
 ## 2026-04-06
 
 ### 更新统计

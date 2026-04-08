@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw 技能推荐器</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding-top: 20px;
+        }
+        .header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .header p { font-size: 1.1em; opacity: 0.9; }
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .question-title {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .option {
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .option:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+            transform: translateY(-2px);
+        }
+        .option.selected {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+        .option-icon { font-size: 2.5em; margin-bottom: 10px; }
+        .option-title { font-weight: 600; margin-bottom: 5px; }
+        .option-desc { font-size: 0.85em; opacity: 0.8; }
+        .result-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: none;
+        }
+        .result-card.show { display: block; animation: slideUp 0.5s ease; }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .result-title { font-size: 1.8em; margin-bottom: 20px; text-align: center; }
+        .skill-list { display: grid; gap: 15px; }
+        .skill-item {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .skill-icon {
+            font-size: 2em;
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .skill-info { flex: 1; }
+        .skill-name { font-weight: 600; font-size: 1.1em; margin-bottom: 5px; }
+        .skill-desc { font-size: 0.9em; opacity: 0.9; }
+        .skill-install {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto 0;
+        }
+        .progress-bar {
+            height: 4px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            position: relative;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+        }
+        .tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            margin-left: 10px;
+        }
+        .hidden { display: none; }
+        .nav-back { color: #667eea; cursor: pointer; margin-bottom: 20px; display: inline-flex; align-items: center; gap: 5px; }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.8em; }
+            .options { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧩 技能推荐器</h1>
+            <p>根据你的使用场景，推荐最适合的OpenClaw Skills</p>
+        </div>
+
+        <div class="card progress-bar">
+            <div class="progress-fill" id="progress" style="width: 0%"></div>
+        </div>
+
+        <!-- 问题1 -->
+        <div class="card question" id="q1">
+            <div class="question-title">1. 你主要想用OpenClaw做什么？</div>
+            <div class="options">
+                <div class="option" onclick="selectOption(1, 'personal', this)">
+                    <div class="option-icon">👤</div>
+                    <div class="option-title">个人效率</div>
+                    <div class="option-desc">日程管理、文件整理、知识库</div>
+                </div>
+                <div class="option" onclick="selectOption(1, 'developer', this)">
+                    <div class="option-icon">💻</div>
+                    <div class="option-title">开发辅助</div>
+                    <div class="option-desc">代码生成、Git管理、自动化</div>
+                </div>
+                <div class="option" onclick="selectOption(1, 'business', this)">
+                    <div class="option-icon">🏢</div>
+                    <div class="option-title">团队协作</div>
+                    <div class="option-desc">客服机器人、工作流、集成</div>
+                </div>
+                <div class="option" onclick="selectOption(1, 'content', this)">
+                    <div class="option-icon">✍️</div>
+                    <div class="option-title">内容创作</div>
+                    <div class="option-desc">写作辅助、多平台发布</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 问题2 -->
+        <div class="card question hidden" id="q2">
+            <div class="nav-back" onclick="goBack(1)">← 返回上一题</div>
+            <div class="question-title">2. 你主要处理什么类型的数据？</div>
+            <div class="options" id="q2-options"></div>
+        </div>
+
+        <!-- 问题3 -->
+        <div class="card question hidden" id="q3">
+            <div class="nav-back" onclick="goBack(2)">← 返回上一题</div>
+            <div class="question-title">3. 你的部署环境是？</div>
+            <div class="options">
+                <div class="option" onclick="selectOption(3, 'local', this)">
+                    <div class="option-icon">💻</div>
+                    <div class="option-title">本地/Mac</div>
+                </div>
+                <div class="option" onclick="selectOption(3, 'cloud', this)">
+                    <div class="option-icon">☁️</div>
+                    <div class="option-title">云服务器</div>
+                </div>
+                <div class="option" onclick="selectOption(3, 'docker', this)">
+                    <div class="option-icon">🐳</div>
+                    <div class="option-title">Docker</div>
+                </div>
+                <div class="option" onclick="selectOption(3, 'nas', this)">
+                    <div class="option-icon">🗄️</div>
+                    <div class="option-title">NAS</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 结果 -->
+        <div class="card result-card" id="result">
+            <div class="result-title">🎯 为你推荐的技能组合</div>
+            <div class="skill-list" id="skill-list"></div>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyConfig()">复制</button>
+                <pre id="config-code"></pre>
+            </div>
+            <button class="btn" onclick="restart()">重新测试</button>
+        </div>
+    </div>
+
+    <script>
+        const answers = {};
+        let currentQuestion = 1;
+
+        const q2Options = {
+            personal: [
+                { value: 'file', icon: '📄', title: '文档/文件', desc: 'Word、PDF、图片等' },
+                { value: 'calendar', icon: '📅', title: '日程/任务', desc: '日历、待办事项' },
+                { value: 'note', icon: '📓', title: '笔记/知识', desc: '笔记软件、知识库' }
+            ],
+            developer: [
+                { value: 'git', icon: '💻', title: '代码/Git', desc: 'Git仓库、代码审查' },
+                { value: 'docker', icon: '🐳', title: '容器/部署', desc: 'Docker、K8s' },
+                { value: 'doc', icon: '📚', title: '文档/API', desc: '技术文档、API' }
+            ],
+            business: [
+                { value: 'feishu', icon: '💬', title: 'IM/聊天', desc: '飞书、企微、钉钉' },
+                { value: 'report', icon: '📊', title: '报表/数据', desc: 'Excel、数据库' },
+                { value: 'meeting', icon: '🎤', title: '会议/语音', desc: '会议记录、语音' }
+            ],
+            content: [
+                { value: 'writing', icon: '✍️', title: '文章/文案', desc: '长文、短文、营销文案' },
+                { value: 'publish', icon: '📰', title: '多平台', desc: '公众号、知乎等' },
+                { value: 'research', icon: '🔬', title: '研究/资料', desc: '论文、资料搜集' }
+            ]
+        };
+
+        const skills = {
+            personal: {
+                file: { icon: '📁', name: 'file-organizer', title: '文件整理助手', desc: '自动整理下载文件夹，按类型分类文件', popularity: '⭐⭐⭐⭐⭐' },
+                calendar: { icon: '📅', name: 'calendar-sync', title: '日历同步', desc: '同步多平台日历，智能提醒', popularity: '⭐⭐⭐⭐' },
+                note: { icon: '📝', name: 'note-sync', title: '笔记同步', desc: '连接Notion/Obsidian，知识库管理', popularity: '⭐⭐⭐⭐' }
+            },
+            developer: {
+                git: { icon: '🔀', name: 'git-assistant', title: 'Git助手', desc: '自动生成提交信息，代码审查', popularity: '⭐⭐⭐⭐⭐' },
+                docker: { icon: '🐳', name: 'docker-manager', title: 'Docker管理', desc: '容器管理，镜像清理，日志查看', popularity: '⭐⭐⭐⭐' },
+                doc: { icon: '📚', name: 'doc-generator', title: '文档生成', desc: '自动生成API文档，代码注释', popularity: '⭐⭐⭐⭐' }
+            },
+            business: {
+                feishu: { icon: '💬', name: 'feishu-bot', title: '飞书机器人', desc: '企业微信群机器人，自动回复', popularity: '⭐⭐⭐⭐⭐' },
+                report: { icon: '📊', name: 'report-gen', title: '报表生成', desc: '自动生成日报/周报，数据汇总', popularity: '⭐⭐⭐⭐' },
+                meeting: { icon: '🎯', name: 'meeting-minutes', title: '会议纪要', desc: '语音转文字，自动生成会议纪要', popularity: '⭐⭐⭐⭐' }
+            },
+            content: {
+                writing: { icon: '✍️', name: 'writing-helper', title: '写作助手', desc: '文章润色，标题优化，SEO建议', popularity: '⭐⭐⭐⭐⭐' },
+                publish: { icon: '🚀', name: 'multi-publish', title: '多平台发布', desc: '一键发布到公众号、知乎、掘金', popularity: '⭐⭐⭐⭐' },
+                research: { icon: '🔍', name: 'research-assistant', title: '资料搜集', desc: '自动搜索资料，生成文献综述', popularity: '⭐⭐⭐⭐' }
+            }
+        };
+
+        function selectOption(q, value, el) {
+            answers['q' + q] = value;
+            document.querySelectorAll(`#q${q} .option`).forEach(opt => opt.classList.remove('selected'));
+            el.classList.add('selected');
+            
+            setTimeout(() => {
+                if (q === 1) showQ2(value);
+                else if (q === 2) showQuestion(3);
+                else if (q === 3) showResult();
+            }, 300);
+        }
+
+        function showQ2(val) {
+            const container = document.getElementById('q2-options');
+            container.innerHTML = q2Options[val].map(opt => `
+                <div class="option" onclick="selectOption(2, '${opt.value}', this)">
+                    <div class="option-icon">${opt.icon}</div>
+                    <div class="option-title">${opt.title}</div>
+                    <div class="option-desc">${opt.desc}</div>
+                </div>
+            `).join('');
+            showQuestion(2);
+        }
+
+        function showQuestion(num) {
+            document.querySelectorAll('.question').forEach(q => q.classList.add('hidden'));
+            document.getElementById('q' + num).classList.remove('hidden');
+            currentQuestion = num;
+            document.getElementById('progress').style.width = ((num-1)/3*100) + '%';
+        }
+
+        function goBack(to) { showQuestion(to); }
+
+        function showResult() {
+            document.querySelectorAll('.question, .progress-bar').forEach(el => el.classList.add('hidden'));
+            
+            const scene = answers.q1, dataType = answers.q2, env = answers.q3;
+            const recommended = [];
+            
+            if (skills[scene] && skills[scene][dataType]) {
+                recommended.push(skills[scene][dataType]);
+            }
+            
+            Object.keys(skills[scene]).forEach(key => {
+                if (key !== dataType) recommended.push(skills[scene][key]);
+            });
+            
+            if (env === 'docker') {
+                recommended.push({ icon: '🐳', name: 'docker-compose-helper', title: 'Docker Compose助手', desc: '管理Compose项目，一键启停服务', popularity: '⭐⭐⭐⭐' });
+            }
+            
+            document.getElementById('skill-list').innerHTML = recommended.map(s => `
+                <div class="skill-item">
+                    <div class="skill-icon">${s.icon}</div>
+                    <div class="skill-info">
+                        <div class="skill-name">${s.title}<span class="tag">${s.popularity}</span></div>
+                        <div class="skill-desc">${s.desc}</div>
+                    </div>
+                    <button class="skill-install" onclick="installSkill('${s.name}')">安装</button>
+                </div>
+            `).join('');
+            
+            const cfg = JSON.stringify({
+                agents: {
+                    default: {
+                        name: "AI助手",
+                        skills: recommended.map(s => s.name)
+                    }
+                },
+                deployment: { type: env, autoStart: true }
+            }, null, 2);
+            
+            document.getElementById('config-code').textContent = cfg;
+            document.getElementById('result').classList.add('show');
+        }
+
+        function installSkill(name) {
+            const btn = event.target;
+            navigator.clipboard.writeText(`openclaw skill install ${name}`);
+            btn.textContent = '已复制!';
+            setTimeout(() => btn.textContent = '安装', 2000);
+        }
+
+        function copyConfig() {
+            navigator.clipboard.writeText(document.getElementById('config-code').textContent);
+            event.target.textContent = '已复制!';
+            setTimeout(() => event.target.textContent = '复制', 2000);
+        }
+
+        function restart() {
+            Object.keys(answers).forEach(k => delete answers[k]);
+            document.getElementById('result').classList.remove('show');
+            document.querySelector('.progress-bar').classList.remove('hidden');
+            showQuestion(1);
+        }
+    </script>
+</body>
+</html>

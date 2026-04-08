@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw 配置生成器 | OpenClaw Master Tutorial</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #FF6B35;
+            --primary-dark: #E85D2C;
+            --secondary: #4ECDC4;
+            --dark: #1A1A2E;
+            --light: #F7F7F7;
+            --gray: #6B7280;
+            --success: #10B981;
+            --warning: #F59E0B;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        header h1 .icon {
+            font-size: 3rem;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 900px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .panel {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .panel h2 {
+            color: var(--dark);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .panel h2 .step {
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+        
+        .form-group .hint {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-top: 4px;
+        }
+        
+        select, input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        select:focus, input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            background: #F3F4F6;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .checkbox-item:hover {
+            background: #E5E7EB;
+        }
+        
+        .checkbox-item input {
+            cursor: pointer;
+        }
+        
+        .checkbox-item.selected {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .preset-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .preset-card {
+            padding: 16px;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .preset-card:hover {
+            border-color: var(--primary);
+        }
+        
+        .preset-card.active {
+            border-color: var(--primary);
+            background: #FFF5F2;
+        }
+        
+        .preset-card h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        
+        .preset-card p {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        
+        .output-area {
+            background: var(--dark);
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .output-area pre {
+            color: #4ECDC4;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .copy-btn.copied {
+            background: var(--success);
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+        
+        .btn-secondary {
+            background: #E5E7EB;
+            color: var(--dark);
+        }
+        
+        .btn-secondary:hover {
+            background: #D1D5DB;
+        }
+        
+        .cost-estimate {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        .cost-estimate h3 {
+            font-size: 1rem;
+            margin-bottom: 12px;
+            opacity: 0.9;
+        }
+        
+        .cost-estimate .price {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .cost-estimate .detail {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 8px;
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .feature-item .check {
+            color: var(--success);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .api-key-input {
+            position: relative;
+        }
+        
+        .api-key-input input {
+            padding-right: 100px;
+        }
+        
+        .api-key-input .toggle-visibility {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><span class="icon">🦞</span> OpenClaw 配置生成器</h1>
+            <p>根据你的需求，一键生成最适合的 OpenClaw 配置文件。无需手写 JSON，轻松部署。</p>
+        </header>
+        
+        <div class="main-grid">
+            <!-- 左侧：配置表单 -->
+            <div class="panel">
+                <h2><span class="step">1</span>选择使用场景</h2>
+                
+                <div class="preset-cards">
+                    <div class="preset-card active" data-preset="personal">
+                        <h4>🏠 个人效率</h4>
+                        <p>日程管理、文件整理、日常助手</p>
+                    </div>
+                    <div class="preset-card" data-preset="developer">
+                        <h4>💻 开发辅助</h4>
+                        <p>代码审查、文档生成、Git管理</p>
+                    </div>
+                    <div class="preset-card" data-preset="content">
+                        <h4>✍️ 内容创作</h4>
+                        <p>写作辅助、多平台发布、素材管理</p>
+                    </div>
+                    <div class="preset-card" data-preset="business">
+                        <h4>🏢 团队协作</h4>
+                        <p>客户服务、数据分析、项目管理</p>
+                    </div>
+                </div>
+                
+                <h2><span class="step">2</span>基础配置</h2>
+                
+                <div class="form-group">
+                    <label>AI 模型提供商</label>
+                    <select id="llmProvider">
+                        <option value="deepseek">DeepSeek (推荐，性价比高)</option>
+                        <option value="moonshot">Moonshot (Kimi，长文档强)</option>
+                        <option value="anthropic">Anthropic (Claude，能力强)</option>
+                        <option value="openai">OpenAI (GPT-4)</option>
+                        <option value="ollama">Ollama (本地运行)</option>
+                    </select>
+                    <div class="hint">选择成本与能力的平衡点</div>
+                </div>
+                
+                <div class="form-group">
+                    <label>API Key</label>
+                    <div class="api-key-input">
+                        <input type="password" id="apiKey" placeholder="输入你的 API Key">
+                        <button class="toggle-visibility" onclick="toggleApiKey()">显示</button>
+                    </div>
+                    <div class="hint">你的 API Key 仅在本地使用，不会上传到服务器</div>
+                </div>
+                
+                <div class="form-group">
+                    <label>消息渠道（可多选）</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item selected">
+                            <input type="checkbox" value="telegram" checked>
+                            <span>Telegram</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="feishu">
+                            <span>飞书</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="wechat">
+                            <span>企业微信</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="discord">
+                            <span>Discord</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <h2><span class="step">3</span>高级选项</h2>
+                
+                <div class="form-group">
+                    <label>部署环境</label>
+                    <select id="deployEnv">
+                        <option value="cloud">云服务器 (24/7在线)</option>
+                        <option value="local">本地电脑 (随开随用)</option>
+                        <option value="docker">Docker (环境隔离)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>安全级别</label>
+                    <select id="securityLevel">
+                        <option value="standard">标准 (推荐)</option>
+                        <option value="strict">严格 (生产环境)</option>
+                        <option value="relaxed">宽松 (快速体验)</option>
+                    </select>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="generateConfig()">生成配置</button>
+                    <button class="btn btn-secondary" onclick="resetForm()">重置</button>
+                </div>
+                
+                <div class="cost-estimate">
+                    <h3>💰 预估月费用</h3>
+                    <div class="price" id="costEstimate">¥15-30</div>
+                    <div class="detail" id="costDetail">云服务器 ¥20 + API调用 ¥5-10</div>
+                </div>
+            </div>
+            
+            <!-- 右侧：输出区域 -->
+            <div class="panel">
+                <h2><span class="step">4</span>生成的配置</h2>
+                
+                <div class="output-area">
+                    <button class="copy-btn" onclick="copyConfig()">复制</button>
+                    <pre id="configOutput">// 点击"生成配置"按钮生成 openclaw.json
+
+{
+  "说明": "配置生成器会在这里输出你的配置文件",
+  "步骤": [
+    "1. 在左侧选择使用场景",
+    "2. 填写基础配置",
+    "3. 点击生成配置按钮",
+    "4. 复制配置到 ~/.openclaw/openclaw.json"
+  ]
+}</pre>
+                </div>
+                
+                <div class="feature-list" id="featureList">
+                    <div class="feature-item">
+                        <span class="check">✓</span>
+                        <span>文件管理技能</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check">✓</span>
+                        <span>浏览器控制</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check">✓</span>
+                        <span>日历同步</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check">✓</span>
+                        <span>网页搜索</span>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px; padding: 20px; background: #FEF3C7; border-radius: 8px;">
+                    <h4 style="margin-bottom: 10px; color: #92400E;">📖 下一步</h4>
+                    <ol style="padding-left: 20px; color: #92400E; line-height: 1.8;">
+                        <li>复制上方配置文件</li>
+                        <li>保存到 <code>~/.openclaw/openclaw.json</code></li>
+                        <li>运行 <code>openclaw gateway</code> 启动</li>
+                        <li>访问 <code>http://localhost:18789</code> 验证</li>
+                    </ol>
+                    <p style="margin-top: 10px; font-size: 0.9rem;">
+                        详细步骤请参考 <a href="../chapters/chapter02/" style="color: var(--primary);">第2章: 10分钟完成首次部署</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2026 OpenClaw Master Tutorial | <a href="../../">返回教程首页</a></p>
+        </footer>
+    </div>
+    
+    <script>
+        // 预设场景配置
+        const presets = {
+            personal: {
+                name: '个人效率',
+                channels: ['telegram'],
+                skills: ['calendar', 'notes', 'weather', 'reminder'],
+                features: ['文件管理技能', '日历同步', '备忘录集成', '天气查询', '定时提醒']
+            },
+            developer: {
+                name: '开发辅助',
+                channels: ['telegram', 'slack'],
+                skills: ['git', 'github', 'code-review', 'docs'],
+                features: ['Git集成', 'GitHub自动化', '代码审查', '文档生成', '终端操作']
+            },
+            content: {
+                name: '内容创作',
+                channels: ['telegram', 'discord'],
+                skills: ['writing', 'seo', 'social-media', 'image-gen'],
+                features: ['写作辅助', 'SEO分析', '社交媒体发布', '图片生成', '素材管理']
+            },
+            business: {
+                name: '团队协作',
+                channels: ['feishu', 'wechat'],
+                skills: ['crm', 'analytics', 'meeting', 'email'],
+                features: ['客户管理', '数据分析', '会议管理', '邮件处理', '任务分配']
+            }
+        };
+        
+        // 模型价格配置 (元/百万tokens)
+        const modelPricing = {
+            deepseek: { input: 1, output: 2, name: 'DeepSeek' },
+            moonshot: { input: 12, output: 12, name: 'Kimi' },
+            anthropic: { input: 25, output: 75, name: 'Claude' },
+            openai: { input: 25, output: 75, name: 'GPT-4' },
+            ollama: { input: 0, output: 0, name: '本地模型' }
+        };
+        
+        // 部署成本
+        const deployCost = {
+            cloud: 20,
+            local: 0,
+            docker: 0
+        };
+        
+        let currentPreset = 'personal';
+        
+        // 预设卡片点击事件
+        document.querySelectorAll('.preset-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.preset-card').forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+                currentPreset = this.dataset.preset;
+                updateFeatures();
+                updateCost();
+            });
+        });
+        
+        // 复选框样式切换
+        document.querySelectorAll('.checkbox-item input').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                this.parentElement.classList.toggle('selected', this.checked);
+                updateCost();
+            });
+        });
+        
+        // 更新功能列表
+        function updateFeatures() {
+            const preset = presets[currentPreset];
+            const featureList = document.getElementById('featureList');
+            featureList.innerHTML = preset.features.map(f => `
+                <div class="feature-item">
+                    <span class="check">✓</span>
+                    <span>${f}</span>
+                </div>
+            `).join('');
+        }
+        
+        // 更新成本估算
+        function updateCost() {
+            const provider = document.getElementById('llmProvider').value;
+            const deployEnv = document.getElementById('deployEnv').value;
+            const pricing = modelPricing[provider];
+            
+            let deployCostText = deployCost[deployEnv];
+            let deployDesc = deployEnv === 'cloud' ? '云服务器 ¥20' : '本地部署 ¥0';
+            
+            if (pricing.input === 0) {
+                document.getElementById('costEstimate').textContent = `¥${deployCostText}`;
+                document.getElementById('costDetail').textContent = `${deployDesc} + 本地模型免费`;
+            } else {
+                document.getElementById('costEstimate').textContent = `¥${deployCostText + 5}-${deployCostText + 50}`;
+                document.getElementById('costDetail').textContent = `${deployDesc} + ${pricing.name} API调用 ¥5-50`;
+            }
+        }
+        
+        // 监听变化更新成本
+        document.getElementById('llmProvider').addEventListener('change', updateCost);
+        document.getElementById('deployEnv').addEventListener('change', updateCost);
+        
+        // 生成配置
+        function generateConfig() {
+            const provider = document.getElementById('llmProvider').value;
+            const apiKey = document.getElementById('apiKey').value;
+            const deployEnv = document.getElementById('deployEnv').value;
+            const securityLevel = document.getElementById('securityLevel').value;
+            
+            const channels = Array.from(document.querySelectorAll('.checkbox-group input:checked'))
+                .map(cb => cb.value);
+            
+            if (!apiKey && provider !== 'ollama') {
+                alert('请输入API Key，或选择本地模型(Ollama)');
+                return;
+            }
+            
+            const config = generateOpenClawConfig({
+                provider,
+                apiKey,
+                channels,
+                deployEnv,
+                securityLevel,
+                preset: currentPreset
+            });
+            
+            document.getElementById('configOutput').textContent = JSON.stringify(config, null, 2);
+        }
+        
+        // 生成配置对象
+        function generateOpenClawConfig(options) {
+            const { provider, apiKey, channels, securityLevel, preset } = options;
+            
+            const modelConfig = {
+                deepseek: { provider: 'openai', model: 'deepseek-chat', baseUrl: 'https://api.deepseek.com/v1' },
+                moonshot: { provider: 'openai', model: 'moonshot-v1-8k', baseUrl: 'https://api.moonshot.cn/v1' },
+                anthropic: { provider: 'anthropic', model: 'claude-3-5-sonnet-20241022' },
+                openai: { provider: 'openai', model: 'gpt-4' },
+                ollama: { provider: 'ollama', model: 'llama3.2', baseUrl: 'http://localhost:11434' }
+            };
+            
+            const model = modelConfig[provider];
+            
+            // 基础配置
+            const config = {
+                agents: {
+                    defaults: {
+                        model: {
+                            provider: model.provider,
+                            model: model.model,
+                            apiKey: apiKey || 'your-api-key-here'
+                        }
+                    }
+                },
+                gateway: {
+                    port: 18789,
+                    bind: '0.0.0.0',
+                    auth: {
+                        mode: securityLevel === 'strict' ? 'token' : 'none',
+                        token: securityLevel === 'strict' ? generateToken() : undefined
+                    }
+                },
+                channels: {},
+                skills: {
+                    autoInstall: presets[preset].skills
+                },
+                meta: {
+                    generatedBy: 'OpenClaw Config Generator',
+                    generatedAt: new Date().toISOString(),
+                    preset: preset,
+                    securityLevel: securityLevel
+                }
+            };
+            
+            // 添加baseUrl（如果需要）
+            if (model.baseUrl) {
+                config.agents.defaults.model.baseUrl = model.baseUrl;
+            }
+            
+            // 配置渠道
+            channels.forEach(channel => {
+                config.channels[channel] = {
+                    enabled: true
+                };
+            });
+            
+            // 安全配置
+            if (securityLevel === 'strict') {
+                config.tools = {
+                    profile: 'default',
+                    requireApproval: ['write', 'exec'],
+                    deniedPaths: ['~/.ssh', '~/.aws', '/etc']
+                };
+            }
+            
+            return config;
+        }
+        
+        // 生成随机Token
+        function generateToken() {
+            return Array.from(crypto.getRandomValues(new Uint8Array(32)))
+                .map(b => b.toString(16).padStart(2, '0'))
+                .join('');
+        }
+        
+        // 复制配置
+        function copyConfig() {
+            const config = document.getElementById('configOutput').textContent;
+            navigator.clipboard.writeText(config).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.textContent = '已复制!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = '复制';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+        
+        // 重置表单
+        function resetForm() {
+            document.getElementById('apiKey').value = '';
+            document.querySelectorAll('.checkbox-group input').forEach(cb => {
+                cb.checked = cb.value === 'telegram';
+                cb.parentElement.classList.toggle('selected', cb.checked);
+            });
+            document.getElementById('securityLevel').value = 'standard';
+            updateCost();
+        }
+        
+        // 切换API Key显示
+        function toggleApiKey() {
+            const input = document.getElementById('apiKey');
+            const btn = document.querySelector('.toggle-visibility');
+            if (input.type === 'password') {
+                input.type = 'text';
+                btn.textContent = '隐藏';
+            } else {
+                input.type = 'password';
+                btn.textContent = '显示';
+            }
+        }
+        
+        // 初始化
+        updateFeatures();
+        updateCost();
+    </script>
+</body>
+</html>
