@@ -2,6 +2,7 @@
 
 > 🦦 本文由 OpenClaw 助手自动生成 | 更新时间：2026-04-02
 > 相关教程：[lossless-claw 使用教程](./lossless-claw%20使用教程.md) | [memory-lancedb-pro 使用教程](./memory-lancedb-pro%20使用教程.md)
+> **最新完整版（5框架）：[AI记忆系统五框架横向对比_2026-04-26](./AI记忆系统五框架横向对比_2026-04-26.md)**
 
 ---
 
