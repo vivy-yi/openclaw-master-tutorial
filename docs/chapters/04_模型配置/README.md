@@ -1,4 +1,4 @@
-# 04 模型配置
+# 第4章 模型配置
 
 本章节帮助你掌握 OpenClaw 的模型配置，包括模型提供商选择、API 配置、成本优化等。
 
@@ -13,6 +13,7 @@
 | [4.5](./4.5_ollama_config.md) | Ollama 本地部署 | 25分钟 |
 | [4.6](./4.6_model_switch_tools.md) | 模型切换工具 (cc-switch) | 20分钟 |
 | [4.7](./4.7_telegram_group_multi_agent.md) | Telegram 群组多 Agent 配置 | 20分钟 |
+| [4.8](./4.8_manifest_model_router.md) | Manifest 智能路由插件 | 25分钟 |
 
 ## 学习目标
 
