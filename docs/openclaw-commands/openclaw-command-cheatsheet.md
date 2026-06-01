@@ -1,6 +1,6 @@
 # OpenClaw CLI 指令速查表 (Cheatsheet)
 
-> 版本: 2026.5.7 | 更新: 2026-05-15
+> 版本: 2026.5.18 | 更新: 2026-06-01
 > 对应 OpenClaw `openclaw` 主命令及其所有子命令。输入 `openclaw <command> --help` 查看子命令详情。
 
 ---
