@@ -6,12 +6,16 @@
 
 | 小节 | 主题 | 核心内容 |
 |-----|------|---------|
-| [13.1](./13.1_security_overview.md) | 安全概述 | 安全架构、分层防御 |
-| [13.2](./13.2_permission.md) | 权限管理 | Profile 机制、工具权限 |
-| [13.3](./13.3_data_security.md) | 数据安全 | 加密、敏感信息保护 |
-| [13.4](./13.4_audit_log.md) | 审计日志 | 日志记录、查询分析 |
-| [13.5](./13.5_auth_profiles.md) | 多密钥治理 | keys、keyId、轮换策略 |
-| [13.6](./13.6_secrets_management.md) | 密钥管理 | SecretRef、密钥提供商、1Password/Vault 集成 |
+| [16.1](./16.1_security_overview.md) | 安全概述 | 安全架构、分层防御 |
+| [16.2](./16.2_permission.md) | 权限管理 | Profile 机制、工具权限 |
+| [16.3](./16.3_data_security.md) | 数据安全 | 加密、敏感信息保护 |
+| [16.4](./16.4_audit_log.md) | 审计日志 | 日志记录、查询分析 |
+| [16.5](./16.5_auth_profiles.md) | 多密钥治理 | keys、keyId、轮换策略 |
+| [16.6](./16.6_secrets_management.md) | 密钥管理 | SecretRef、密钥提供商、1Password/Vault 集成 |
+| [16.7](./16.7_security_advisory_84337.md) | 安全通告 | Hook ingress token 认证绕过漏洞 |
+| [16.8](./16.8_secretref_migration.md) | 密钥迁移 | SecretRef 迁移指南 |
+| [16.9](./16.9_security_advisory_90014.md) | 安全通告 | ReDoS 漏洞：exec approval argPattern 正则匹配 |
+| [16.10](./16.10_security_advisory_90013.md) | 安全通告 | 安装程序执行未验证的下载脚本 |
 
 ## 学习目标
 
@@ -33,4 +37,4 @@
 
 ---
 
-**最后更新**：2026-03-28（由 Tutorial Master Skill 自动更新）
+**最后更新**：2026-06-04（由墨客-生成审核发布 cron 自动更新）
