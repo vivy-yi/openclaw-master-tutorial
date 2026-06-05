@@ -16,6 +16,7 @@
 | [16.8](./16.8_secretref_migration.md) | 密钥迁移 | SecretRef 迁移指南 |
 | [16.9](./16.9_security_advisory_90014.md) | 安全通告 | ReDoS 漏洞：exec approval argPattern 正则匹配 |
 | [16.10](./16.10_security_advisory_90013.md) | 安全通告 | 安装程序执行未验证的下载脚本 |
+| [16.11](./16.11_operator_install_policy.md) | 安全专题 | Operator Install Policy：插件安装安全机制重构（替代 dangerous-code scanner） |
 
 ## 学习目标
 
@@ -28,6 +29,7 @@
 - ✅ 理解多密钥治理与轮换策略
 - ✅ 掌握密钥泄露应急响应流程
 - ✅ 配置 SecretRef 密钥管理
+- ✅ 理解 Operator Install Policy 安全机制
 
 ## 快速导航
 
@@ -37,4 +39,4 @@
 
 ---
 
-**最后更新**：2026-06-04（由墨客-生成审核发布 cron 自动更新）
+**最后更新**：2026-06-06（由墨客-生成审核发布 cron 自动更新）
