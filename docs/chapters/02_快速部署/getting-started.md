@@ -1,6 +1,7 @@
 # Getting Started - 快速入门
 
-> 📅 更新时间: 2026-05-11  
+> 📅 更新时间: 2026-06-12  
+> **更新说明**: 2026-06-12 新增官方安装脚本（curl 方式）+ 环境变量配置说明
 > 📚 来源: [docs.openclaw.ai/start/getting-started](https://docs.openclaw.ai/start/getting-started)  
 > ⭐ 质量评分: ⭐⭐⭐⭐⭐ (5/5)
 
@@ -19,13 +20,25 @@
 
 ## 安装步骤
 
-### 1. 安装 OpenClaw
+OpenClaw 提供两种安装方式，推荐使用官方安装脚本（全平台通用）。
+
+### 方式一：官方安装脚本（推荐，全平台）
+
+```bash
+curl -fsSL https://openclaw.ai/install.sh | bash
+```
+
+> 此方式自动检测平台并安装对应版本，适合 macOS、Linux 和 WSL 环境。
+
+### 方式二：npm 安装
 
 ```bash
 npm install -g openclaw@latest
 ```
 
-### 2. 运行引导安装
+> 需要 Node.js 24+ 和 npm/pnpm/yarn 环境。
+
+### 3. 运行引导安装
 
 ```bash
 openclaw onboard --install-daemon
@@ -36,7 +49,7 @@ openclaw onboard --install-daemon
 > - 注册 Gateway 服务
 > - 配置默认 Pi agent（RPC 模式）
 
-### 3. 验证安装
+### 4. 验证安装
 
 ```bash
 openclaw gateway status
@@ -49,7 +62,7 @@ Gateway: connected
 Pi agent: active
 ```
 
-### 4. 启动仪表盘（可选）
+### 5. 启动仪表盘（可选）
 
 ```bash
 openclaw dashboard
@@ -103,13 +116,27 @@ openclaw gateway restart
 
 ## 📁 关键文件路径
 
-| 文件 | 路径 |
-|------|------|
-| 主配置文件 | `~/.openclaw/openclaw.json` |
-| 状态目录 | `~/.openclaw/` |
-| Workspace | `~/.openclaw/workspace/` |
-| Agent 数据 | `~/.openclaw/agents/<agentId>/` |
-| 会话存储 | `~/.openclaw/agents/<agentId>/sessions/` |
+| 文件 | 路径 | 环境变量覆盖 |
+|------|------|---------------|
+| 主配置文件 | `~/.openclaw/openclaw.json` | `OPENCLAW_CONFIG_PATH` |
+| 状态目录 | `~/.openclaw/` | `OPENCLAW_STATE_DIR` |
+| Workspace | `~/.openclaw/workspace/` | `OPENCLAW_HOME` |
+| Agent 数据 | `~/.openclaw/agents/<agentId>/` | — |
+| 会话存储 | `~/.openclaw/agents/<agentId>/sessions/` | — |
+
+---
+
+## 🔧 环境变量
+
+OpenClaw 支持以下环境变量（可在 `~/.zshrc` / `~/.bashrc` 中配置）：
+
+| 变量 | 说明 | 示例 |
+|------|------|------|
+| `OPENCLAW_HOME` | Workspace 根目录 | `~/openclaw-work` |
+| `OPENCLAW_STATE_DIR` | 状态数据目录（默认 `~/.openclaw`） | `~/data/openclaw-state` |
+| `OPENCLAW_CONFIG_PATH` | 配置文件路径 | `~/config/openclaw.json` |
+
+> ⚠️ 环境变量需在启动 OpenClaw 前设置。部分变量更改后需重新运行 `openclaw onboard`。
 
 ---
 
