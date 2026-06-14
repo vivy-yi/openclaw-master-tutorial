@@ -172,3 +172,20 @@ Day 7 → 多 Agent 协作 + 实战
 | 官方文档 | [docs.openclaw.ai](https://docs.openclaw.ai) |
 | ClawHub Skills 市场 | [clawhub.ai](https://clawhub.ai) |
 | OpenClaw 社区 | [Discord](https://discord.com/invite/clawd) |
+
+### 知识管理相关
+
+| 文件 | 说明 |
+|------|------|
+| `chapters/external-tools/多源知识系统完整配置指南.md` | Obsidian/Notion/Confluence/GitHub/Zotero 等多源知识接入 |
+
+### 用户画像
+
+| 文件 | 说明 |
+|------|------|
+| `chapters/external-tools/用户画像采集系统完整指南.md` | 全平台用户画像采集方案 |
+
+### 记忆系统
+
+| 文件 | 说明 |
+|------|------|
