@@ -187,10 +187,59 @@ openclaw logs --agent --last 50 | grep -i "model"
 
 ---
 
-## 五、相关 Issues
+## 五、超大文本截断问题 — #94271
+
+### 5.1 问题描述
+
+| 字段 | 内容 |
+|------|------|
+| **Issue** | #94271 |
+| **类型** | Bug Fix |
+| **状态** | 🔴 Open |
+| **标题** | fix(agents): truncate oversized text content blocks |
+| **作者** | @text-overflow-dev |
+
+### 5.2 问题现象
+
+Agent 生成的超大文本内容块（text content blocks）未进行截断，可能导致：
+- 内存溢出
+- 上下文窗口耗尽
+- 会话响应超时
+
+### 5.3 解决方案
+
+在 Agent 内容生成阶段添加 text content block 大小校验，超出阈值时自动截断。
+
+### 5.4 识别信号
+
+- Session 日志显示 `text content exceeds limit`
+- 长对话后响应延迟增加
+- 内存使用率异常升高
+
+### 5.5 临时规避方案
+
+```bash
+# 限制单次响应的最大 token 数
+openclaw config set agents.limits.maxResponseTokens 4096
+
+# 或在配置文件中设置
+# openclaw.json
+{
+  "agents": {
+    "limits": {
+      "maxResponseTokens": 4096
+    }
+  }
+}
+```
+
+---
+
+## 六、相关 Issues
 
 | Issue | 标题 | 状态 | 优先级 |
 |-------|------|------|--------|
+| #94271 | fix(agents): truncate oversized text content blocks | OPEN | 🟠 P2 |
 | #93073 | fix(agents): retry empty post-tool final turns | OPEN | P1 |
 | #90065 | fix(agents): bound abort-path session lock release | OPEN | P2 |
 | #93419 | runEmbeddedAgent ignores agents.defaults.model | ✅ Closed | P1 |

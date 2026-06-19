@@ -118,6 +118,21 @@ Gateway -> Node Service (WS)
 
 ---
 
+## 并发写入安全 (#94277)
+
+> **🔔 修复 #94277**: 添加 advisory file lock 防止并发写入审批文件冲突。
+
+当多个 Gateway 实例或进程同时写入 `~/.openclaw/exec-approvals.json` 时，可能导致数据竞争和审批记录丢失。
+
+**修复内容**:
+- 添加 advisory file lock（咨询式文件锁）
+- 写入前尝试获取锁，超时自动跳过
+- 不影响单实例运行性能
+
+**关联 PR**: [#94277](https://github.com/openclaw/openclaw/pull/94277)
+
+---
+
 ## 相关文档
 
 - [Exec approvals（核心）](/tools/exec-approvals)

@@ -125,6 +125,8 @@ OpenClaw 的 Skills 系统分为两大类：**官方内置 Skills** 和 **社区
 | Skill 名称 | 功能描述 |
 |-----------|----------|
 | clawhub | OpenClaw 技能市场 |
+
+> **🔔 新增功能 #94282**: ClawHub 支持 `owner/skill-name` 格式安装，可从指定所有者安装限定 Skills。例如：`npx clawhub@latest install openclaw/skill-name` 安装官方维护的 skill。详见 [ClawHub 热门排行](./15.4_ClawHub热门Skills排行榜.md)。
 | healthcheck | 系统健康检查 |
 | python-debugpy | Python 调试器 |
 | sherpa-onnx-tts | 开源 TTS 引擎（ sherpa-onnx） |
@@ -238,5 +240,6 @@ npx clawhub@latest search <keyword>
 
 | 日期 | 更新内容 |
 |------|----------|
+| 2026-06-19 | 新增 #94282 ClawHub owner-qualified 安装支持说明 |
 | 2026-06-15 | 更新 Skills 数量：40+ → **57个**（通过 GitHub API 核实），新增 gifgrep、gog、goplaces、himalaya、imsg、nano-pdf、notion、openai-whisper、openai-whisper-api、openhue、oracle、peekaboo、sag、sherpa-onnx-tts、slack、songsee、sonoscli、spike、spotify-player、trello、voice-call、wacli、xurl 等 23 个新技能 |
 | 2026-05-31 | 初始版本 |
