@@ -1,4 +1,4 @@
-# 05 工具与 Skills
+# 第10章 工具与 Skills
 
 本章节帮助你理解 OpenClaw 的工具系统（Tools）和技能系统（Skills），掌握如何扩展 Agent 能力。
 
@@ -20,6 +20,7 @@ OpenClaw 工具与技能体系遵循**三层同心圆架构**：
 |-----|------|---------|
 | [5.1](./5.1_tools_overview.md) | 工具系统概述（★三层架构） | 25分钟 |
 | [5.2](./5.2_builtin_tools.md) | 内置工具详解 | 30分钟 |
+| [5.2x](./10.2x_内置Connector完整指南.md) | 内置 Connector 完整指南 | 30分钟 |
 | [5.3](./5.3_skills_system.md) | Skills 系统 | 30分钟 |
 | [5.4](./5.4_skill_market.md) | 技能市场 | 20分钟 |
 | [5.5](./5.5_custom_skill.md) | 自定义技能 | 30分钟 |
