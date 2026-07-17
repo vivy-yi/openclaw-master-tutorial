@@ -6,6 +6,30 @@
 
 ---
 
+## 本章目录
+
+| 节 | 标题 |
+|----|------|
+| [21.0](./21.0_CLI全景图.md) | CLI 全景图——当前系统已安装与流行 CLI 总览 |
+| [21.x](./21.x_CLI生态研究报告.md) | CLI 生态系统研究——社群热点、趋势与前沿方向 |
+| [21.x2](./21.x2_agent-reach平台生态全解.md) | Agent Reach 平台生态全解——16平台可替换CLI工具图谱 |
+| [21.x3](./21.x3_消息渠道CLI全解.md) | 消息渠道CLI全解——企业微信/钉钉/飞书及OpenClaw渠道对照 |
+| [21.x4](./21.x4_CLI未来赛道与治理框架.md) | CLI未来赛道与治理框架——跨领域协作与金融助手案例 |
+| [21.1](./README.md#211-cli-转化技术概述) | CLI 转化技术概述 |
+| [21.2](./README.md#212-mcp--cli-mcp2cli) | MCP → CLI |
+| [21.3](./README.md#213-api--cli-lark-cli-google-workspace-cli) | API → CLI |
+| [21.4](./README.md#214-website--cli) | Website → CLI |
+| [21.5](./README.md#215-browser--mcpcli-浏览器自动化工具) | Browser → MCP/CLI |
+| [21.6](./README.md#216-gui--cli-cli-anything) | GUI → CLI |
+| [21.7](./README.md#217-四者对比与选择) | 四者对比与选择 |
+| [21.8](./README.md#218-案例飞书-cli-lark-cli) | 案例：飞书 CLI |
+| [21.9](./README.md#219-实战构建自己的-cli-转化工具) | 实战：构建自己的 CLI 转化工具 |
+| [21.10](./README.md#2110-常见问题) | 常见问题 |
+| [21.11](./README.md#2111-最佳实践) | 最佳实践 |
+| [21.12](./README.md#2112-案例qmd-本地文档搜索引警) | 案例：QMD 本地文档搜索引擎 |
+
+---
+
 ## 外部补充资源
 
 | 文章 | 来源 | 特点 |
@@ -623,7 +647,13 @@ cli-anything ./gimp --verbose
 - [上一章：19 Agent管理专题 →](../19_Agent管理专题/)
 - [下一章：22 新兴应用场景 →](../22_新兴应用场景/)
 - [文档总览 →](../)
+- [21.0 CLI 全景图 →](./21.0_CLI全景图.md)
+- [21.x CLI 生态研究报告 →](./21.x_CLI生态研究报告.md)
+- [21.x2 Agent Reach 平台生态全解 →](./21.x2_agent-reach平台生态全解.md)
+- [21.x3 消息渠道CLI全解 →](./21.x3_消息渠道CLI全解.md)
+- [21.x4 CLI未来赛道与治理框架 →](./21.x4_CLI未来赛道与治理框架.md)
+- [CLI 速查表 →](./quick-ref.md)
 
 ---
 
-*更新时间: 2026-04-06*
+*更新时间: 2026-04-20*
