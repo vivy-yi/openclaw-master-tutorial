@@ -210,7 +210,57 @@ triggers:
 openclaw skills browse
 ```
 
-### 7.10 常见问题
+### 7.10 Skill Workshop 审批流程
+
+#### v2026.7.2-beta.3 更新
+
+**自动审批机制**：
+
+从 v2026.7.2-beta.3 开始，Skill Workshop 的 agent-initiated 操作（apply、reject、quarantine）默认自动执行，无需额外审批提示。
+
+```
+变更前后对比：
+┌─────────────────────────────────────────────────────────┐
+│  之前  │ agent-initiated 操作需要额外审批提示             │
+│  之后  │ 默认自动处理，无需额外提示                       │
+│  可选  │ skills.workshop.approvalPolicy: "pending"       │
+└─────────────────────────────────────────────────────────┘
+```
+
+#### 配置选项
+
+```yaml
+# 默认配置 - 自动审批
+skills:
+  workshop:
+    approvalPolicy: "auto"  # 默认值
+
+# 可选配置 - 审批门模式
+skills:
+  workshop:
+    approvalPolicy: "pending"  # 开启审批门
+```
+
+#### 审批操作类型
+
+| 操作 | 说明 | 审批行为 |
+|------|------|----------|
+| apply | 应用提案 | auto (v2026.7.2+) |
+| reject | 拒绝提案 | auto (v2026.7.2+) |
+| quarantine | 隔离提案 | auto (v2026.7.2+) |
+| create | 创建提案 | 始终需要审批 |
+
+#### 触发审批门的场景
+
+```bash
+# 创建新 Skill 提案时，始终需要审批
+openclaw skills proposal create --name my-skill
+
+# 查看待审批提案
+openclaw skills proposals pending
+```
+
+### 7.11 常见问题
 
 #### Q: Skill 安装失败
 

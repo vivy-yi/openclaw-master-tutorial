@@ -268,7 +268,93 @@ security:
       - configuration_change
 ```
 
-### 12.9 安全最佳实践
+### 12.9 MCP 隔离安全模型 (v2026.7.2+)
+
+#### v2026.7.2-beta.3 新增
+
+**MCP (Model Context Protocol) 隔离机制**：
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│              MCP Server Connection Isolation                     │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│  Session A  ──────────────────────────────────────────────────  │
+│    │                                                           │
+│    ├── MCP Server: filesystem                                  │
+│    ├── MCP Server: memory                                      │
+│    └── MCP Server: custom-plugin                               │
+│                                                                  │
+│  Session B  ──────────────────────────────────────────────────  │
+│    │                                                           │
+│    ├── MCP Server: github-api                                  │
+│    └── MCP Server: search                                     │
+│                                                                  │
+│  ✅ 每个 Session 的 MCP 连接完全隔离                            │
+│  ✅ 防止跨会话的 MCP 访问泄漏                                   │
+│  ✅ 符合最小权限原则                                            │
+│                                                                  │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+#### 安全改进
+
+| 改进项 | 说明 | PR |
+|--------|------|-----|
+| Per-session Scoping | MCP 服务器连接限定在请求会话内 | #106359 |
+| 隔离保证 | 防止会话 A 访问会话 B 的 MCP 资源 | - |
+
+#### 配置示例
+
+```yaml
+mcp:
+  # 默认启用会话隔离
+  isolation: true
+  
+  # MCP 服务器定义
+  servers:
+    filesystem:
+      enabled: true
+      workspaceScope: true  # 仅限工作区
+      
+    github-api:
+      enabled: true
+      readOnly: true  # 只读模式
+```
+
+#### 最佳实践
+
+1. **按需启用 MCP 服务器**
+   ```yaml
+   mcp:
+     servers:
+       # 只启用需要的服务器
+       - filesystem
+       - memory
+   ```
+
+2. **限制 MCP 权限范围**
+   ```yaml
+   mcp:
+     servers:
+       filesystem:
+         allowedPaths:
+           - "~/.openclaw/workspace"
+         readOnly: true
+   ```
+
+3. **监控 MCP 使用**
+   ```bash
+   # 查看 MCP 连接状态
+   openclaw mcp status
+   
+   # 查看活跃的 MCP 服务器
+   openclaw mcp servers list
+   ```
+
+---
+
+### 12.10 安全最佳实践
 
 1. **定期轮换密钥**
    ```bash
